@@ -103,6 +103,34 @@
   gap: 8px;
 }
 
+/* Buttons — the "Ouvrir" action on a result row (design.md §Components). */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  /* design.md type ramp: button = 14/20/600 */
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn--secondary {
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-raised);
+  color: var(--color-ink);
+}
+.btn--secondary:hover {
+  background: var(--color-surface-sunken);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
 /* Chapitre chips */
 .chip {
   font-size: 12px;

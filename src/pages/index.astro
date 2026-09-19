@@ -116,6 +116,7 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
       import { dataset } from '../data/dataset';
       import { filterExercises } from '../lib/filter';
       import { FLAGS, exerciseCount } from '../lib/format';
+      import { pdfHref } from '../lib/pdf';
       import type { Country, Exercise, FilterCriteria } from '../lib/types';
 
       const chapitreById = new Map(dataset.chapitres.map((c) => [c.id, c]));
@@ -184,6 +185,20 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
         left.appendChild(chips);
 
         li.appendChild(left);
+
+        // "Ouvrir" opens the parent paper's PDF at the exercise's start page in
+        // a new tab. Omitted entirely when there's no usable path, so a missing
+        // pdfPath degrades to no action rather than a broken link.
+        const href = paper ? pdfHref(paper.pdfPath, ex.pageStart) : null;
+        if (href) {
+          const open = document.createElement('a');
+          open.className = 'btn btn--secondary';
+          open.href = href;
+          open.target = '_blank';
+          open.rel = 'noopener noreferrer';
+          open.textContent = 'Ouvrir';
+          li.appendChild(open);
+        }
         return li;
       }
 
