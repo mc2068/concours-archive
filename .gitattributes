@@ -1,0 +1,4 @@
+# Keep binary assets byte-exact — no EOL conversion (autocrlf is on).
+# PDFs use a cross-reference table of absolute byte offsets, so LF↔CRLF
+# rewriting on checkout would corrupt them.
+*.pdf binary
