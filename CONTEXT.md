@@ -24,6 +24,11 @@ which is the *canonical* chapter list. Chapters are the primary filter axis:
 choosing chapter X returns every exercise tagged with X, regardless of the
 exercise's country of origin.
 
+### Domain
+The broad area of the program a **chapitre** belongs to — Analyse, Algèbre,
+Géométrie, Probabilités. Domains group the chapitre list in the sidebar; they are
+a presentation grouping, not a filter axis.
+
 ### Primary chapter
 Of an exercise's chapter tags, the **one** marked as its main subject. Filtering
 matches *any* tag ("touches this chapter at all"), but the primary chapter is

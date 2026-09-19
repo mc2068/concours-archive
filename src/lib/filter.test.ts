@@ -54,6 +54,25 @@ describe('filterExercises', () => {
     expect(filterExercises(dataset, { chapterId: 'nonexistent' })).toEqual([]);
   });
 
+  it('keeps a single paper\'s exercises contiguous within the same year', () => {
+    // Two same-year papers; exercises interleaved in the source. A paper's own
+    // exercises must not be split apart by another paper's.
+    const sameYear: Dataset = {
+      chapitres: [{ id: 'c', name: 'C', order: 1, domain: 'D' }],
+      papers: [
+        { id: 'centrale', examBrand: 'Centrale', year: 2022, country: 'FR', subject: 'Maths', pdfPath: '/x.pdf' },
+        { id: 'mines', examBrand: 'Mines', year: 2022, country: 'FR', subject: 'Maths', pdfPath: '/y.pdf' },
+      ],
+      exercises: [
+        { id: 'm1', paperId: 'mines', label: 'Exercice 1', pageStart: 1, pageEnd: 2, chapterIds: ['c'], primaryChapterId: 'c' },
+        { id: 'c1', paperId: 'centrale', label: 'Exercice 1', pageStart: 1, pageEnd: 2, chapterIds: ['c'], primaryChapterId: 'c' },
+        { id: 'c2', paperId: 'centrale', label: 'Exercice 2', pageStart: 3, pageEnd: 4, chapterIds: ['c'], primaryChapterId: 'c' },
+      ],
+    };
+    // Centrale sorts before Mines (brand), and its two exercises stay together.
+    expect(ids(filterExercises(sameYear))).toEqual(['c1', 'c2', 'm1']);
+  });
+
   it('does not mutate the input dataset', () => {
     const before = ids(dataset.exercises);
     filterExercises(dataset, { chapterId: 'series' });

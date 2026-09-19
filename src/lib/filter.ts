@@ -3,7 +3,8 @@ import type { Dataset, Exercise, FilterCriteria } from './types';
 /**
  * The filter seam. Given the whole {@link Dataset} and the current
  * {@link FilterCriteria}, return the matching exercises in a deterministic
- * order (year descending, then exam brand, then label).
+ * order (year descending, then exam brand, then paper, then label — so a
+ * paper's own exercises stay contiguous).
  *
  * Rules:
  * - A chapter matches when it is anywhere in an exercise's `chapterIds`
@@ -34,6 +35,9 @@ export function filterExercises(
     const brandA = pa?.examBrand ?? '';
     const brandB = pb?.examBrand ?? '';
     if (brandA !== brandB) return brandA.localeCompare(brandB, 'fr');
+
+    // Keep a single paper's exercises together (spec: "then paper").
+    if (a.paperId !== b.paperId) return a.paperId.localeCompare(b.paperId, 'fr');
 
     return a.label.localeCompare(b.label, 'fr', { numeric: true });
   });

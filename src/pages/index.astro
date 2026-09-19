@@ -73,6 +73,7 @@ const domains = [...new Set(chapitres.map((c) => c.domain))];
       import { dataset } from '../data/dataset';
       import { filterExercises } from '../lib/filter';
       import { FLAGS, exerciseCount } from '../lib/format';
+      import type { Exercise } from '../lib/types';
 
       const chapitreById = new Map(dataset.chapitres.map((c) => [c.id, c]));
       const paperById = new Map(dataset.papers.map((p) => [p.id, p]));
@@ -93,8 +94,7 @@ const domains = [...new Set(chapitres.map((c) => c.domain))];
         return el;
       }
 
-      function row(exerciseId: string): HTMLLIElement {
-        const ex = dataset.exercises.find((e) => e.id === exerciseId)!;
+      function row(ex: Exercise): HTMLLIElement {
         const paper = paperById.get(ex.paperId);
 
         const li = document.createElement('li');
@@ -145,7 +145,7 @@ const domains = [...new Set(chapitres.map((c) => c.domain))];
           results.appendChild(li);
           return;
         }
-        for (const ex of matches) results.appendChild(row(ex.id));
+        for (const ex of matches) results.appendChild(row(ex));
       }
 
       for (const btn of buttons) {

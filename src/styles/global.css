@@ -61,8 +61,7 @@
   background: var(--color-accent-soft);
   font-weight: 600;
 }
-.chapitre-btn:focus-visible,
-.ouvrir:focus-visible {
+.chapitre-btn:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
