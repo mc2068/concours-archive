@@ -84,11 +84,17 @@
   padding: 16px;
   border-bottom: 1px solid var(--color-border);
 }
+/* The content column; min-width:0 lets it shrink so a long label wraps
+   instead of forcing the row wider than a phone screen. */
+.result-row__main {
+  min-width: 0;
+}
 .result-row__title {
   font-size: 16px;
   line-height: 24px;
   font-weight: 700;
   color: var(--color-ink);
+  overflow-wrap: anywhere;
 }
 .result-row__meta {
   margin-top: 2px;
@@ -149,6 +155,48 @@
 .empty-state {
   padding: 16px;
   color: var(--color-ink-muted);
+}
+.empty-state__title {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.empty-state__hint {
+  margin-top: 4px;
+}
+.empty-state__reset {
+  margin-top: 12px;
+}
+
+/*
+  Mobile: the sidebar collapses into a raised sheet toggled by the header
+  button (design.md §Layout; `surface-raised` is the "mobile sidebar sheet"
+  ground). At phone width a closed sidebar is hidden so results lead, and an
+  open one reads as a distinct panel above them; picking a chapitre closes it.
+  From the `md` breakpoint (768px) up the sidebar is always the visible left
+  column and the toggle is hidden (Tailwind `md:hidden`), so this is moot.
+*/
+@media (max-width: 767px) {
+  .sidebar {
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 16px;
+  }
+  .sidebar[data-open='false'] {
+    display: none;
+  }
+}
+/*
+  From `md` up the sidebar is a permanent column, so the sheet toggle is hidden.
+  This lives here (not as Tailwind's `md:hidden`) because the unlayered `.btn`
+  component class sets `display` and would override a Tailwind utility layer.
+*/
+@media (min-width: 768px) {
+  .sidebar-toggle {
+    display: none;
+  }
 }
 
 /*

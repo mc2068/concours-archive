@@ -38,11 +38,30 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
     <title>Concours archive</title>
   </head>
   <body class="min-h-screen bg-surface font-sans text-ink antialiased">
-    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-6 md:flex-row md:gap-8 md:py-8">
-      <!-- Sidebar: the chapitre front door -->
-      <aside class="w-full shrink-0 md:w-72">
+    <div class="mx-auto max-w-6xl px-4 py-6 md:py-8">
+      <header class="mb-6 flex items-center justify-between gap-4">
         <h1 class="text-xl font-semibold">Concours archive</h1>
-        <nav class="mt-6" aria-label="Chapitres">
+        <!-- Mobile only: the sidebar collapses into a sheet behind this toggle -->
+        <button
+          type="button"
+          id="sidebar-toggle"
+          class="btn btn--secondary sidebar-toggle"
+          aria-expanded="false"
+          aria-controls="sidebar"
+        >
+          Chapitres &amp; filtres
+        </button>
+      </header>
+
+      <div class="flex flex-col gap-6 md:flex-row md:gap-8">
+        <!-- Sidebar: the chapitre front door (a collapsible sheet on mobile) -->
+        <aside
+          id="sidebar"
+          class="sidebar w-full shrink-0 md:w-72"
+          data-open="false"
+          aria-label="Chapitres et filtres"
+        >
+          <nav aria-label="Chapitres">
           <button type="button" class="chapitre-btn" data-chapitre-reset aria-pressed="true">
             Tous les chapitres
           </button>
@@ -110,6 +129,7 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
           </p>
         </noscript>
       </main>
+      </div>
     </div>
 
     <script>
@@ -132,8 +152,31 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
       const brandSel = document.getElementById('filter-brand') as HTMLSelectElement;
       const yearSel = document.getElementById('filter-year') as HTMLSelectElement;
       const resetBtn = document.getElementById('filter-reset') as HTMLButtonElement;
+      const sidebar = document.getElementById('sidebar')!;
+      const sidebarToggle = document.getElementById('sidebar-toggle') as HTMLButtonElement;
+      const chapitreResetBtn = document.querySelector('[data-chapitre-reset]') as HTMLButtonElement;
+      // Tracks Tailwind's `md` breakpoint (768px); the CSS sheet rule uses the
+      // same 767px boundary and the two must stay in lockstep.
+      const isMobile = window.matchMedia('(max-width: 767px)');
 
       let selectedChapterId: string | null = null;
+
+      function hasRefinements(): boolean {
+        return Boolean(countrySel.value || brandSel.value || yearSel.value);
+      }
+
+      // Reset returns to the chapitre-only view: clear refinements, keep the chapitre.
+      function clearRefinements(): void {
+        countrySel.value = '';
+        brandSel.value = '';
+        yearSel.value = '';
+        render();
+      }
+
+      function setSidebarOpen(open: boolean): void {
+        sidebar.dataset.open = String(open);
+        sidebarToggle.setAttribute('aria-expanded', String(open));
+      }
 
       // Assemble the active criteria from the chapitre front door plus the
       // optional refinement selects; an empty select value means "no constraint".
@@ -160,6 +203,7 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
         li.className = 'result-row';
 
         const left = document.createElement('div');
+        left.className = 'result-row__main';
 
         const title = document.createElement('div');
         title.className = 'result-row__title';
@@ -212,13 +256,43 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
 
         results.replaceChildren();
         if (matches.length === 0) {
-          const li = document.createElement('li');
-          li.className = 'empty-state';
-          li.textContent = 'Aucun exercice.';
-          results.appendChild(li);
+          results.appendChild(emptyState());
           return;
         }
         for (const ex of matches) results.appendChild(row(ex));
+      }
+
+      // A clear "aucun résultat" state, never a blank list. Offers a reset when
+      // refinements are what narrowed the list to nothing (design.md ResultsState).
+      function emptyState(): HTMLLIElement {
+        const li = document.createElement('li');
+        li.className = 'empty-state';
+
+        const title = document.createElement('p');
+        title.className = 'empty-state__title';
+        title.textContent = 'Aucun résultat';
+        li.appendChild(title);
+
+        const hint = document.createElement('p');
+        hint.className = 'empty-state__hint';
+        hint.textContent = 'Aucun exercice ne correspond à ces filtres.';
+        li.appendChild(hint);
+
+        // Always offer a way out of an empty result: clear the refinements that
+        // narrowed it, or — if only a chapitre is selected — widen to all.
+        const reset = document.createElement('button');
+        reset.type = 'button';
+        reset.className = 'btn btn--secondary empty-state__reset';
+        if (hasRefinements()) {
+          reset.textContent = 'Réinitialiser les filtres';
+          reset.addEventListener('click', clearRefinements);
+          li.appendChild(reset);
+        } else if (selectedChapterId) {
+          reset.textContent = 'Voir tous les exercices';
+          reset.addEventListener('click', () => chapitreResetBtn.click());
+          li.appendChild(reset);
+        }
+        return li;
       }
 
       for (const btn of buttons) {
@@ -229,6 +303,9 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
             b.setAttribute('aria-pressed', String(active));
           }
           render();
+          // On mobile the sidebar is a collapsible sheet above the results;
+          // picking a chapitre closes it so the student lands on the matches.
+          if (isMobile.matches) setSidebarOpen(false);
         });
       }
 
@@ -236,12 +313,10 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
         sel.addEventListener('change', render);
       }
 
-      // Reset returns to the chapitre-only view: clear refinements, keep the chapitre.
-      resetBtn.addEventListener('click', () => {
-        countrySel.value = '';
-        brandSel.value = '';
-        yearSel.value = '';
-        render();
+      resetBtn.addEventListener('click', clearRefinements);
+
+      sidebarToggle.addEventListener('click', () => {
+        setSidebarOpen(sidebar.dataset.open !== 'true');
       });
 
       render();
