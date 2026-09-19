@@ -1,0 +1,7 @@
+# Cloudflare Pages configuration.
+#
+# `pages_build_output_dir` tells Cloudflare Pages (and `wrangler pages deploy`)
+# where the built static site lands. The git-connected project also sets its
+# build command to `npm run build` in the dashboard. See docs/deploy.md.
+name = "concours-archive"
+pages_build_output_dir = "dist"
