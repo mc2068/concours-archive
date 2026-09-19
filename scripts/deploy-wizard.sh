@@ -232,27 +232,26 @@ else
 fi
 pause "Press Enter to continue."
 
-# ── Stage 3: connect the repo to Cloudflare Pages ─────────────────────────
-stage "Cloudflare: connect the Pages project"
+# ── Stage 3: connect the repo to Cloudflare ───────────────────────────────
+stage "Cloudflare: connect the project"
 say "Now connect the repo so Cloudflare builds and deploys it automatically."
 open_url "https://dash.cloudflare.com/"
-step "Go to Workers & Pages → Create → Pages → 'Connect to Git'."
+step "Go to Workers & Pages → Create → connect to GitHub."
 step "Authorize Cloudflare's GitHub app for the repo if prompted, then select it."
-step "Set the build configuration exactly:"
-note "    Framework preset:        Astro   (or 'None')"
-note "    Build command:           npm run build"
-note "    Build output directory:  dist"
-note "    Production branch:        main"
-step "Click 'Save and Deploy' and wait for the first build to finish."
+say "Cloudflare reads wrangler.toml in the repo, so the build is preset:"
+note "    Build command:   npm run build"
+note "    Deploy command:  npx wrangler deploy   (serves ./dist as static assets)"
+note "    Production branch: main"
+step "Save and deploy, then wait for the first build to finish."
 pause "Press Enter once the deploy has completed."
-step "Copy the live URL Cloudflare shows (https://<project>.pages.dev)."
-ask PAGES_URL "Paste your live pages.dev URL:"
-if [[ -n "${PAGES_URL:-}" ]]; then
+step "Copy the live URL Cloudflare shows (https://<name>.<subdomain>.workers.dev)."
+ask SITE_URL "Paste your live site URL:"
+if [[ -n "${SITE_URL:-}" ]]; then
   say "Let's confirm a bundled PDF is served from the live site:"
-  open_url "${PAGES_URL%/}/papers/centrale-2022.pdf"
+  open_url "${SITE_URL%/}/papers/centrale-2022.pdf"
   step "That should open the sample concours PDF. If it does, PDFs are served. ✓"
   printf '\n'
-  say "${BOLD}Live at: ${PAGES_URL}${RESET}"
+  say "${BOLD}Live at: ${SITE_URL}${RESET}"
 fi
 
 finish
