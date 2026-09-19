@@ -4,10 +4,10 @@
 
 **Blocked by:** 02.
 
-**Status:** ready-for-agent
+**Status:** done (commit pending)
 
-- [ ] `filterExercises` accepts optional `country`, `examBrand`, and `year`/year-range in `criteria`, combined with the chapitre via AND; absent axes don't constrain.
-- [ ] Tests cover: stacked axes AND together; an exercise excluded when any active axis doesn't match; each axis alone.
-- [ ] The page exposes optional controls for country, exam brand, and year that refine the current chapitre results.
-- [ ] A live match count reflects the active filters.
-- [ ] A clear/reset control returns to the chapitre-only view.
+- [x] `filterExercises` accepts optional `country`, `examBrand`, and `year`/year-range in `criteria`, combined with the chapitre via AND; absent axes don't constrain (`src/lib/types.ts` `FilterCriteria` + `YearRange`, `src/lib/filter.ts`).
+- [x] Tests cover: stacked axes AND together; an exercise excluded when any active axis doesn't match; each axis alone; single year and inclusive/open-ended year range (`src/lib/filter.test.ts`, 16 tests).
+- [x] The page exposes optional country / exam brand / year `<select>` controls that refine the current chapitre results; options derived from the dataset (`src/pages/index.astro`).
+- [x] A live match count reflects the active filters (verified in preview: 4 → 1 → 0 → 3).
+- [x] A clear/reset control returns to the chapitre-only view — clears refinements, keeps the chapitre.

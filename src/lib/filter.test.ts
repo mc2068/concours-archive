@@ -78,4 +78,47 @@ describe('filterExercises', () => {
     filterExercises(dataset, { chapterId: 'series' });
     expect(ids(dataset.exercises)).toEqual(before);
   });
+
+  describe('refinement axes (country, exam brand, year)', () => {
+    it('filters by country alone', () => {
+      // e3 is on the TN paper; e1 on MA, e2 on FR.
+      expect(ids(filterExercises(dataset, { country: 'TN' }))).toEqual(['e3']);
+    });
+
+    it('filters by exam brand alone', () => {
+      expect(ids(filterExercises(dataset, { examBrand: 'CNC' }))).toEqual(['e1']);
+    });
+
+    it('filters by a single year alone', () => {
+      expect(ids(filterExercises(dataset, { year: 2021 }))).toEqual(['e2']);
+    });
+
+    it('filters by an inclusive year range', () => {
+      // 2020..2021 excludes the 2019 paper (e1). Order stays year-desc.
+      expect(ids(filterExercises(dataset, { year: { from: 2020, to: 2021 } }))).toEqual(['e2', 'e3']);
+    });
+
+    it('treats an open-ended year range bound as unbounded', () => {
+      expect(ids(filterExercises(dataset, { year: { from: 2020 } }))).toEqual(['e2', 'e3']); // 2020 and later
+      expect(ids(filterExercises(dataset, { year: { to: 2020 } }))).toEqual(['e3', 'e1']); // up to 2020
+    });
+
+    it('stacks chapter AND country AND brand together', () => {
+      // series matches e1 (MA/CNC) and e3 (TN/Concours tunisien).
+      // Add country TN → only e3.
+      expect(ids(filterExercises(dataset, { chapterId: 'series', country: 'TN' }))).toEqual(['e3']);
+      // Add brand CNC on top of series → only e1.
+      expect(ids(filterExercises(dataset, { chapterId: 'series', examBrand: 'CNC' }))).toEqual(['e1']);
+    });
+
+    it('excludes an exercise when any single active axis does not match', () => {
+      // e1 matches chapter series but sits on an MA paper — country TN rules it out,
+      // and no other exercise matches that whole combination.
+      expect(filterExercises(dataset, { chapterId: 'series', country: 'FR' })).toEqual([]);
+    });
+
+    it('returns everything when refinement axes are absent', () => {
+      expect(ids(filterExercises(dataset, { country: undefined, year: undefined }))).toEqual(['e2', 'e3', 'e1']);
+    });
+  });
 });

@@ -54,9 +54,22 @@ export interface Dataset {
 }
 
 /**
- * Filter selections. Chapter is the primary axis; country/exam/year refinements
- * arrive in ticket 03. Absent fields do not constrain.
+ * An inclusive year range. Either bound may be omitted to leave that side
+ * unbounded (`{ from: 2019 }` = 2019 and later; `{ to: 2020 }` = up to 2020).
+ */
+export interface YearRange {
+  from?: number;
+  to?: number;
+}
+
+/**
+ * Filter selections combined with AND. Chapter is the primary axis; country,
+ * exam brand, and year are optional stackable refinements. Absent fields do not
+ * constrain. `year` accepts a single year or an inclusive {@link YearRange}.
  */
 export interface FilterCriteria {
   chapterId?: string;
+  country?: Country;
+  examBrand?: string;
+  year?: number | YearRange;
 }

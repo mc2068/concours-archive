@@ -1,9 +1,23 @@
 ---
 import '../styles/global.css';
 import { dataset } from '../data/dataset';
+import { FLAGS } from '../lib/format';
+import type { Country } from '../lib/types';
 
 const chapitres = [...dataset.chapitres].sort((a, b) => a.order - b.order);
 const domains = [...new Set(chapitres.map((c) => c.domain))];
+
+// Refinement options, derived from the papers actually in the dataset so the
+// controls only ever offer values that can return a result.
+const COUNTRY_LABELS: Record<Country, string> = { FR: 'France', TN: 'Tunisie', MA: 'Maroc' };
+const presentCountries = new Set(dataset.papers.map((p) => p.country));
+const countries = (Object.keys(COUNTRY_LABELS) as Country[])
+  .filter((code) => presentCountries.has(code))
+  .map((code) => ({ code, label: COUNTRY_LABELS[code] }));
+const examBrands = [...new Set(dataset.papers.map((p) => p.examBrand))].sort((a, b) =>
+  a.localeCompare(b, 'fr'),
+);
+const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b - a);
 ---
 
 <!doctype html>
@@ -54,6 +68,35 @@ const domains = [...new Set(chapitres.map((c) => c.domain))];
             ))
           }
         </nav>
+
+        <!-- Refinement filters: stackable AND on top of the chapitre -->
+        <div class="filter-bar" role="group" aria-label="Filtres">
+          <p class="domain-label">Affiner</p>
+          <div class="filter-field">
+            <label for="filter-country">Pays</label>
+            <select id="filter-country" class="filter-select">
+              <option value="">Tous</option>
+              {countries.map((c) => <option value={c.code}>{FLAGS[c.code]} {c.label}</option>)}
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-brand">Concours</label>
+            <select id="filter-brand" class="filter-select">
+              <option value="">Tous</option>
+              {examBrands.map((b) => <option value={b}>{b}</option>)}
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-year">Année</label>
+            <select id="filter-year" class="filter-select">
+              <option value="">Toutes</option>
+              {years.map((y) => <option value={y}>{y}</option>)}
+            </select>
+          </div>
+          <button type="button" id="filter-reset" class="filter-reset">
+            Réinitialiser les filtres
+          </button>
+        </div>
       </aside>
 
       <!-- Main column: results -->
@@ -73,7 +116,7 @@ const domains = [...new Set(chapitres.map((c) => c.domain))];
       import { dataset } from '../data/dataset';
       import { filterExercises } from '../lib/filter';
       import { FLAGS, exerciseCount } from '../lib/format';
-      import type { Exercise } from '../lib/types';
+      import type { Country, Exercise, FilterCriteria } from '../lib/types';
 
       const chapitreById = new Map(dataset.chapitres.map((c) => [c.id, c]));
       const paperById = new Map(dataset.papers.map((p) => [p.id, p]));
@@ -84,8 +127,23 @@ const domains = [...new Set(chapitres.map((c) => c.domain))];
       const buttons = Array.from(
         document.querySelectorAll<HTMLButtonElement>('[data-chapitre-id], [data-chapitre-reset]'),
       );
+      const countrySel = document.getElementById('filter-country') as HTMLSelectElement;
+      const brandSel = document.getElementById('filter-brand') as HTMLSelectElement;
+      const yearSel = document.getElementById('filter-year') as HTMLSelectElement;
+      const resetBtn = document.getElementById('filter-reset') as HTMLButtonElement;
 
       let selectedChapterId: string | null = null;
+
+      // Assemble the active criteria from the chapitre front door plus the
+      // optional refinement selects; an empty select value means "no constraint".
+      function currentCriteria(): FilterCriteria {
+        const criteria: FilterCriteria = {};
+        if (selectedChapterId) criteria.chapterId = selectedChapterId;
+        if (countrySel.value) criteria.country = countrySel.value as Country;
+        if (brandSel.value) criteria.examBrand = brandSel.value;
+        if (yearSel.value) criteria.year = Number(yearSel.value);
+        return criteria;
+      }
 
       function chip(chapterId: string, isPrimary: boolean): HTMLElement {
         const el = document.createElement('span');
@@ -130,7 +188,7 @@ const domains = [...new Set(chapitres.map((c) => c.domain))];
       }
 
       function render(): void {
-        const matches = filterExercises(dataset, selectedChapterId ? { chapterId: selectedChapterId } : {});
+        const matches = filterExercises(dataset, currentCriteria());
 
         heading.textContent = selectedChapterId
           ? (chapitreById.get(selectedChapterId)?.name ?? 'Exercices')
@@ -158,6 +216,18 @@ const domains = [...new Set(chapitres.map((c) => c.domain))];
           render();
         });
       }
+
+      for (const sel of [countrySel, brandSel, yearSel]) {
+        sel.addEventListener('change', render);
+      }
+
+      // Reset returns to the chapitre-only view: clear refinements, keep the chapitre.
+      resetBtn.addEventListener('click', () => {
+        countrySel.value = '';
+        brandSel.value = '';
+        yearSel.value = '';
+        render();
+      });
 
       render();
     </script>

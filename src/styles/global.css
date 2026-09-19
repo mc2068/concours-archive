@@ -122,3 +122,58 @@
   padding: 16px;
   color: var(--color-ink-muted);
 }
+
+/*
+  Refinement filters (country / exam brand / year + reset). They live in the
+  sidebar under the chapitre list (design.md §Layout), so the fields stack
+  vertically and the controls span the sidebar's width.
+*/
+.filter-bar {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.filter-field > label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+.filter-select {
+  width: 100%;
+  font: inherit;
+  padding: 6px 10px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  color: var(--color-ink);
+  cursor: pointer;
+}
+.filter-reset {
+  align-self: flex-start;
+  font: inherit;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+.filter-reset:hover {
+  background: var(--color-surface-sunken);
+}
+.filter-select:focus-visible,
+.filter-reset:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
