@@ -1,5 +1,9 @@
 ---
-import "../styles/global.css";
+import '../styles/global.css';
+import { dataset } from '../data/dataset';
+
+const chapitres = [...dataset.chapitres].sort((a, b) => a.order - b.order);
+const domains = [...new Set(chapitres.map((c) => c.domain))];
 ---
 
 <!doctype html>
@@ -20,14 +24,142 @@ import "../styles/global.css";
     <title>Concours archive</title>
   </head>
   <body class="min-h-screen bg-surface font-sans text-ink antialiased">
-    <main
-      class="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center px-4 text-center"
-    >
-      <h1 class="text-3xl font-semibold">Concours archive</h1>
-      <p class="mt-3 text-ink-muted">
-        Bientôt&nbsp;: filtrez les exercices de concours français, tunisiens et
-        marocains par chapitre du programme MP.
-      </p>
-    </main>
+    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-6 md:flex-row md:gap-8 md:py-8">
+      <!-- Sidebar: the chapitre front door -->
+      <aside class="w-full shrink-0 md:w-72">
+        <h1 class="text-xl font-semibold">Concours archive</h1>
+        <nav class="mt-6" aria-label="Chapitres">
+          <button type="button" class="chapitre-btn" data-chapitre-reset aria-pressed="true">
+            Tous les chapitres
+          </button>
+          {
+            domains.map((domain) => (
+              <div class="mt-6">
+                <p class="domain-label">{domain}</p>
+                <div class="mt-2 flex flex-col gap-1">
+                  {chapitres
+                    .filter((c) => c.domain === domain)
+                    .map((c) => (
+                      <button
+                        type="button"
+                        class="chapitre-btn"
+                        data-chapitre-id={c.id}
+                        aria-pressed="false"
+                      >
+                        {c.name}
+                      </button>
+                    ))}
+                </div>
+              </div>
+            ))
+          }
+        </nav>
+      </aside>
+
+      <!-- Main column: results -->
+      <main class="min-w-0 flex-1">
+        <h2 id="heading" class="text-xl font-semibold">Tous les exercices</h2>
+        <p id="count" class="mt-1 text-ink-muted"></p>
+        <ul id="results" class="mt-4 overflow-hidden rounded-md border border-border bg-surface-raised"></ul>
+        <noscript>
+          <p class="empty-state">
+            Ce site a besoin de JavaScript pour filtrer les exercices.
+          </p>
+        </noscript>
+      </main>
+    </div>
+
+    <script>
+      import { dataset } from '../data/dataset';
+      import { filterExercises } from '../lib/filter';
+      import { FLAGS, exerciseCount } from '../lib/format';
+
+      const chapitreById = new Map(dataset.chapitres.map((c) => [c.id, c]));
+      const paperById = new Map(dataset.papers.map((p) => [p.id, p]));
+
+      const heading = document.getElementById('heading')!;
+      const countEl = document.getElementById('count')!;
+      const results = document.getElementById('results')!;
+      const buttons = Array.from(
+        document.querySelectorAll<HTMLButtonElement>('[data-chapitre-id], [data-chapitre-reset]'),
+      );
+
+      let selectedChapterId: string | null = null;
+
+      function chip(chapterId: string, isPrimary: boolean): HTMLElement {
+        const el = document.createElement('span');
+        el.className = isPrimary ? 'chip chip--primary' : 'chip';
+        el.textContent = chapitreById.get(chapterId)?.name ?? chapterId;
+        return el;
+      }
+
+      function row(exerciseId: string): HTMLLIElement {
+        const ex = dataset.exercises.find((e) => e.id === exerciseId)!;
+        const paper = paperById.get(ex.paperId);
+
+        const li = document.createElement('li');
+        li.className = 'result-row';
+
+        const left = document.createElement('div');
+
+        const title = document.createElement('div');
+        title.className = 'result-row__title';
+        title.textContent = ex.label;
+        left.appendChild(title);
+
+        if (paper) {
+          const meta = document.createElement('div');
+          meta.className = 'result-row__meta';
+          meta.append(`${FLAGS[paper.country]} ${paper.examBrand} · `);
+          const year = document.createElement('span');
+          year.className = 'tnum';
+          year.textContent = String(paper.year);
+          meta.appendChild(year);
+          left.appendChild(meta);
+        }
+
+        const chips = document.createElement('div');
+        chips.className = 'result-row__chips';
+        for (const id of ex.chapterIds) {
+          chips.appendChild(chip(id, id === ex.primaryChapterId));
+        }
+        left.appendChild(chips);
+
+        li.appendChild(left);
+        return li;
+      }
+
+      function render(): void {
+        const matches = filterExercises(dataset, selectedChapterId ? { chapterId: selectedChapterId } : {});
+
+        heading.textContent = selectedChapterId
+          ? (chapitreById.get(selectedChapterId)?.name ?? 'Exercices')
+          : 'Tous les exercices';
+        countEl.textContent = exerciseCount(matches.length);
+
+        results.replaceChildren();
+        if (matches.length === 0) {
+          const li = document.createElement('li');
+          li.className = 'empty-state';
+          li.textContent = 'Aucun exercice.';
+          results.appendChild(li);
+          return;
+        }
+        for (const ex of matches) results.appendChild(row(ex.id));
+      }
+
+      for (const btn of buttons) {
+        btn.addEventListener('click', () => {
+          selectedChapterId = btn.dataset.chapitreId ?? null;
+          for (const b of buttons) {
+            const active = b === btn;
+            b.setAttribute('aria-pressed', String(active));
+          }
+          render();
+        });
+      }
+
+      render();
+    </script>
   </body>
 </html>

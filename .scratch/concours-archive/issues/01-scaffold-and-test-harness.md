@@ -4,9 +4,9 @@
 
 **Blocked by:** None (can start immediately).
 
-**Status:** ready-for-agent
+**Status:** done (commit abf6be1)
 
-- [ ] An Astro project builds locally with a single placeholder page in French.
-- [ ] A test runner is wired and a sample test passes via one command.
-- [ ] Project README notes how to run dev, build, and test.
-- [ ] Repo is under git with a sensible `.gitignore`.
+- [x] An Astro project builds locally with a single placeholder page in French.
+- [x] A test runner is wired and a sample test passes via one command.
+- [x] Project README notes how to run dev, build, and test.
+- [x] Repo is under git with a sensible `.gitignore`.

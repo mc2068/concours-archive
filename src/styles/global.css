@@ -34,3 +34,92 @@
 .tnum {
   font-variant-numeric: tabular-nums;
 }
+
+/*
+  Component classes for the archive. Defined here (rather than as Tailwind
+  utilities) because the result rows are built in a client script; keeping their
+  look in CSS keeps one source of truth for both server and client markup.
+*/
+
+/* Sidebar chapitre buttons */
+.chapitre-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-ink);
+  font: inherit;
+  cursor: pointer;
+}
+.chapitre-btn:hover {
+  background: var(--color-surface-sunken);
+}
+.chapitre-btn[aria-pressed='true'] {
+  background: var(--color-accent-soft);
+  font-weight: 600;
+}
+.chapitre-btn:focus-visible,
+.ouvrir:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.domain-label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+/* Result rows */
+.result-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.result-row__title {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.result-row__meta {
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-ink-muted);
+}
+.result-row__chips {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Chapitre chips */
+.chip {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-sunken);
+  color: var(--color-ink);
+}
+.chip--primary {
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-strong);
+}
+
+.empty-state {
+  padding: 16px;
+  color: var(--color-ink-muted);
+}
