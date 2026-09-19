@@ -2,3 +2,7 @@
 # PDFs use a cross-reference table of absolute byte offsets, so LF↔CRLF
 # rewriting on checkout would corrupt them.
 *.pdf binary
+
+# Shell scripts must stay LF: a CRLF checkout breaks the shebang ("bad
+# interpreter: /usr/bin/env bash^M") and leaves \r in values read by the script.
+*.sh text eol=lf
