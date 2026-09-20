@@ -375,6 +375,12 @@
     { "id": "ccinp-maths1-2026-p", "paperId": "ccinp-maths1-2026", "label": "Problème — Variable aléatoire et intégrales", "pageStart": 3, "pageEnd": 5, "chapterIds": ["variables-aleatoires-discretes", "integration-intervalle-quelconque", "series-numeriques"], "primaryChapterId": "variables-aleatoires-discretes" },
 
     { "id": "ccinp-maths2-2026-e", "paperId": "ccinp-maths2-2026", "label": "Exercices 1 et 2 — Matrices", "pageStart": 2, "pageEnd": 2, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
-    { "id": "ccinp-maths2-2026-p", "paperId": "ccinp-maths2-2026", "label": "Problème — Réduction et espace euclidien", "pageStart": 3, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "prehilbertiens-euclidiens-y2", "matrices"], "primaryChapterId": "reduction-endomorphismes" }
+    { "id": "ccinp-maths2-2026-p", "paperId": "ccinp-maths2-2026", "label": "Problème — Réduction et espace euclidien", "pageStart": 3, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "prehilbertiens-euclidiens-y2", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "tn-maths1-2026-i", "paperId": "tn-maths1-2026", "label": "Problème, début — Fonctions à variation régulière (dérivation, comportement asymptotique, intégrales)", "pageStart": 3, "pageEnd": 16, "chapterIds": ["analyse-asymptotique", "derivation", "integration-intervalle-quelconque", "integrales-parametre"], "primaryChapterId": "analyse-asymptotique" },
+    { "id": "tn-maths1-2026-ii", "paperId": "tn-maths1-2026", "label": "Problème, suite — Application aux variables aléatoires (queues) et à la série de Riemann", "pageStart": 16, "pageEnd": 46, "chapterIds": ["variables-aleatoires-discretes", "series-numeriques", "analyse-asymptotique"], "primaryChapterId": "variables-aleatoires-discretes" },
+
+    { "id": "tn-maths2-2026-i", "paperId": "tn-maths2-2026", "label": "Parties I–III — Exponentielle de matrices, sous-groupes finis de GLₙ(R) et matrices orthogonales", "pageStart": 3, "pageEnd": 15, "chapterIds": ["matrices", "reduction-endomorphismes", "prehilbertiens-euclidiens-y2", "structures-algebriques-y2"], "primaryChapterId": "matrices" },
+    { "id": "tn-maths2-2026-ii", "paperId": "tn-maths2-2026", "label": "Partie IV — Norme subordonnée d'une matrice normale", "pageStart": 15, "pageEnd": 38, "chapterIds": ["topologie-evn", "reduction-endomorphismes", "prehilbertiens-euclidiens-y2"], "primaryChapterId": "topologie-evn" }
   ]
 }

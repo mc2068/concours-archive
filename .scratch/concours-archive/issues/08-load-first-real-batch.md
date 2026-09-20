@@ -66,7 +66,12 @@
   - **Informatique exercices excluded (ADR 0002 — hors-programme for a maths filter):** the Python/SQL/graphes "informatique commune / tronc commun" exercices in 2019 M2, 2023 M1, 2024 M2, 2025 M2, 2026 M1 are not tagged (they're CS, not a Tunisian maths chapitre).
   - Licence: no explicit reuse licence shown; bundled as with the other French banks.
 - **Archive: 182 exercises across 78 papers** — 🇫🇷 Mines-Ponts 26 · Centrale 16 · CCINP 16 · 🇲🇦 CNC 13 · 🇹🇳 7. All four major French banks now covered. Only 2 papers untagged (TN 2026 M1/M2, answer-booklet).
-- **Remaining:** grab recent CNC 2022+ (hashed iamateacher host); tag TN 2026; de-impose TN booklets; X-ENS if a source is found.
+- **TN 2026 tagged (2 papers, 4 exercises) — every grabbed paper now has exercises.** These are the modern answer-booklet format (46 / 38 A4 image-only pages); read visually via poppler renders (PDF page = énoncé page + 2).
+  - 2026 Maths 1: one long problème on fonctions à variation régulière → 2 exercises (dérivation/asymptotique/intégrales, then application aux variables aléatoires et à la série de Riemann).
+  - 2026 Maths 2: matrices/réduction/euclidien → 2 exercises (exponentielle de matrices & sous-groupes finis de GLₙ, then norme subordonnée d'une matrice normale).
+  - Page anchors are coarse (part-level PDF-page ranges) given the ~40-page booklets.
+- **Archive: 186 exercises across 78 papers, 0 untagged.** 🇫🇷 Mines-Ponts 26 · Centrale 16 · CCINP 16 · 🇲🇦 CNC 13 · 🇹🇳 7.
+- **Remaining (long tail):** grab recent CNC 2022+ (hashed iamateacher host); de-impose the TN 2023–2024 booklet scans; X-ENS if a first-party source is found.
 
 - [~] A first set of concours papers added with full metadata and bundled PDFs. — **1 of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
 - [x] Exercises entered as pointer records (paper + page range) with chapitre tags + primary — the 4-hour problème *"Exemples de contraintes symplectiques linéaires"* modelled as its 3 substantial parts: II Objets symplectiques (p1–3), III Déterminant/décomposition polaire/génération (p3–5), IV Injections symplectiques (p5–6).
