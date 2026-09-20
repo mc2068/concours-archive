@@ -39,13 +39,13 @@
     { "id": "variables-aleatoires-discretes", "name": "Variables aléatoires discrètes", "order": 37, "domain": "Probabilités" }
   ],
   "papers": [
-    { "id": "centrale-maths1-2022", "examBrand": "Centrale", "year": 2022, "country": "FR", "subject": "Maths 1", "pdfPath": "/papers/centrale-maths1-2022.pdf" },
-    { "id": "centrale-maths1-2024", "examBrand": "Centrale", "year": 2024, "country": "FR", "subject": "Maths 1", "pdfPath": "/papers/centrale-maths1-2024.pdf" },
-    { "id": "mines-ponts-maths1-2026", "examBrand": "Mines-Ponts", "year": 2026, "country": "FR", "subject": "Maths 1", "pdfPath": "/papers/mines-ponts-maths1-2026.pdf" },
-    { "id": "mines-ponts-maths2-2026", "examBrand": "Mines-Ponts", "year": 2026, "country": "FR", "subject": "Maths 2", "pdfPath": "/papers/mines-ponts-maths2-2026.pdf" },
-    { "id": "ccinp-maths1-2025", "examBrand": "CCINP", "year": 2025, "country": "FR", "subject": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2025.pdf" },
-    { "id": "cnc-maths1-2021", "examBrand": "CNC", "year": 2021, "country": "MA", "subject": "Maths 1", "pdfPath": "/papers/cnc-maths1-2021.pdf" },
-    { "id": "tn-maths1-2025", "examBrand": "Concours tunisien", "year": 2025, "country": "TN", "subject": "Maths 1", "pdfPath": "/papers/tn-maths1-2025.pdf" }
+    { "id": "centrale-maths1-2022", "examBrand": "Centrale", "year": 2022, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/centrale-maths1-2022.pdf" },
+    { "id": "centrale-maths1-2024", "examBrand": "Centrale", "year": 2024, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/centrale-maths1-2024.pdf" },
+    { "id": "mines-ponts-maths1-2026", "examBrand": "Mines-Ponts", "year": 2026, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/mines-ponts-maths1-2026.pdf" },
+    { "id": "mines-ponts-maths2-2026", "examBrand": "Mines-Ponts", "year": 2026, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/mines-ponts-maths2-2026.pdf" },
+    { "id": "ccinp-maths1-2025", "examBrand": "CCINP", "year": 2025, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2025.pdf" },
+    { "id": "cnc-maths1-2021", "examBrand": "CNC", "year": 2021, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2021.pdf" },
+    { "id": "tn-maths1-2025", "examBrand": "Concours tunisien", "year": 2025, "country": "TN", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/tn-maths1-2025.pdf" }
   ],
   "exercises": [
     { "id": "centrale-maths1-2022-p2", "paperId": "centrale-maths1-2022", "label": "Partie II — Objets symplectiques", "pageStart": 1, "pageEnd": 3, "chapterIds": ["matrices", "espaces-vectoriels-al"], "primaryChapterId": "matrices" },
