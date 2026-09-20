@@ -39,19 +39,41 @@
     { "id": "variables-aleatoires-discretes", "name": "Variables aléatoires discrètes", "order": 37, "domain": "Probabilités" }
   ],
   "papers": [
-    { "id": "centrale-2022", "examBrand": "Centrale", "year": 2022, "country": "FR", "subject": "Maths", "pdfPath": "/papers/centrale-2022.pdf" },
-    { "id": "cnt-2021", "examBrand": "Concours tunisien", "year": 2021, "country": "TN", "subject": "Maths", "pdfPath": "/papers/concours-tunisien-2021.pdf" },
-    { "id": "mines-2019", "examBrand": "Mines", "year": 2019, "country": "FR", "subject": "Maths", "pdfPath": "/papers/mines-2019.pdf" },
-    { "id": "cnc-2018", "examBrand": "CNC", "year": 2018, "country": "MA", "subject": "Maths", "pdfPath": "/papers/cnc-2018.pdf" }
+    { "id": "centrale-maths1-2022", "examBrand": "Centrale", "year": 2022, "country": "FR", "subject": "Maths 1", "pdfPath": "/papers/centrale-maths1-2022.pdf" },
+    { "id": "centrale-maths1-2024", "examBrand": "Centrale", "year": 2024, "country": "FR", "subject": "Maths 1", "pdfPath": "/papers/centrale-maths1-2024.pdf" },
+    { "id": "mines-ponts-maths1-2026", "examBrand": "Mines-Ponts", "year": 2026, "country": "FR", "subject": "Maths 1", "pdfPath": "/papers/mines-ponts-maths1-2026.pdf" },
+    { "id": "mines-ponts-maths2-2026", "examBrand": "Mines-Ponts", "year": 2026, "country": "FR", "subject": "Maths 2", "pdfPath": "/papers/mines-ponts-maths2-2026.pdf" },
+    { "id": "ccinp-maths1-2025", "examBrand": "CCINP", "year": 2025, "country": "FR", "subject": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2025.pdf" },
+    { "id": "cnc-maths1-2021", "examBrand": "CNC", "year": 2021, "country": "MA", "subject": "Maths 1", "pdfPath": "/papers/cnc-maths1-2021.pdf" },
+    { "id": "tn-maths1-2025", "examBrand": "Concours tunisien", "year": 2025, "country": "TN", "subject": "Maths 1", "pdfPath": "/papers/tn-maths1-2025.pdf" }
   ],
   "exercises": [
-    { "id": "centrale-2022-p1", "paperId": "centrale-2022", "label": "Problème 1", "pageStart": 1, "pageEnd": 5, "chapterIds": ["series-numeriques", "integration"], "primaryChapterId": "series-numeriques" },
-    { "id": "centrale-2022-e3", "paperId": "centrale-2022", "label": "Exercice 3", "pageStart": 6, "pageEnd": 7, "chapterIds": ["reduction-endomorphismes"], "primaryChapterId": "reduction-endomorphismes" },
-    { "id": "cnt-2021-e1", "paperId": "cnt-2021", "label": "Exercice 1", "pageStart": 1, "pageEnd": 3, "chapterIds": ["series-numeriques"], "primaryChapterId": "series-numeriques" },
-    { "id": "cnt-2021-p2", "paperId": "cnt-2021", "label": "Problème 2", "pageStart": 4, "pageEnd": 7, "chapterIds": ["reels-suites", "series-numeriques"], "primaryChapterId": "series-numeriques" },
-    { "id": "mines-2019-p1", "paperId": "mines-2019", "label": "Problème 1", "pageStart": 1, "pageEnd": 4, "chapterIds": ["integration", "reels-suites"], "primaryChapterId": "integration" },
-    { "id": "mines-2019-e2", "paperId": "mines-2019", "label": "Exercice 2", "pageStart": 5, "pageEnd": 6, "chapterIds": ["reduction-endomorphismes"], "primaryChapterId": "reduction-endomorphismes" },
-    { "id": "cnc-2018-e1", "paperId": "cnc-2018", "label": "Exercice 1", "pageStart": 1, "pageEnd": 2, "chapterIds": ["variables-aleatoires-discretes"], "primaryChapterId": "variables-aleatoires-discretes" },
-    { "id": "cnc-2018-p1", "paperId": "cnc-2018", "label": "Problème 1", "pageStart": 3, "pageEnd": 6, "chapterIds": ["reduction-endomorphismes", "reels-suites"], "primaryChapterId": "reduction-endomorphismes" }
+    { "id": "centrale-maths1-2022-p2", "paperId": "centrale-maths1-2022", "label": "Partie II — Objets symplectiques", "pageStart": 1, "pageEnd": 3, "chapterIds": ["matrices", "espaces-vectoriels-al"], "primaryChapterId": "matrices" },
+    { "id": "centrale-maths1-2022-p3", "paperId": "centrale-maths1-2022", "label": "Partie III — Déterminant, décomposition polaire, génération du groupe symplectique", "pageStart": 3, "pageEnd": 5, "chapterIds": ["determinants", "prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "topologie-evn"], "primaryChapterId": "determinants" },
+    { "id": "centrale-maths1-2022-p4", "paperId": "centrale-maths1-2022", "label": "Partie IV — Injections symplectiques", "pageStart": 5, "pageEnd": 6, "chapterIds": ["topologie-evn", "determinants"], "primaryChapterId": "topologie-evn" },
+
+    { "id": "centrale-maths1-2024-p1", "paperId": "centrale-maths1-2024", "label": "Partie I — Inégalité de Knopp (inégalités intégrales, Jensen)", "pageStart": 1, "pageEnd": 2, "chapterIds": ["integration", "fonctions-convexes"], "primaryChapterId": "integration" },
+    { "id": "centrale-maths1-2024-p2", "paperId": "centrale-maths1-2024", "label": "Partie II — Inégalité de Carleman (inégalité arithmético-géométrique)", "pageStart": 2, "pageEnd": 3, "chapterIds": ["series-numeriques", "fonctions-convexes"], "primaryChapterId": "series-numeriques" },
+    { "id": "centrale-maths1-2024-p3", "paperId": "centrale-maths1-2024", "label": "Partie III — Inégalité de Carleman-Yang (développement en série entière)", "pageStart": 3, "pageEnd": 4, "chapterIds": ["series-entieres", "series-numeriques"], "primaryChapterId": "series-entieres" },
+
+    { "id": "mines-ponts-maths1-2026-i", "paperId": "mines-ponts-maths1-2026", "label": "Partie I — Lemme fondamental du calcul variationnel", "pageStart": 1, "pageEnd": 3, "chapterIds": ["integration", "calcul-differentiel"], "primaryChapterId": "integration" },
+    { "id": "mines-ponts-maths1-2026-ii", "paperId": "mines-ponts-maths1-2026", "label": "Partie II — Équation d'Euler-Lagrange", "pageStart": 3, "pageEnd": 4, "chapterIds": ["equations-differentielles", "calcul-differentiel"], "primaryChapterId": "equations-differentielles" },
+    { "id": "mines-ponts-maths1-2026-iii", "paperId": "mines-ponts-maths1-2026", "label": "Parties III–IV — Géodésiques : ligne droite et cycloïde", "pageStart": 4, "pageEnd": 6, "chapterIds": ["fonctions-vectorielles-arcs", "calcul-differentiel", "integration"], "primaryChapterId": "fonctions-vectorielles-arcs" },
+
+    { "id": "mines-ponts-maths2-2026-i", "paperId": "mines-ponts-maths2-2026", "label": "Partie I — Propriétés du groupe orthogonal O_n(R)", "pageStart": 1, "pageEnd": 3, "chapterIds": ["prehilbertiens-euclidiens-y2", "matrices", "topologie-evn"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+    { "id": "mines-ponts-maths2-2026-ii", "paperId": "mines-ponts-maths2-2026", "label": "Parties II–III — Calcul différentiel sur O_n(R) et SL_n(R)", "pageStart": 3, "pageEnd": 4, "chapterIds": ["calcul-differentiel", "matrices", "determinants"], "primaryChapterId": "calcul-differentiel" },
+    { "id": "mines-ponts-maths2-2026-iv", "paperId": "mines-ponts-maths2-2026", "label": "Partie IV — Morphismes de (R,+) dans (GL_n(R),×)", "pageStart": 4, "pageEnd": 5, "chapterIds": ["structures-algebriques-y2", "matrices", "equations-differentielles"], "primaryChapterId": "structures-algebriques-y2" },
+
+    { "id": "ccinp-maths1-2025-e1", "paperId": "ccinp-maths1-2025", "label": "Exercice I — Application de classe C¹, connexité par arcs", "pageStart": 1, "pageEnd": 2, "chapterIds": ["calcul-differentiel", "topologie-evn"], "primaryChapterId": "calcul-differentiel" },
+    { "id": "ccinp-maths1-2025-e2", "paperId": "ccinp-maths1-2025", "label": "Exercice II — Norme euclidienne, connexité par arcs", "pageStart": 2, "pageEnd": 3, "chapterIds": ["topologie-evn"], "primaryChapterId": "topologie-evn" },
+    { "id": "ccinp-maths1-2025-p", "paperId": "ccinp-maths1-2025", "label": "Problème — Comparaison série–intégrale et contre-exemples", "pageStart": 3, "pageEnd": 8, "chapterIds": ["series-numeriques", "integration-intervalle-quelconque", "suites-series-fonctions"], "primaryChapterId": "series-numeriques" },
+
+    { "id": "cnc-maths1-2021-e1", "paperId": "cnc-maths1-2021", "label": "Exercice + Partie 1 — Développement asymptotique de (Hₙ)", "pageStart": 1, "pageEnd": 2, "chapterIds": ["analyse-asymptotique", "series-numeriques", "reels-suites"], "primaryChapterId": "analyse-asymptotique" },
+    { "id": "cnc-maths1-2021-p2", "paperId": "cnc-maths1-2021", "label": "Partie 2 — Étude de séries de fonctions", "pageStart": 2, "pageEnd": 3, "chapterIds": ["suites-series-fonctions"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "cnc-maths1-2021-p3", "paperId": "cnc-maths1-2021", "label": "Parties 3–4 — Calcul d'une intégrale", "pageStart": 3, "pageEnd": 4, "chapterIds": ["integration-intervalle-quelconque", "series-numeriques"], "primaryChapterId": "integration-intervalle-quelconque" },
+
+    { "id": "tn-maths1-2025-e", "paperId": "tn-maths1-2025", "label": "Exercice — Loi d'une somme de variables aléatoires", "pageStart": 1, "pageEnd": 2, "chapterIds": ["variables-aleatoires-discretes"], "primaryChapterId": "variables-aleatoires-discretes" },
+    { "id": "tn-maths1-2025-p1", "paperId": "tn-maths1-2025", "label": "Problème, Partie I — Intégrales généralisées", "pageStart": 2, "pageEnd": 4, "chapterIds": ["integration-intervalle-quelconque", "integrales-parametre"], "primaryChapterId": "integration-intervalle-quelconque" },
+    { "id": "tn-maths1-2025-p2", "paperId": "tn-maths1-2025", "label": "Problème, Parties II–III — Intégrales à paramètre, séries entières", "pageStart": 4, "pageEnd": 6, "chapterIds": ["integrales-parametre", "series-entieres", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" }
   ]
 }
