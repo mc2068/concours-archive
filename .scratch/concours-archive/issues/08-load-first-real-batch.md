@@ -29,7 +29,16 @@
   - 2019 Maths 2 (rayon spectral de la matrice de Hilbert): 3 — A Perron-Frobenius, B–C inégalité de Hilbert, D majoration.
   - 2018 Maths 1 (lemme de Fekete, th. d'Erdős-Szekeres): 3 — A–B Fekete, C–D Erdős-Szekeres, E suite aléatoire.
   - 2018 Maths 2 (racines carrées de matrices complexes, Newton): 3 — A–B existence, C algorithme de Newton, D–E stabilité.
-- **Remaining:** tag Mines-Ponts 2014–2017 (8 papers still untagged, so those years don't yet surface in the chapter filter); continue TN/MA batch.
+- **Exercises tagged — Mines-Ponts 2014, 2015, 2016, 2017 (8 papers, 18 exercises).**
+  - 2017 Maths 1 (endomorphisme d'un espace de fonctions): 2 — séries entières, réduction.
+  - 2017 Maths 2 (sous-groupes compacts du groupe linéaire): 3 — matrices symétriques, compacité/Markov-Kakutani, sous-groupes de GLₙ.
+  - 2016 Maths 1 (inégalité de Hoffman-Wielandt): 2 — Birkhoff-Von Neumann, Hoffman-Wielandt.
+  - 2016 Maths 2 (théorème taubérien de Hardy-Littlewood-Karamata): 2 — intégrale à paramètre/séries de fonctions, théorème taubérien.
+  - 2015 Maths 1 (opérateur de Volterra): 2 — Volterra, Weierstrass/série trigonométrique.
+  - 2015 Maths 2 (norme d'une matrice aléatoire): 2 — norme d'opérateur/VA sous-gaussiennes, recouvrements de la sphère. **Borderline (kept):** "sous-gaussiennes" leans on Gaussian comparison, but the subject is an operator-norm concentration bound built from in-programme tools (MGF/Markov, ε-nets/compacité, norme d'opérateur), so tagged to variables-aleatoires-discretes + topologie-evn rather than excluded. Revisit if it feels hors-programme.
+  - 2014 Maths 1 (représentation A ↦ eᴬ): 3 — z↦eᶻ dans C, forme de Jordan, eᴬ dans Mₙ(C).
+  - 2014 Maths 2 (points fixes et opérateurs à noyau): 2 — point fixe/homotopie, intégrales de Fredholm.
+- **Mines-Ponts complete:** all 26 papers (2014–2026, both épreuves) now tagged; 2021 M1 and 2022 M1 partial per ADR 0002. **Remaining:** continue the TN/MA batch (and Centrale/CCINP back-catalogues) as with Mines-Ponts.
 
 - [~] A first set of concours papers added with full metadata and bundled PDFs. — **1 of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
 - [x] Exercises entered as pointer records (paper + page range) with chapitre tags + primary — the 4-hour problème *"Exemples de contraintes symplectiques linéaires"* modelled as its 3 substantial parts: II Objets symplectiques (p1–3), III Déterminant/décomposition polaire/génération (p3–5), IV Injections symplectiques (p5–6).
