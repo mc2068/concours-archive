@@ -71,7 +71,10 @@
   - 2026 Maths 2: matrices/réduction/euclidien → 2 exercises (exponentielle de matrices & sous-groupes finis de GLₙ, then norme subordonnée d'une matrice normale).
   - Page anchors are coarse (part-level PDF-page ranges) given the ~40-page booklets.
 - **Archive: 186 exercises across 78 papers, 0 untagged.** 🇫🇷 Mines-Ponts 26 · Centrale 16 · CCINP 16 · 🇲🇦 CNC 13 · 🇹🇳 7.
-- **Remaining (long tail):** grab recent CNC 2022+ (hashed iamateacher host); de-impose the TN 2023–2024 booklet scans; X-ENS if a first-party source is found.
+- **CNC 2022–2026 grabbed & tagged (10 papers, 19 exercises).** Via mathencpge.ma → iamateacher.org (opaque content-hash URLs with no year; each file's session year verified from its content / page de garde before naming). CNC now complete 2015–2026.
+  - Maths 2 are linear-algebra (matrices circulantes, réduction, endomorphismes euclidiens, réflexions); Maths 1 mix analysis / integrals / discrete probability (Dirichlet integral, loi binomiale négative, F(x)=Σxⁿ/(n!)²).
+- **Archive: 205 exercises across 88 papers, 0 untagged.** 🇫🇷 Mines-Ponts 26 (2014–26) · Centrale 16 (2019–26) · CCINP 16 (2019–26) · 🇲🇦 CNC 23 (2015–26) · 🇹🇳 7 (2023–26).
+- **Remaining (long tail):** de-impose the TN 2023–2024 booklet scans; older Centrale/CCINP (2014–2018); pre-2023 Tunisie; X-ENS if a first-party source is found.
 
 - [~] A first set of concours papers added with full metadata and bundled PDFs. — **1 of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
 - [x] Exercises entered as pointer records (paper + page range) with chapitre tags + primary — the 4-hour problème *"Exemples de contraintes symplectiques linéaires"* modelled as its 3 substantial parts: II Objets symplectiques (p1–3), III Déterminant/décomposition polaire/génération (p3–5), IV Injections symplectiques (p5–6).

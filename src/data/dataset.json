@@ -297,6 +297,35 @@
     { "id": "cnc-maths2-2021-e", "paperId": "cnc-maths2-2021", "label": "Exercice — Réduction et matrices", "pageStart": 1, "pageEnd": 1, "chapterIds": ["reduction-endomorphismes", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
     { "id": "cnc-maths2-2021-p", "paperId": "cnc-maths2-2021", "label": "Problème — Racines carrées de matrices réelles", "pageStart": 2, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
 
+    { "id": "cnc-maths1-2022-e", "paperId": "cnc-maths1-2022", "label": "Exercice — Polynôme complexe et suite de fonctions", "pageStart": 1, "pageEnd": 1, "chapterIds": ["suites-series-fonctions", "polynomes-fractions", "nombres-complexes-trigo"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "cnc-maths1-2022-p", "paperId": "cnc-maths1-2022", "label": "Problème (Parties 1–3)", "pageStart": 2, "pageEnd": 5, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+
+    { "id": "cnc-maths2-2022-p", "paperId": "cnc-maths2-2022", "label": "Problème — Matrices circulantes et diagonalisation", "pageStart": 1, "pageEnd": 4, "chapterIds": ["reduction-endomorphismes", "matrices", "nombres-complexes-trigo"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "cnc-maths1-2023-e", "paperId": "cnc-maths1-2023", "label": "Exercice — Fonction de deux variables", "pageStart": 1, "pageEnd": 1, "chapterIds": ["calcul-differentiel"], "primaryChapterId": "calcul-differentiel" },
+    { "id": "cnc-maths1-2023-p", "paperId": "cnc-maths1-2023", "label": "Problème — Intégrale de Dirichlet", "pageStart": 2, "pageEnd": 5, "chapterIds": ["integration-intervalle-quelconque", "integrales-parametre"], "primaryChapterId": "integration-intervalle-quelconque" },
+
+    { "id": "cnc-maths2-2023-e", "paperId": "cnc-maths2-2023", "label": "Exercice — Réduction dans M₂(R)", "pageStart": 1, "pageEnd": 1, "chapterIds": ["reduction-endomorphismes", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "cnc-maths2-2023-p", "paperId": "cnc-maths2-2023", "label": "Problème — Endomorphismes euclidiens", "pageStart": 2, "pageEnd": 4, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "variables-aleatoires-discretes"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "cnc-maths1-2024-e", "paperId": "cnc-maths1-2024", "label": "Exercice", "pageStart": 1, "pageEnd": 1, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "cnc-maths1-2024-p", "paperId": "cnc-maths1-2024", "label": "Problème — Fonctions, intégrales et probabilités", "pageStart": 2, "pageEnd": 5, "chapterIds": ["integration-intervalle-quelconque", "variables-aleatoires-discretes", "series-numeriques"], "primaryChapterId": "integration-intervalle-quelconque" },
+
+    { "id": "cnc-maths2-2024-e", "paperId": "cnc-maths2-2024", "label": "Exercice — Matrices de M₃(R)", "pageStart": 1, "pageEnd": 1, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "cnc-maths2-2024-p", "paperId": "cnc-maths2-2024", "label": "Problème — Réduction et polynômes d'endomorphismes", "pageStart": 2, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "cnc-maths1-2025-e", "paperId": "cnc-maths1-2025", "label": "Exercice — Fonction définie par une intégrale", "pageStart": 1, "pageEnd": 1, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" },
+    { "id": "cnc-maths1-2025-p", "paperId": "cnc-maths1-2025", "label": "Problème — Séries et probabilités", "pageStart": 2, "pageEnd": 5, "chapterIds": ["series-numeriques", "variables-aleatoires-discretes", "integration-intervalle-quelconque"], "primaryChapterId": "series-numeriques" },
+
+    { "id": "cnc-maths2-2025-e", "paperId": "cnc-maths2-2025", "label": "Exercice — Matrices et vecteurs", "pageStart": 1, "pageEnd": 1, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "cnc-maths2-2025-p", "paperId": "cnc-maths2-2025", "label": "Problème — Réduction des endomorphismes", "pageStart": 2, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "cnc-maths1-2026-e", "paperId": "cnc-maths1-2026", "label": "Exercice — La loi binomiale négative", "pageStart": 2, "pageEnd": 2, "chapterIds": ["variables-aleatoires-discretes", "series-entieres", "denombrement"], "primaryChapterId": "variables-aleatoires-discretes" },
+    { "id": "cnc-maths1-2026-p", "paperId": "cnc-maths1-2026", "label": "Problème — Intégrale auxiliaire et étude de F(x)=Σxⁿ/(n!)²", "pageStart": 3, "pageEnd": 5, "chapterIds": ["integrales-parametre", "series-entieres", "integration-intervalle-quelconque", "fonctions-convexes"], "primaryChapterId": "integrales-parametre" },
+
+    { "id": "cnc-maths2-2026-e", "paperId": "cnc-maths2-2026", "label": "Exercice — Réflexions dans un espace euclidien", "pageStart": 1, "pageEnd": 1, "chapterIds": ["prehilbertiens-euclidiens-y2", "dimension-finie"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+    { "id": "cnc-maths2-2026-p", "paperId": "cnc-maths2-2026", "label": "Problème — Endomorphismes orthogonaux et réduction", "pageStart": 2, "pageEnd": 4, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
     { "id": "cnc-maths1-2017-e", "paperId": "cnc-maths1-2017", "label": "Exercice — Somme de la série de Riemann Σ1/n²", "pageStart": 2, "pageEnd": 2, "chapterIds": ["series-numeriques", "integration"], "primaryChapterId": "series-numeriques" },
     { "id": "cnc-maths1-2017-p1", "paperId": "cnc-maths1-2017", "label": "Problème 1 — Opérateur intégral Nₙ(f)", "pageStart": 2, "pageEnd": 4, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque", "suites-series-fonctions"], "primaryChapterId": "integrales-parametre" },
     { "id": "cnc-maths1-2017-p2", "paperId": "cnc-maths1-2017", "label": "Problème 2 — Fonction génératrice d'une variable aléatoire", "pageStart": 4, "pageEnd": 5, "chapterIds": ["variables-aleatoires-discretes", "probabilites", "series-entieres"], "primaryChapterId": "variables-aleatoires-discretes" },
