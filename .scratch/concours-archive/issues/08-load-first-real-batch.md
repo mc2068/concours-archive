@@ -55,7 +55,13 @@
   - 2019 M1 (EDP par séries de Fourier), 2019 M2 (réduction M₃; euclidien).
   - 2020 M1 (intégrale; série de fonctions; matrices complexes), 2021 M2 (racines carrées de matrices).
   - **Fixed a bad download:** cnc-maths1-2017.pdf was truncated (375 KB, corrupt xref) — re-fetched the full 1.07 MB file, then tagged it.
-- **Remaining:** grab recent CNC 2022+ (hashed iamateacher host); tag TN 2026 (46/38-page answer booklets); continue Centrale/CCINP. Only 2 papers in the whole archive are untagged (TN 2026 M1/M2).
+- **Centrale-Supélec grabbed & tagged — 2019–2026 (14 papers, 27 exercises).** Official annales (concours-centrale-supelec.fr), clean sequential PDFs, verified anchors. (2022 M1 and 2024 M1 were already tagged from ticket 08.)
+  - Linear algebra / euclidean: 2019 M1 (matrices compagnons, Frobenius), 2020 M1 (endomorphismes de permutation), 2021 M1 (Hoffman-Wielandt), 2025 M2 (modèle d'Ising, matrice de transfert), 2026 M1 (matrices symétriques positives, groupes orthogonaux).
+  - Analysis / séries / polynômes: 2020 M2 (noyau reproduisant), 2022 M2 (interpolation des dérivées), 2023 M1 (calcul ombral), 2023 M2 (suites de fonctions), 2024 M2 (polynômes de Bernoulli), 2025 M1 (comptage des nombres premiers), 2026 M2 (fonction ζ de Riemann).
+  - **Borderline (kept, in-program tools tagged rather than the hors-programme headline):** 2019 M2 (fonction caractéristique), 2021 M1 partie III–IV (loi du demi-cercle → tagged via méthode des moments / dénombrement), 2021 M2 (transformée de Fourier → tagged via intégrales à paramètre). Consistent with the 2015-M2-sous-gaussiennes call.
+  - Licence note: Centrale's annales show no explicit reuse licence (unlike Mines-Ponts CC BY-NC-ND); bundled for this non-commercial prépa archive, consistent with the pre-existing Centrale papers.
+- **Archive: 152 exercises across 63 papers** — 🇫🇷 Mines-Ponts (2014–26) + Centrale (2019–26), 🇹🇳 (2023–25), 🇲🇦 CNC (2015–21). Only 2 papers untagged (TN 2026 M1/M2, answer-booklet format).
+- **Remaining:** grab recent CNC 2022+ (hashed iamateacher host); grab CCINP back-catalogue; tag TN 2026; de-impose TN booklets.
 
 - [~] A first set of concours papers added with full metadata and bundled PDFs. — **1 of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
 - [x] Exercises entered as pointer records (paper + page range) with chapitre tags + primary — the 4-hour problème *"Exemples de contraintes symplectiques linéaires"* modelled as its 3 substantial parts: II Objets symplectiques (p1–3), III Déterminant/décomposition polaire/génération (p3–5), IV Injections symplectiques (p5–6).

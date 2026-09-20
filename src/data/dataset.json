@@ -274,6 +274,47 @@
 
     { "id": "cnc-maths1-2017-e", "paperId": "cnc-maths1-2017", "label": "Exercice — Somme de la série de Riemann Σ1/n²", "pageStart": 2, "pageEnd": 2, "chapterIds": ["series-numeriques", "integration"], "primaryChapterId": "series-numeriques" },
     { "id": "cnc-maths1-2017-p1", "paperId": "cnc-maths1-2017", "label": "Problème 1 — Opérateur intégral Nₙ(f)", "pageStart": 2, "pageEnd": 4, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque", "suites-series-fonctions"], "primaryChapterId": "integrales-parametre" },
-    { "id": "cnc-maths1-2017-p2", "paperId": "cnc-maths1-2017", "label": "Problème 2 — Fonction génératrice d'une variable aléatoire", "pageStart": 4, "pageEnd": 5, "chapterIds": ["variables-aleatoires-discretes", "probabilites", "series-entieres"], "primaryChapterId": "variables-aleatoires-discretes" }
+    { "id": "cnc-maths1-2017-p2", "paperId": "cnc-maths1-2017", "label": "Problème 2 — Fonction génératrice d'une variable aléatoire", "pageStart": 4, "pageEnd": 5, "chapterIds": ["variables-aleatoires-discretes", "probabilites", "series-entieres"], "primaryChapterId": "variables-aleatoires-discretes" },
+
+    { "id": "centrale-maths1-2019-i", "paperId": "centrale-maths1-2019", "label": "Parties I–II — Matrices compagnons et endomorphismes cycliques", "pageStart": 2, "pageEnd": 3, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "centrale-maths1-2019-ii", "paperId": "centrale-maths1-2019", "label": "Parties III–IV — Décomposition de Frobenius et endomorphismes orthocycliques", "pageStart": 3, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "prehilbertiens-euclidiens-y2", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "centrale-maths2-2019-p", "paperId": "centrale-maths2-2019", "label": "Fonction caractéristique d'une variable aléatoire", "pageStart": 2, "pageEnd": 5, "chapterIds": ["variables-aleatoires-discretes", "series-numeriques"], "primaryChapterId": "variables-aleatoires-discretes" },
+
+    { "id": "centrale-maths1-2020-i", "paperId": "centrale-maths1-2020", "label": "Parties I–II — Résultats préliminaires et endomorphismes de permutation", "pageStart": 2, "pageEnd": 4, "chapterIds": ["matrices", "groupe-symetrique", "arithmetique-z"], "primaryChapterId": "matrices" },
+    { "id": "centrale-maths1-2020-ii", "paperId": "centrale-maths1-2020", "label": "Partie III+ — Réduction des matrices de permutation", "pageStart": 5, "pageEnd": 6, "chapterIds": ["matrices", "reduction-endomorphismes", "groupe-symetrique"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "centrale-maths2-2020-i", "paperId": "centrale-maths2-2020", "label": "Parties I–II — Un opérateur intégral", "pageStart": 2, "pageEnd": 3, "chapterIds": ["integration", "prehilbertiens-y1", "topologie-evn"], "primaryChapterId": "integration" },
+    { "id": "centrale-maths2-2020-ii", "paperId": "centrale-maths2-2020", "label": "Parties III–IV — Espaces à noyau reproduisant", "pageStart": 3, "pageEnd": 5, "chapterIds": ["prehilbertiens-y1", "suites-series-fonctions", "topologie-evn"], "primaryChapterId": "prehilbertiens-y1" },
+
+    { "id": "centrale-maths1-2021-i", "paperId": "centrale-maths1-2021", "label": "Parties I–II — Inégalité de Hoffman-Wielandt", "pageStart": 2, "pageEnd": 4, "chapterIds": ["reduction-endomorphismes", "prehilbertiens-euclidiens-y2", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "centrale-maths1-2021-ii", "paperId": "centrale-maths1-2021", "label": "Parties III–IV — Loi du demi-cercle (méthode des moments)", "pageStart": 4, "pageEnd": 7, "chapterIds": ["variables-aleatoires-discretes", "denombrement", "matrices", "analyse-asymptotique"], "primaryChapterId": "variables-aleatoires-discretes" },
+
+    { "id": "centrale-maths2-2021-i", "paperId": "centrale-maths2-2021", "label": "Partie I — Inégalité polynomiale de Bernstein", "pageStart": 2, "pageEnd": 3, "chapterIds": ["polynomes-fractions", "derivation"], "primaryChapterId": "polynomes-fractions" },
+    { "id": "centrale-maths2-2021-ii", "paperId": "centrale-maths2-2021", "label": "Parties II+ — Transformée de Fourier et applications", "pageStart": 3, "pageEnd": 5, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" },
+
+    { "id": "centrale-maths2-2022-i", "paperId": "centrale-maths2-2022", "label": "Parties I–II — Inégalités d'interpolation des dérivées", "pageStart": 2, "pageEnd": 3, "chapterIds": ["derivation", "analyse-asymptotique", "suites-series-fonctions"], "primaryChapterId": "derivation" },
+    { "id": "centrale-maths2-2022-ii", "paperId": "centrale-maths2-2022", "label": "Parties III–IV — Séries et application probabiliste", "pageStart": 3, "pageEnd": 5, "chapterIds": ["series-numeriques", "variables-aleatoires-discretes"], "primaryChapterId": "series-numeriques" },
+
+    { "id": "centrale-maths1-2023-i", "paperId": "centrale-maths1-2023", "label": "Parties I–II — Endomorphismes shift-invariants et formule de Taylor", "pageStart": 2, "pageEnd": 3, "chapterIds": ["polynomes-fractions", "espaces-vectoriels-al", "derivation"], "primaryChapterId": "polynomes-fractions" },
+    { "id": "centrale-maths1-2023-ii", "paperId": "centrale-maths1-2023", "label": "Parties III–IV — Suites de polynômes et calcul ombral", "pageStart": 3, "pageEnd": 6, "chapterIds": ["polynomes-fractions", "suites-series-fonctions"], "primaryChapterId": "polynomes-fractions" },
+
+    { "id": "centrale-maths2-2023-i", "paperId": "centrale-maths2-2023", "label": "Parties I–II — Convergence d'une suite de fonctions", "pageStart": 2, "pageEnd": 3, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "centrale-maths2-2023-ii", "paperId": "centrale-maths2-2023", "label": "Partie III — Applications", "pageStart": 4, "pageEnd": 6, "chapterIds": ["suites-series-fonctions", "integration"], "primaryChapterId": "suites-series-fonctions" },
+
+    { "id": "centrale-maths2-2024-i", "paperId": "centrale-maths2-2024", "label": "Parties I–II — Étude d'une équation fonctionnelle", "pageStart": 2, "pageEnd": 3, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "centrale-maths2-2024-ii", "paperId": "centrale-maths2-2024", "label": "Parties III–IV — Polynômes de Bernoulli et solution entière", "pageStart": 3, "pageEnd": 5, "chapterIds": ["polynomes-fractions", "series-numeriques"], "primaryChapterId": "polynomes-fractions" },
+
+    { "id": "centrale-maths1-2025-i", "paperId": "centrale-maths1-2025", "label": "Parties A–B — Encadrement de la fonction de comptage des nombres premiers", "pageStart": 2, "pageEnd": 3, "chapterIds": ["arithmetique-z", "analyse-asymptotique", "series-numeriques"], "primaryChapterId": "arithmetique-z" },
+    { "id": "centrale-maths1-2025-ii", "paperId": "centrale-maths1-2025", "label": "Parties C–E — Étude asymptotique", "pageStart": 4, "pageEnd": 7, "chapterIds": ["analyse-asymptotique", "series-numeriques", "integration"], "primaryChapterId": "analyse-asymptotique" },
+
+    { "id": "centrale-maths2-2025-i", "paperId": "centrale-maths2-2025", "label": "Parties I–II — Matrice de transfert du modèle d'Ising", "pageStart": 2, "pageEnd": 4, "chapterIds": ["matrices", "reduction-endomorphismes", "variables-aleatoires-discretes"], "primaryChapterId": "matrices" },
+    { "id": "centrale-maths2-2025-ii", "paperId": "centrale-maths2-2025", "label": "Parties III–V — Aimantation et comportement asymptotique", "pageStart": 4, "pageEnd": 7, "chapterIds": ["reduction-endomorphismes", "analyse-asymptotique", "variables-aleatoires-discretes"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "centrale-maths1-2026-i", "paperId": "centrale-maths1-2026", "label": "Parties A–B — Matrices symétriques positives et groupes orthogonaux", "pageStart": 2, "pageEnd": 4, "chapterIds": ["prehilbertiens-euclidiens-y2", "matrices", "structures-algebriques-y2"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+    { "id": "centrale-maths1-2026-ii", "paperId": "centrale-maths1-2026", "label": "Parties C+ — Convexité et déterminants sur les matrices symétriques", "pageStart": 4, "pageEnd": 7, "chapterIds": ["prehilbertiens-euclidiens-y2", "fonctions-convexes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "centrale-maths2-2026-i", "paperId": "centrale-maths2-2026", "label": "Partie I — La fonction ζ de Riemann sur ]1,+∞[ et ses prolongements", "pageStart": 2, "pageEnd": 3, "chapterIds": ["series-numeriques", "integration-intervalle-quelconque", "suites-series-fonctions"], "primaryChapterId": "series-numeriques" },
+    { "id": "centrale-maths2-2026-ii", "paperId": "centrale-maths2-2026", "label": "Parties C–D — Non-annulation de ζ et géométrie des fonctions fₖ", "pageStart": 4, "pageEnd": 7, "chapterIds": ["prehilbertiens-y1", "series-numeriques", "integration-intervalle-quelconque"], "primaryChapterId": "prehilbertiens-y1" }
   ]
 }
