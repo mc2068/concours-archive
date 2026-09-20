@@ -1,23 +1,28 @@
 ---
 import '../styles/global.css';
-import { dataset } from '../data/dataset';
+import { archive } from '../data/archive';
 import { FLAGS } from '../lib/format';
 import type { Country } from '../lib/types';
 
-const chapitres = [...dataset.chapitres].sort((a, b) => a.order - b.order);
+const chapitres = [...archive.chapitres].sort((a, b) => a.order - b.order);
 const domains = [...new Set(chapitres.map((c) => c.domain))];
 
 // Refinement options, derived from the papers actually in the dataset so the
 // controls only ever offer values that can return a result.
 const COUNTRY_LABELS: Record<Country, string> = { FR: 'France', TN: 'Tunisie', MA: 'Maroc' };
-const presentCountries = new Set(dataset.papers.map((p) => p.country));
+const presentCountries = new Set(archive.papers.map((p) => p.country));
 const countries = (Object.keys(COUNTRY_LABELS) as Country[])
   .filter((code) => presentCountries.has(code))
   .map((code) => ({ code, label: COUNTRY_LABELS[code] }));
-const examBrands = [...new Set(dataset.papers.map((p) => p.examBrand))].sort((a, b) =>
+const examBrands = [...new Set(archive.papers.map((p) => p.examBrand))].sort((a, b) =>
   a.localeCompare(b, 'fr'),
 );
-const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b - a);
+const years = [...new Set(archive.papers.map((p) => p.year))].sort((a, b) => b - a);
+
+// Masthead facts. Counted off the dataset so they can never drift from what the
+// archive actually holds.
+const exerciseTotal = archive.exercises.length;
+const paperTotal = archive.papers.length;
 ---
 
 <!doctype html>
@@ -32,115 +37,146 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <title>Concours archive</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>Concours archive — exercices de concours par chapitre</title>
   </head>
-  <body class="min-h-screen bg-surface font-sans text-ink antialiased">
-    <div class="mx-auto max-w-6xl px-4 py-6 md:py-8">
-      <header class="mb-6 flex items-center justify-between gap-4">
-        <h1 class="text-xl font-semibold">Concours archive</h1>
-        <!-- Mobile only: the sidebar collapses into a sheet behind this toggle -->
-        <button
-          type="button"
-          id="sidebar-toggle"
-          class="btn btn--secondary sidebar-toggle"
-          aria-expanded="false"
-          aria-controls="sidebar"
-        >
-          Chapitres &amp; filtres
-        </button>
-      </header>
+  <body class="flex min-h-screen flex-col bg-surface font-sans text-ink antialiased">
+    <header class="masthead">
+      <div class="masthead__inner mx-auto max-w-6xl px-4 py-5 md:py-6">
+        <div class="masthead__brand">
+          <img class="masthead__mark" src="/logo.png" alt="" width="128" height="114" />
+          <div class="min-w-0">
+            <h1 class="masthead__title">Concours archive</h1>
+            <p class="masthead__tagline">
+              Exercices de concours classés par chapitre — programme tunisien 2ème prépa MP
+            </p>
+          </div>
+        </div>
+        <dl class="masthead__stats">
+          <div class="masthead__stat">
+            <dt class="masthead__stat-label">Exercices</dt>
+            <dd class="masthead__stat-value">{exerciseTotal}</dd>
+          </div>
+          <div class="masthead__stat">
+            <dt class="masthead__stat-label">Épreuves</dt>
+            <dd class="masthead__stat-value">{paperTotal}</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
 
-      <div class="flex flex-col gap-6 md:flex-row md:gap-8">
+    <div class="mx-auto w-full max-w-6xl flex-1 px-4 py-6 md:py-8">
+      <!-- Mobile only: the sidebar collapses into a sheet behind this toggle -->
+      <button
+        type="button"
+        id="sidebar-toggle"
+        class="btn btn--secondary sidebar-toggle mb-4"
+        aria-expanded="false"
+        aria-controls="sidebar"
+      >
+        Chapitres &amp; filtres
+      </button>
+
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
         <!-- Sidebar: the chapitre front door (a collapsible sheet on mobile) -->
         <aside
           id="sidebar"
-          class="sidebar w-full shrink-0 md:w-72"
+          class="sidebar panel w-full shrink-0 p-4 md:w-72"
           data-open="false"
           aria-label="Chapitres et filtres"
         >
           <nav aria-label="Chapitres">
-          <button type="button" class="chapitre-btn" data-chapitre-reset aria-pressed="true">
-            Tous les chapitres
-          </button>
-          {
-            domains.map((domain) => (
-              <div class="mt-6">
-                <p class="domain-label">{domain}</p>
-                <div class="mt-2 flex flex-col gap-1">
-                  {chapitres
-                    .filter((c) => c.domain === domain)
-                    .map((c) => (
-                      <button
-                        type="button"
-                        class="chapitre-btn"
-                        data-chapitre-id={c.id}
-                        aria-pressed="false"
-                      >
-                        {c.name}
-                      </button>
-                    ))}
+            <button type="button" class="chapitre-btn" data-chapitre-reset aria-pressed="true">
+              Tous les chapitres
+            </button>
+            {
+              domains.map((domain) => (
+                <div class="mt-6">
+                  <p class="domain-label">{domain}</p>
+                  <div class="mt-2 flex flex-col gap-1">
+                    {chapitres
+                      .filter((c) => c.domain === domain)
+                      .map((c) => (
+                        <button
+                          type="button"
+                          class="chapitre-btn"
+                          data-chapitre-id={c.id}
+                          aria-pressed="false"
+                        >
+                          {c.name}
+                        </button>
+                      ))}
+                  </div>
                 </div>
-              </div>
-            ))
-          }
-        </nav>
+              ))
+            }
+          </nav>
 
-        <!-- Refinement filters: stackable AND on top of the chapitre -->
-        <div class="filter-bar" role="group" aria-label="Filtres">
-          <p class="domain-label">Affiner</p>
-          <div class="filter-field">
-            <label for="filter-country">Pays</label>
-            <select id="filter-country" class="filter-select">
-              <option value="">Tous</option>
-              {countries.map((c) => <option value={c.code}>{FLAGS[c.code]} {c.label}</option>)}
-            </select>
+          <!-- Refinement filters: stackable AND on top of the chapitre -->
+          <div class="filter-bar" role="group" aria-label="Filtres">
+            <p class="domain-label">Affiner</p>
+            <div class="filter-field">
+              <label for="filter-country">Pays</label>
+              <select id="filter-country" class="filter-select">
+                <option value="">Tous</option>
+                {countries.map((c) => <option value={c.code}>{FLAGS[c.code]} {c.label}</option>)}
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filter-brand">Concours</label>
+              <select id="filter-brand" class="filter-select">
+                <option value="">Tous</option>
+                {examBrands.map((b) => <option value={b}>{b}</option>)}
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filter-year">Année</label>
+              <select id="filter-year" class="filter-select">
+                <option value="">Toutes</option>
+                {years.map((y) => <option value={y}>{y}</option>)}
+              </select>
+            </div>
+            <button type="button" id="filter-reset" class="btn btn--secondary self-start">
+              Réinitialiser les filtres
+            </button>
           </div>
-          <div class="filter-field">
-            <label for="filter-brand">Concours</label>
-            <select id="filter-brand" class="filter-select">
-              <option value="">Tous</option>
-              {examBrands.map((b) => <option value={b}>{b}</option>)}
-            </select>
-          </div>
-          <div class="filter-field">
-            <label for="filter-year">Année</label>
-            <select id="filter-year" class="filter-select">
-              <option value="">Toutes</option>
-              {years.map((y) => <option value={y}>{y}</option>)}
-            </select>
-          </div>
-          <button type="button" id="filter-reset" class="filter-reset">
-            Réinitialiser les filtres
-          </button>
-        </div>
       </aside>
 
       <!-- Main column: results -->
       <main class="min-w-0 flex-1">
-        <h2 id="heading" class="text-xl font-semibold">Tous les exercices</h2>
-        <p id="count" class="mt-1 text-ink-muted"></p>
-        <ul id="results" class="mt-4 overflow-hidden rounded-md border border-border bg-surface-raised"></ul>
-        <noscript>
-          <p class="empty-state">
-            Ce site a besoin de JavaScript pour filtrer les exercices.
-          </p>
-        </noscript>
+        <section class="panel overflow-hidden">
+          <div class="panel__header">
+            <h2 id="heading" class="panel__title">Tous les exercices</h2>
+            <p id="count" class="panel__count"></p>
+          </div>
+          <ul id="results"></ul>
+          <noscript>
+            <p class="empty-state">Ce site a besoin de JavaScript pour filtrer les exercices.</p>
+          </noscript>
+        </section>
       </main>
       </div>
     </div>
 
+    <footer class="site-footer">
+      <div class="mx-auto max-w-6xl px-4 py-6">
+        Concours archive — archives des concours de France, Tunisie et Maroc,
+        remises dans les chapitres du programme tunisien MP.
+      </div>
+    </footer>
+
     <script>
-      import { dataset } from '../data/dataset';
+      import { archive } from '../data/archive';
       import { filterExercises } from '../lib/filter';
       import { FLAGS, exerciseCount, paperEpreuve } from '../lib/format';
       import { pdfHref } from '../lib/pdf';
       import type { Country, Exercise, FilterCriteria } from '../lib/types';
 
-      const chapitreById = new Map(dataset.chapitres.map((c) => [c.id, c]));
-      const paperById = new Map(dataset.papers.map((p) => [p.id, p]));
+      const chapitreById = new Map(archive.chapitres.map((c) => [c.id, c]));
+      const paperById = new Map(archive.papers.map((p) => [p.id, p]));
 
       const heading = document.getElementById('heading')!;
       const countEl = document.getElementById('count')!;
@@ -236,7 +272,7 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
         const href = paper ? pdfHref(paper.pdfPath, ex.pageStart) : null;
         if (href) {
           const open = document.createElement('a');
-          open.className = 'btn btn--secondary';
+          open.className = 'btn btn--primary';
           open.href = href;
           open.target = '_blank';
           open.rel = 'noopener noreferrer';
@@ -247,7 +283,7 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
       }
 
       function render(): void {
-        const matches = filterExercises(dataset, currentCriteria());
+        const matches = filterExercises(archive, currentCriteria());
 
         heading.textContent = selectedChapterId
           ? (chapitreById.get(selectedChapterId)?.name ?? 'Exercices')
@@ -267,6 +303,14 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
       function emptyState(): HTMLLIElement {
         const li = document.createElement('li');
         li.className = 'empty-state';
+
+        const art = document.createElement('img');
+        art.className = 'empty-state__art';
+        art.src = '/empty-state.png';
+        art.alt = '';
+        art.width = 192;
+        art.height = 206;
+        li.appendChild(art);
 
         const title = document.createElement('p');
         title.className = 'empty-state__title';

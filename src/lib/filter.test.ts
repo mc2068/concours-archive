@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { filterExercises } from './filter';
-import type { Dataset, Exercise } from './types';
+import type { Archive, Exercise } from './types';
 
 // Small in-memory fixture — no real data, no DOM, no PDFs.
 // Papers span three years so ordering (year desc) is observable.
-const dataset: Dataset = {
+const archive: Archive = {
   chapitres: [
     { id: 'series', name: 'Séries numériques', order: 1, domain: 'Analyse' },
     { id: 'integ', name: 'Intégration', order: 2, domain: 'Analyse' },
@@ -27,38 +27,38 @@ const ids = (xs: Exercise[]) => xs.map((x) => x.id);
 
 describe('filterExercises', () => {
   it('returns every exercise when no criteria are given', () => {
-    expect(ids(filterExercises(dataset))).toEqual(['e2', 'e3', 'e1']); // year desc: 2021, 2020, 2019
+    expect(ids(filterExercises(archive))).toEqual(['e2', 'e3', 'e1']); // year desc: 2021, 2020, 2019
   });
 
   it('returns every exercise for empty criteria object', () => {
-    expect(ids(filterExercises(dataset, {}))).toEqual(['e2', 'e3', 'e1']);
+    expect(ids(filterExercises(archive, {}))).toEqual(['e2', 'e3', 'e1']);
   });
 
   it('matches exercises whose chapterIds include the selected chapter', () => {
-    expect(ids(filterExercises(dataset, { chapterId: 'reduc' }))).toEqual(['e2']);
+    expect(ids(filterExercises(archive, { chapterId: 'reduc' }))).toEqual(['e2']);
   });
 
   it('includes a multi-chapter exercise under each of its chapters', () => {
     // e1 is tagged [series, integ] — it must appear under BOTH.
-    expect(ids(filterExercises(dataset, { chapterId: 'series' }))).toContain('e1');
-    expect(ids(filterExercises(dataset, { chapterId: 'integ' }))).toEqual(['e1']);
-    expect(ids(filterExercises(dataset, { chapterId: 'series' }))).toEqual(['e3', 'e1']); // 2020 then 2019
+    expect(ids(filterExercises(archive, { chapterId: 'series' }))).toContain('e1');
+    expect(ids(filterExercises(archive, { chapterId: 'integ' }))).toEqual(['e1']);
+    expect(ids(filterExercises(archive, { chapterId: 'series' }))).toEqual(['e3', 'e1']); // 2020 then 2019
   });
 
   it('orders results by year descending', () => {
     // series matches e3 (2020) and e1 (2019) → newest first.
-    expect(ids(filterExercises(dataset, { chapterId: 'series' }))).toEqual(['e3', 'e1']);
+    expect(ids(filterExercises(archive, { chapterId: 'series' }))).toEqual(['e3', 'e1']);
   });
 
   it('returns an empty list when nothing matches', () => {
-    expect(filterExercises(dataset, { chapterId: 'nonexistent' })).toEqual([]);
+    expect(filterExercises(archive, { chapterId: 'nonexistent' })).toEqual([]);
   });
 
   it('keeps a single paper\'s exercises contiguous within the same year', () => {
     // Two same-year papers; exercises interleaved in the source. A paper's own
     // exercises must not be split apart by another paper's.
-    const sameYear: Dataset = {
-      chapitres: [{ id: 'c', name: 'C', order: 1, domain: 'D' }],
+    const sameYear: Archive = {
+      chapitres: [{ id: 'c', name: 'C', order: 1, domain: 'Analyse' }],
       papers: [
         { id: 'centrale', examBrand: 'Centrale', year: 2022, country: 'FR', subject: 'Maths', pdfPath: '/x.pdf' },
         { id: 'mines', examBrand: 'Mines', year: 2022, country: 'FR', subject: 'Maths', pdfPath: '/y.pdf' },
@@ -73,52 +73,52 @@ describe('filterExercises', () => {
     expect(ids(filterExercises(sameYear))).toEqual(['c1', 'c2', 'm1']);
   });
 
-  it('does not mutate the input dataset', () => {
-    const before = ids(dataset.exercises);
-    filterExercises(dataset, { chapterId: 'series' });
-    expect(ids(dataset.exercises)).toEqual(before);
+  it('does not mutate the input archive', () => {
+    const before = ids(archive.exercises);
+    filterExercises(archive, { chapterId: 'series' });
+    expect(ids(archive.exercises)).toEqual(before);
   });
 
   describe('refinement axes (country, exam brand, year)', () => {
     it('filters by country alone', () => {
       // e3 is on the TN paper; e1 on MA, e2 on FR.
-      expect(ids(filterExercises(dataset, { country: 'TN' }))).toEqual(['e3']);
+      expect(ids(filterExercises(archive, { country: 'TN' }))).toEqual(['e3']);
     });
 
     it('filters by exam brand alone', () => {
-      expect(ids(filterExercises(dataset, { examBrand: 'CNC' }))).toEqual(['e1']);
+      expect(ids(filterExercises(archive, { examBrand: 'CNC' }))).toEqual(['e1']);
     });
 
     it('filters by a single year alone', () => {
-      expect(ids(filterExercises(dataset, { year: 2021 }))).toEqual(['e2']);
+      expect(ids(filterExercises(archive, { year: 2021 }))).toEqual(['e2']);
     });
 
     it('filters by an inclusive year range', () => {
       // 2020..2021 excludes the 2019 paper (e1). Order stays year-desc.
-      expect(ids(filterExercises(dataset, { year: { from: 2020, to: 2021 } }))).toEqual(['e2', 'e3']);
+      expect(ids(filterExercises(archive, { year: { from: 2020, to: 2021 } }))).toEqual(['e2', 'e3']);
     });
 
     it('treats an open-ended year range bound as unbounded', () => {
-      expect(ids(filterExercises(dataset, { year: { from: 2020 } }))).toEqual(['e2', 'e3']); // 2020 and later
-      expect(ids(filterExercises(dataset, { year: { to: 2020 } }))).toEqual(['e3', 'e1']); // up to 2020
+      expect(ids(filterExercises(archive, { year: { from: 2020 } }))).toEqual(['e2', 'e3']); // 2020 and later
+      expect(ids(filterExercises(archive, { year: { to: 2020 } }))).toEqual(['e3', 'e1']); // up to 2020
     });
 
     it('stacks chapter AND country AND brand together', () => {
       // series matches e1 (MA/CNC) and e3 (TN/Concours tunisien).
       // Add country TN → only e3.
-      expect(ids(filterExercises(dataset, { chapterId: 'series', country: 'TN' }))).toEqual(['e3']);
+      expect(ids(filterExercises(archive, { chapterId: 'series', country: 'TN' }))).toEqual(['e3']);
       // Add brand CNC on top of series → only e1.
-      expect(ids(filterExercises(dataset, { chapterId: 'series', examBrand: 'CNC' }))).toEqual(['e1']);
+      expect(ids(filterExercises(archive, { chapterId: 'series', examBrand: 'CNC' }))).toEqual(['e1']);
     });
 
     it('excludes an exercise when any single active axis does not match', () => {
       // e1 matches chapter series but sits on an MA paper — country TN rules it out,
       // and no other exercise matches that whole combination.
-      expect(filterExercises(dataset, { chapterId: 'series', country: 'FR' })).toEqual([]);
+      expect(filterExercises(archive, { chapterId: 'series', country: 'FR' })).toEqual([]);
     });
 
     it('returns everything when refinement axes are absent', () => {
-      expect(ids(filterExercises(dataset, { country: undefined, year: undefined }))).toEqual(['e2', 'e3', 'e1']);
+      expect(ids(filterExercises(archive, { country: undefined, year: undefined }))).toEqual(['e2', 'e3', 'e1']);
     });
   });
 });

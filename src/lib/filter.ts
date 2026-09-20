@@ -1,4 +1,4 @@
-import type { Dataset, Exercise, FilterCriteria } from './types';
+import type { Archive, Exercise, FilterCriteria } from './types';
 
 /** True when `year` falls inside the criteria's single year or inclusive range. */
 function yearMatches(year: number, criterion: NonNullable<FilterCriteria['year']>): boolean {
@@ -9,7 +9,7 @@ function yearMatches(year: number, criterion: NonNullable<FilterCriteria['year']
 }
 
 /**
- * The filter seam. Given the whole {@link Dataset} and the current
+ * The filter seam. Given the whole {@link Archive} and the current
  * {@link FilterCriteria}, return the matching exercises in a deterministic
  * order (year descending, then exam brand, then paper, then label — so a
  * paper's own exercises stay contiguous).
@@ -20,16 +20,16 @@ function yearMatches(year: number, criterion: NonNullable<FilterCriteria['year']
  * - Country, exam brand, and year are refinements read from the exercise's
  *   parent paper; every active axis is combined with AND.
  * - Absent criteria do not constrain.
- * - Pure: never mutates the dataset.
+ * - Pure: never mutates the archive.
  */
 export function filterExercises(
-  dataset: Dataset,
+  archive: Archive,
   criteria: FilterCriteria = {},
 ): Exercise[] {
   const { chapterId, country, examBrand, year } = criteria;
-  const paperById = new Map(dataset.papers.map((p) => [p.id, p]));
+  const paperById = new Map(archive.papers.map((p) => [p.id, p]));
 
-  const matches = dataset.exercises.filter((ex) => {
+  const matches = archive.exercises.filter((ex) => {
     if (chapterId && !ex.chapterIds.includes(chapterId)) return false;
 
     // Refinement axes live on the parent paper; an exercise whose paper is

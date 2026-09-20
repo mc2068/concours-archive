@@ -4,6 +4,13 @@
 export type Country = 'FR' | 'TN' | 'MA';
 
 /**
+ * The broad area of the Tunisian MP program a Chapitre belongs to. A closed
+ * set: these four are the whole program, and a fifth value would mint a
+ * sidebar group that does not exist (CONTEXT.md, "Domain").
+ */
+export type Domain = 'Analyse' | 'Algèbre' | 'Géométrie' | 'Probabilités';
+
+/**
  * A topic in the Tunisian 2ème prépa MP program — the canonical chapter list
  * (ADR 0002). Chapters are the primary filter axis.
  */
@@ -13,7 +20,7 @@ export interface Chapitre {
   /** Sort order within the whole program. */
   order: number;
   /** Broad domain used to group the sidebar (Analyse, Algèbre, …). */
-  domain: string;
+  domain: Domain;
 }
 
 /**
@@ -45,7 +52,13 @@ export interface Exercise {
   id: string;
   paperId: string;
   label: string;
+  /** First page of the exercise in its paper's PDF, 1-based. */
   pageStart: number;
+  /**
+   * Last page the exercise appears on — **inclusive**, so a one-page exercise
+   * has `pageStart === pageEnd` and the last exercise of a paper ends on the
+   * paper's final page (ADR 0003).
+   */
   pageEnd: number;
   /** All chapters this exercise touches. Filtering matches any of these. */
   chapterIds: string[];
@@ -53,8 +66,8 @@ export interface Exercise {
   primaryChapterId: string;
 }
 
-/** The whole archive, loaded in the browser. */
-export interface Dataset {
+/** The whole curated Archive, loaded in the browser (CONTEXT.md, "Archive"). */
+export interface Archive {
   chapitres: Chapitre[];
   papers: ConcoursPaper[];
   exercises: Exercise[];
