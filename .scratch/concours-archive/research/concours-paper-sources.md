@@ -236,6 +236,14 @@ re-uploaded — if a direct link 404s, return to the annales page and re-read th
 1. **X-ENS (Polytechnique/ENS):** no single official annales portal was verified this session.
    Next step: locate X-ENS MP maths sujets via doc-solus.fr or the ENS/Polytechnique concours pages,
    and confirm whether an official first-party archive exists.
+   - **Follow-up (2026-09-20):** re-checked while extending the archive. **doc-solus.fr** is a
+     commercial *in-browser reader* (`view.corrige.html?q=MP_MATHS_<BRAND>_<n>_<year>`), not a source
+     of downloadable PDFs, and it points to **H&K** (`h-k.fr/adc`), a paid annales publisher. Neither
+     is redistribution-appropriate for this non-commercial archive. Quick probes of
+     `concours-polytechnique.fr`, `scei-concours.fr/annales.php`, `ups.prepas.org` did not surface a
+     free first-party X-ENS *sujet* archive (UPS hosts jury *rapports*, not sujets). WebSearch/WebFetch
+     still fail in this environment. **Decision: X-ENS left out** until a first-party or explicitly
+     reuse-licensed source is found — do not bundle from doc-solus/H&K.
 2. **Morocco CNC official archive:** no first-party CNC portal with a public annales archive was
    found — the CNC is piloted by a rotating school each year. Worth confirming whether the current
    piloting school or a ministry portal (a `*.ac.ma` / `*.gov.ma` domain) publishes official PDFs,
