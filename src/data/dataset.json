@@ -82,6 +82,21 @@
     { "id": "mines-ponts-maths1-2025", "examBrand": "Mines-Ponts", "year": 2025, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/mines-ponts-maths1-2025.pdf" },
     { "id": "mines-ponts-maths2-2025", "examBrand": "Mines-Ponts", "year": 2025, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/mines-ponts-maths2-2025.pdf" },
     { "id": "ccinp-maths1-2025", "examBrand": "CCINP", "year": 2025, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2025.pdf" },
+    { "id": "ccinp-maths2-2025", "examBrand": "CCINP", "year": 2025, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/ccinp-maths2-2025.pdf" },
+    { "id": "ccinp-maths1-2019", "examBrand": "CCINP", "year": 2019, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2019.pdf" },
+    { "id": "ccinp-maths2-2019", "examBrand": "CCINP", "year": 2019, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/ccinp-maths2-2019.pdf" },
+    { "id": "ccinp-maths1-2020", "examBrand": "CCINP", "year": 2020, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2020.pdf" },
+    { "id": "ccinp-maths2-2020", "examBrand": "CCINP", "year": 2020, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/ccinp-maths2-2020.pdf" },
+    { "id": "ccinp-maths1-2021", "examBrand": "CCINP", "year": 2021, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2021.pdf" },
+    { "id": "ccinp-maths2-2021", "examBrand": "CCINP", "year": 2021, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/ccinp-maths2-2021.pdf" },
+    { "id": "ccinp-maths1-2022", "examBrand": "CCINP", "year": 2022, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2022.pdf" },
+    { "id": "ccinp-maths2-2022", "examBrand": "CCINP", "year": 2022, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/ccinp-maths2-2022.pdf" },
+    { "id": "ccinp-maths1-2023", "examBrand": "CCINP", "year": 2023, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2023.pdf" },
+    { "id": "ccinp-maths2-2023", "examBrand": "CCINP", "year": 2023, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/ccinp-maths2-2023.pdf" },
+    { "id": "ccinp-maths1-2024", "examBrand": "CCINP", "year": 2024, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2024.pdf" },
+    { "id": "ccinp-maths2-2024", "examBrand": "CCINP", "year": 2024, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/ccinp-maths2-2024.pdf" },
+    { "id": "ccinp-maths1-2026", "examBrand": "CCINP", "year": 2026, "country": "FR", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/ccinp-maths1-2026.pdf" },
+    { "id": "ccinp-maths2-2026", "examBrand": "CCINP", "year": 2026, "country": "FR", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/ccinp-maths2-2026.pdf" },
     { "id": "cnc-maths1-2015", "examBrand": "CNC", "year": 2015, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2015.pdf" },
     { "id": "cnc-maths2-2015", "examBrand": "CNC", "year": 2015, "country": "MA", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/cnc-maths2-2015.pdf" },
     { "id": "cnc-maths1-2016", "examBrand": "CNC", "year": 2016, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2016.pdf" },
@@ -315,6 +330,51 @@
     { "id": "centrale-maths1-2026-ii", "paperId": "centrale-maths1-2026", "label": "Parties C+ — Convexité et déterminants sur les matrices symétriques", "pageStart": 4, "pageEnd": 7, "chapterIds": ["prehilbertiens-euclidiens-y2", "fonctions-convexes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
 
     { "id": "centrale-maths2-2026-i", "paperId": "centrale-maths2-2026", "label": "Partie I — La fonction ζ de Riemann sur ]1,+∞[ et ses prolongements", "pageStart": 2, "pageEnd": 3, "chapterIds": ["series-numeriques", "integration-intervalle-quelconque", "suites-series-fonctions"], "primaryChapterId": "series-numeriques" },
-    { "id": "centrale-maths2-2026-ii", "paperId": "centrale-maths2-2026", "label": "Parties C–D — Non-annulation de ζ et géométrie des fonctions fₖ", "pageStart": 4, "pageEnd": 7, "chapterIds": ["prehilbertiens-y1", "series-numeriques", "integration-intervalle-quelconque"], "primaryChapterId": "prehilbertiens-y1" }
+    { "id": "centrale-maths2-2026-ii", "paperId": "centrale-maths2-2026", "label": "Parties C–D — Non-annulation de ζ et géométrie des fonctions fₖ", "pageStart": 4, "pageEnd": 7, "chapterIds": ["prehilbertiens-y1", "series-numeriques", "integration-intervalle-quelconque"], "primaryChapterId": "prehilbertiens-y1" },
+
+    { "id": "ccinp-maths1-2019-e", "paperId": "ccinp-maths1-2019", "label": "Exercices I et II — Séries et somme de variables aléatoires", "pageStart": 2, "pageEnd": 2, "chapterIds": ["series-numeriques", "variables-aleatoires-discretes"], "primaryChapterId": "series-numeriques" },
+    { "id": "ccinp-maths1-2019-p", "paperId": "ccinp-maths1-2019", "label": "Problème", "pageStart": 3, "pageEnd": 5, "chapterIds": ["series-numeriques", "suites-series-fonctions"], "primaryChapterId": "series-numeriques" },
+
+    { "id": "ccinp-maths2-2019-e", "paperId": "ccinp-maths2-2019", "label": "Exercice II — Matrices et endomorphismes", "pageStart": 3, "pageEnd": 3, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "ccinp-maths2-2019-p", "paperId": "ccinp-maths2-2019", "label": "Problème — Réduction et polynômes d'endomorphismes", "pageStart": 3, "pageEnd": 7, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "ccinp-maths1-2020-p1", "paperId": "ccinp-maths1-2020", "label": "Problème, Parties I–II — Développement ternaire propre", "pageStart": 1, "pageEnd": 4, "chapterIds": ["reels-suites", "series-numeriques"], "primaryChapterId": "reels-suites" },
+    { "id": "ccinp-maths1-2020-p2", "paperId": "ccinp-maths1-2020", "label": "Problème, Parties III–IV", "pageStart": 5, "pageEnd": 7, "chapterIds": ["series-numeriques", "suites-series-fonctions"], "primaryChapterId": "series-numeriques" },
+
+    { "id": "ccinp-maths2-2020-e", "paperId": "ccinp-maths2-2020", "label": "Exercices I et II — Matrices et espace vectoriel normé Mₙ(R)", "pageStart": 2, "pageEnd": 2, "chapterIds": ["matrices", "topologie-evn", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "ccinp-maths2-2020-p", "paperId": "ccinp-maths2-2020", "label": "Problème — Endomorphismes d'un espace euclidien", "pageStart": 3, "pageEnd": 5, "chapterIds": ["prehilbertiens-euclidiens-y2", "matrices", "reduction-endomorphismes"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "ccinp-maths1-2021-e", "paperId": "ccinp-maths1-2021", "label": "Exercices I et II — Étude de fonctions d'une et deux variables", "pageStart": 2, "pageEnd": 2, "chapterIds": ["suites-series-fonctions", "calcul-differentiel"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "ccinp-maths1-2021-p", "paperId": "ccinp-maths1-2021", "label": "Problème — Séries et suites", "pageStart": 3, "pageEnd": 7, "chapterIds": ["series-numeriques", "suites-series-fonctions"], "primaryChapterId": "series-numeriques" },
+
+    { "id": "ccinp-maths2-2021-e", "paperId": "ccinp-maths2-2021", "label": "Exercice — Matrices et réduction", "pageStart": 2, "pageEnd": 2, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "ccinp-maths2-2021-p", "paperId": "ccinp-maths2-2021", "label": "Problème — Théorème de décomposition de Dunford", "pageStart": 2, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "ccinp-maths1-2022-e", "paperId": "ccinp-maths1-2022", "label": "Exercice — Variable aléatoire (essais de codes)", "pageStart": 2, "pageEnd": 2, "chapterIds": ["variables-aleatoires-discretes", "probabilites"], "primaryChapterId": "variables-aleatoires-discretes" },
+    { "id": "ccinp-maths1-2022-p", "paperId": "ccinp-maths1-2022", "label": "Problème — Intégrales et séries", "pageStart": 3, "pageEnd": 7, "chapterIds": ["integration-intervalle-quelconque", "series-numeriques", "variables-aleatoires-discretes"], "primaryChapterId": "integration-intervalle-quelconque" },
+
+    { "id": "ccinp-maths2-2022-e", "paperId": "ccinp-maths2-2022", "label": "Exercices 1 et 2 — Déterminant de Vandermonde et norme d'algèbre", "pageStart": 2, "pageEnd": 3, "chapterIds": ["determinants", "matrices", "topologie-evn"], "primaryChapterId": "determinants" },
+    { "id": "ccinp-maths2-2022-p", "paperId": "ccinp-maths2-2022", "label": "Problème — Matrices et réduction", "pageStart": 4, "pageEnd": 7, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+
+    { "id": "ccinp-maths1-2023-e", "paperId": "ccinp-maths1-2023", "label": "Exercice II — Analyse (séries et suites)", "pageStart": 3, "pageEnd": 3, "chapterIds": ["series-numeriques", "suites-series-fonctions"], "primaryChapterId": "series-numeriques" },
+    { "id": "ccinp-maths1-2023-p", "paperId": "ccinp-maths1-2023", "label": "Problème", "pageStart": 3, "pageEnd": 7, "chapterIds": ["matrices", "suites-series-fonctions"], "primaryChapterId": "matrices" },
+
+    { "id": "ccinp-maths2-2023-e", "paperId": "ccinp-maths2-2023", "label": "Exercices 1 et 2 — Polynômes orthogonaux et endomorphismes", "pageStart": 2, "pageEnd": 3, "chapterIds": ["polynomes-fractions", "prehilbertiens-y1", "reduction-endomorphismes"], "primaryChapterId": "polynomes-fractions" },
+    { "id": "ccinp-maths2-2023-p", "paperId": "ccinp-maths2-2023", "label": "Problème — Réduction des endomorphismes", "pageStart": 3, "pageEnd": 7, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "ccinp-maths1-2024-e", "paperId": "ccinp-maths1-2024", "label": "Exercices I et II — Variable aléatoire et équations différentielles", "pageStart": 2, "pageEnd": 2, "chapterIds": ["variables-aleatoires-discretes", "equations-differentielles"], "primaryChapterId": "variables-aleatoires-discretes" },
+    { "id": "ccinp-maths1-2024-p", "paperId": "ccinp-maths1-2024", "label": "Problème — Séries et intégrales", "pageStart": 3, "pageEnd": 5, "chapterIds": ["series-numeriques", "integration-intervalle-quelconque", "variables-aleatoires-discretes"], "primaryChapterId": "series-numeriques" },
+
+    { "id": "ccinp-maths2-2024-e", "paperId": "ccinp-maths2-2024", "label": "Exercice 1 — Suites réelles", "pageStart": 2, "pageEnd": 2, "chapterIds": ["reels-suites", "suites-series-fonctions"], "primaryChapterId": "reels-suites" },
+    { "id": "ccinp-maths2-2024-p", "paperId": "ccinp-maths2-2024", "label": "Problème — Matrices et déterminants", "pageStart": 3, "pageEnd": 7, "chapterIds": ["matrices", "determinants", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+
+    { "id": "ccinp-maths2-2025-e", "paperId": "ccinp-maths2-2025", "label": "Exercice 2 — Matrices et réduction", "pageStart": 3, "pageEnd": 3, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "ccinp-maths2-2025-p", "paperId": "ccinp-maths2-2025", "label": "Problème — Réduction des endomorphismes", "pageStart": 4, "pageEnd": 7, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "ccinp-maths1-2026-e", "paperId": "ccinp-maths1-2026", "label": "Exercice II — Analyse", "pageStart": 2, "pageEnd": 2, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "ccinp-maths1-2026-p", "paperId": "ccinp-maths1-2026", "label": "Problème — Variable aléatoire et intégrales", "pageStart": 3, "pageEnd": 5, "chapterIds": ["variables-aleatoires-discretes", "integration-intervalle-quelconque", "series-numeriques"], "primaryChapterId": "variables-aleatoires-discretes" },
+
+    { "id": "ccinp-maths2-2026-e", "paperId": "ccinp-maths2-2026", "label": "Exercices 1 et 2 — Matrices", "pageStart": 2, "pageEnd": 2, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "ccinp-maths2-2026-p", "paperId": "ccinp-maths2-2026", "label": "Problème — Réduction et espace euclidien", "pageStart": 3, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "prehilbertiens-euclidiens-y2", "matrices"], "primaryChapterId": "reduction-endomorphismes" }
   ]
 }
