@@ -4,7 +4,7 @@
 
 **Blocked by:** None (small enhancement on the existing schema; independent of content batches).
 
-**Status:** ready-for-agent
+**Status:** done (commit pending)
 
 ## Context
 
@@ -14,10 +14,10 @@
 
 ## Acceptance
 
-- [ ] The paper model carries a human label for its épreuve (e.g. a `label`/`title` field, or promote the existing `subject` — decide and record which). Backfill it for the ticket-08 papers.
-- [ ] The result-row meta distinguishes same-brand/year papers (e.g. "🇫🇷 Mines-Ponts Maths 1 · 2026" vs "… Maths 2 · 2026"), staying legible on mobile.
-- [ ] The `Chapitre`/`ConcoursPaper` types and `CONTEXT.md` glossary are updated to match the chosen field.
-- [ ] No regression: existing exercise rows still render, and the two Mines-Ponts 2026 papers are now told apart in the UI.
+- [x] Added an optional `label` field to `ConcoursPaper` (the épreuve, e.g. "Maths 1"). Chose a dedicated field over reusing `subject`, because `subject` is the discipline (Maths → Physique fast-follow) and overloading it would break that. Reverted `subject` back to "Maths" and backfilled `label` for all 7 papers.
+- [x] The result-row meta shows `${flag} ${brand} ${label} · ${year}` via the tested pure `paperEpreuve()` seam (`src/lib/format.ts`) — verified: "🇫🇷 Mines-Ponts Maths 1 · 2026" vs "… Maths 2 · 2026".
+- [x] `ConcoursPaper` type + `CONTEXT.md` glossary updated to describe `subject` (discipline) vs `label` (épreuve).
+- [x] No regression — all 21 rows render with distinct meta; `paperEpreuve` falls back to the brand alone when a paper has no label (unit-tested).
 
 ## Notes
 

@@ -9,8 +9,11 @@ French, Tunisian, and Moroccan systems.
 ### Concours (paper)
 An archived past **exam paper** (épreuve) from a competitive-entrance exam — e.g.
 "Centrale-Supélec Maths 1, 2023". A concours paper belongs to one country, one
-year, one exam brand, and one subject. It is the *container*, not the unit a
-student filters by. NOT the live exam event; NOT a single exercise.
+year, one exam brand, and one subject (the discipline, e.g. Maths). When a brand
+runs more than one maths épreuve in a year (Maths 1 / Maths 2), a paper's
+**label** names which one, so same-brand/year papers stay distinguishable. It is
+the *container*, not the unit a student filters by. NOT the live exam event; NOT
+a single exercise.
 
 ### Exercise (exercice / problème)
 The **taggable unit** of the site: a single exercise or problème extracted from a

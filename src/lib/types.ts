@@ -25,7 +25,14 @@ export interface ConcoursPaper {
   examBrand: string;
   year: number;
   country: Country;
+  /** The discipline — "Maths" today; Physique is a planned fast-follow. */
   subject: string;
+  /**
+   * The specific épreuve within the brand/year, e.g. "Maths 1" / "Maths 2",
+   * so two papers of the same brand and year are distinguishable. Optional:
+   * omit for a concours with a single maths paper.
+   */
+  label?: string;
   /** Path to the paper's PDF; opened at a page in ticket 04. */
   pdfPath: string;
 }

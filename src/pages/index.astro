@@ -135,7 +135,7 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
     <script>
       import { dataset } from '../data/dataset';
       import { filterExercises } from '../lib/filter';
-      import { FLAGS, exerciseCount } from '../lib/format';
+      import { FLAGS, exerciseCount, paperEpreuve } from '../lib/format';
       import { pdfHref } from '../lib/pdf';
       import type { Country, Exercise, FilterCriteria } from '../lib/types';
 
@@ -213,7 +213,7 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
         if (paper) {
           const meta = document.createElement('div');
           meta.className = 'result-row__meta';
-          meta.append(`${FLAGS[paper.country]} ${paper.examBrand} · `);
+          meta.append(`${FLAGS[paper.country]} ${paperEpreuve(paper)} · `);
           const year = document.createElement('span');
           year.className = 'tnum';
           year.textContent = String(paper.year);
