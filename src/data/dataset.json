@@ -223,6 +223,43 @@
 
     { "id": "tn-maths2-2024-i", "paperId": "tn-maths2-2024", "label": "Partie I — Racine carrée d'une matrice symétrique positive", "pageStart": 2, "pageEnd": 2, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
     { "id": "tn-maths2-2024-ii", "paperId": "tn-maths2-2024", "label": "Partie II — Étude d'une fonction matricielle de classe C^∞", "pageStart": 2, "pageEnd": 2, "chapterIds": ["calcul-differentiel", "prehilbertiens-euclidiens-y2"], "primaryChapterId": "calcul-differentiel" },
-    { "id": "tn-maths2-2024-iii", "paperId": "tn-maths2-2024", "label": "Partie III — Extrema sur la sphère unité et valeurs propres", "pageStart": 2, "pageEnd": 2, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "topologie-evn"], "primaryChapterId": "prehilbertiens-euclidiens-y2" }
+    { "id": "tn-maths2-2024-iii", "paperId": "tn-maths2-2024", "label": "Partie III — Extrema sur la sphère unité et valeurs propres", "pageStart": 2, "pageEnd": 2, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "topologie-evn"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "cnc-maths1-2015-p1", "paperId": "cnc-maths1-2015", "label": "Problème 1 — Équation différentielle vectorielle, dimension et normes équivalentes", "pageStart": 2, "pageEnd": 3, "chapterIds": ["equations-differentielles", "dimension-finie", "topologie-evn", "fonctions-convexes"], "primaryChapterId": "equations-differentielles" },
+    { "id": "cnc-maths1-2015-p2", "paperId": "cnc-maths1-2015", "label": "Problème 2 — Théorème de Liouville (fonctions harmoniques sur Z^d)", "pageStart": 3, "pageEnd": 6, "chapterIds": ["topologie-evn", "reels-suites"], "primaryChapterId": "topologie-evn" },
+
+    { "id": "cnc-maths2-2015-p1", "paperId": "cnc-maths2-2015", "label": "1ère Partie — Diagonalisation, commutant et conjugaison", "pageStart": 2, "pageEnd": 3, "chapterIds": ["reduction-endomorphismes", "matrices", "determinants"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "cnc-maths2-2015-p2", "paperId": "cnc-maths2-2015", "label": "Groupe spécial orthogonal et non-continuité de la diagonalisation", "pageStart": 4, "pageEnd": 6, "chapterIds": ["prehilbertiens-euclidiens-y2", "matrices", "topologie-evn", "structures-algebriques-y2"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "cnc-maths1-2016-p1", "paperId": "cnc-maths1-2016", "label": "Problème 1 — Polynômes de Bernstein et théorème de Weierstrass", "pageStart": 2, "pageEnd": 3, "chapterIds": ["suites-series-fonctions", "polynomes-fractions"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "cnc-maths1-2016-p2", "paperId": "cnc-maths1-2016", "label": "Problème 2 — Probabilités et variables aléatoires", "pageStart": 4, "pageEnd": 6, "chapterIds": ["variables-aleatoires-discretes", "probabilites"], "primaryChapterId": "variables-aleatoires-discretes" },
+
+    { "id": "cnc-maths2-2016-p1", "paperId": "cnc-maths2-2016", "label": "Parties I–III — Hyperplans de matrices et matrices inversibles", "pageStart": 2, "pageEnd": 3, "chapterIds": ["matrices", "determinants", "dimension-finie"], "primaryChapterId": "matrices" },
+    { "id": "cnc-maths2-2016-p2", "paperId": "cnc-maths2-2016", "label": "Parties IV–VI — Produit scalaire et matrices orthogonales", "pageStart": 3, "pageEnd": 6, "chapterIds": ["prehilbertiens-euclidiens-y2", "matrices", "dimension-finie"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "cnc-maths2-2017-p1", "paperId": "cnc-maths2-2017", "label": "Exercice et Problème 1 — Opérateur intégral Nₙ(f)", "pageStart": 2, "pageEnd": 4, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque", "suites-series-fonctions"], "primaryChapterId": "integrales-parametre" },
+    { "id": "cnc-maths2-2017-p2", "paperId": "cnc-maths2-2017", "label": "Problème 2 — Somme aléatoire et espérance composée", "pageStart": 4, "pageEnd": 6, "chapterIds": ["variables-aleatoires-discretes", "probabilites"], "primaryChapterId": "variables-aleatoires-discretes" },
+
+    { "id": "cnc-maths1-2018-p1", "paperId": "cnc-maths1-2018", "label": "Équation différentielle et fonction de Bessel Jₙ", "pageStart": 1, "pageEnd": 3, "chapterIds": ["equations-differentielles", "series-entieres", "integration"], "primaryChapterId": "equations-differentielles" },
+    { "id": "cnc-maths1-2018-p2", "paperId": "cnc-maths1-2018", "label": "Étude des zéros de la fonction de Bessel", "pageStart": 3, "pageEnd": 5, "chapterIds": ["suites-series-fonctions", "analyse-asymptotique"], "primaryChapterId": "suites-series-fonctions" },
+
+    { "id": "cnc-maths2-2018-e", "paperId": "cnc-maths2-2018", "label": "Exercice et matrices complexes", "pageStart": 1, "pageEnd": 2, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "cnc-maths2-2018-p", "paperId": "cnc-maths2-2018", "label": "Famille de vecteurs d'un espace euclidien", "pageStart": 3, "pageEnd": 5, "chapterIds": ["prehilbertiens-euclidiens-y2", "dimension-finie", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "cnc-maths1-2019-p", "paperId": "cnc-maths1-2019", "label": "Résolution par séries de Fourier d'une équation aux dérivées partielles périodique", "pageStart": 1, "pageEnd": 3, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+
+    { "id": "cnc-maths2-2019-e", "paperId": "cnc-maths2-2019", "label": "Exercice — Réduction d'une matrice de M₃(R)", "pageStart": 1, "pageEnd": 1, "chapterIds": ["reduction-endomorphismes", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "cnc-maths2-2019-p", "paperId": "cnc-maths2-2019", "label": "Endomorphismes d'un espace euclidien", "pageStart": 2, "pageEnd": 4, "chapterIds": ["prehilbertiens-euclidiens-y2", "matrices", "reduction-endomorphismes"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "cnc-maths1-2020-e1", "paperId": "cnc-maths1-2020", "label": "Exercice 1 — Fonction définie par une intégrale", "pageStart": 1, "pageEnd": 1, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" },
+    { "id": "cnc-maths1-2020-e2", "paperId": "cnc-maths1-2020", "label": "Exercice 2 — Série de fonctions et calcul de sa somme", "pageStart": 1, "pageEnd": 2, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "cnc-maths1-2020-p", "paperId": "cnc-maths1-2020", "label": "Problème — Matrices complexes et diagonalisation", "pageStart": 2, "pageEnd": 7, "chapterIds": ["reduction-endomorphismes", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "cnc-maths2-2021-e", "paperId": "cnc-maths2-2021", "label": "Exercice — Réduction et matrices", "pageStart": 1, "pageEnd": 1, "chapterIds": ["reduction-endomorphismes", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "cnc-maths2-2021-p", "paperId": "cnc-maths2-2021", "label": "Problème — Racines carrées de matrices réelles", "pageStart": 2, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "cnc-maths1-2017-e", "paperId": "cnc-maths1-2017", "label": "Exercice — Somme de la série de Riemann Σ1/n²", "pageStart": 2, "pageEnd": 2, "chapterIds": ["series-numeriques", "integration"], "primaryChapterId": "series-numeriques" },
+    { "id": "cnc-maths1-2017-p1", "paperId": "cnc-maths1-2017", "label": "Problème 1 — Opérateur intégral Nₙ(f)", "pageStart": 2, "pageEnd": 4, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque", "suites-series-fonctions"], "primaryChapterId": "integrales-parametre" },
+    { "id": "cnc-maths1-2017-p2", "paperId": "cnc-maths1-2017", "label": "Problème 2 — Fonction génératrice d'une variable aléatoire", "pageStart": 4, "pageEnd": 5, "chapterIds": ["variables-aleatoires-discretes", "probabilites", "series-entieres"], "primaryChapterId": "variables-aleatoires-discretes" }
   ]
 }
