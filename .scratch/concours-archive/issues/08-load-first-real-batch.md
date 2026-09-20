@@ -38,7 +38,16 @@
   - 2015 Maths 2 (norme d'une matrice aléatoire): 2 — norme d'opérateur/VA sous-gaussiennes, recouvrements de la sphère. **Borderline (kept):** "sous-gaussiennes" leans on Gaussian comparison, but the subject is an operator-norm concentration bound built from in-programme tools (MGF/Markov, ε-nets/compacité, norme d'opérateur), so tagged to variables-aleatoires-discretes + topologie-evn rather than excluded. Revisit if it feels hors-programme.
   - 2014 Maths 1 (représentation A ↦ eᴬ): 3 — z↦eᶻ dans C, forme de Jordan, eᴬ dans Mₙ(C).
   - 2014 Maths 2 (points fixes et opérateurs à noyau): 2 — point fixe/homotopie, intégrales de Fredholm.
-- **Mines-Ponts complete:** all 26 papers (2014–2026, both épreuves) now tagged; 2021 M1 and 2022 M1 partial per ADR 0002. **Remaining:** continue the TN/MA batch (and Centrale/CCINP back-catalogues) as with Mines-Ponts.
+- **Mines-Ponts complete:** all 26 papers (2014–2026, both épreuves) now tagged; 2021 M1 and 2022 M1 partial per ADR 0002.
+- **TN/MA grabbed:** +6 Tunisian (official, 2023/2024/2026) and +12 Moroccan CNC (groupe-reussite, 2015–2021). Archive now 🇫🇷 29 · 🇹🇳 7 · 🇲🇦 13.
+- **Exercises tagged — Tunisia 2023 & 2024 (4 papers, 13 exercises).**
+  - 2023 Maths 1 (Stirling, partie dense, marche aléatoire): 4 — I–II Stirling, III partie dense, IV marche aléatoire, V série de fonctions.
+  - 2023 Maths 2 (endomorphismes qui commutent, matrices M₃): 3 — I diagonalisables qui commutent, II diagonalisabilité de xA+yB, III matrices symétriques.
+  - 2024 Maths 1 (fonction intégrale, Fourier): 3 — I–II intégrale à paramètre, III–IV Fourier/Dirichlet, V variable aléatoire discrète.
+  - 2024 Maths 2 (matrices symétriques, fonction C^∞ sur la sphère): 3 — I racine carrée, II fonction matricielle C^∞, III extrema sur la sphère unité.
+  - **Page anchors are approximate** for these four: the source PDFs have a scrambled OCR text layer and no PDF renderer is available here, so `pageStart` uses a sequential-part heuristic (Partie I→p1, II→p2, …) rather than verified page numbers. Chapter tags are read from the (garbled but legible) text and are accurate.
+  - **Deferred — TN 2026 Maths 1 & 2:** image-only scans with no text layer; can't be read without OCR/rendering. Untagged until then.
+- **Remaining:** tag the Moroccan CNC batch (12 papers); grab recent CNC 2022+ (hashed host); tag TN 2026 once readable; continue Centrale/CCINP.
 
 - [~] A first set of concours papers added with full metadata and bundled PDFs. — **1 of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
 - [x] Exercises entered as pointer records (paper + page range) with chapitre tags + primary — the 4-hour problème *"Exemples de contraintes symplectiques linéaires"* modelled as its 3 substantial parts: II Objets symplectiques (p1–3), III Déterminant/décomposition polaire/génération (p3–5), IV Injections symplectiques (p5–6).

@@ -206,6 +206,23 @@
 
     { "id": "tn-maths1-2025-e", "paperId": "tn-maths1-2025", "label": "Exercice — Loi d'une somme de variables aléatoires", "pageStart": 1, "pageEnd": 2, "chapterIds": ["variables-aleatoires-discretes"], "primaryChapterId": "variables-aleatoires-discretes" },
     { "id": "tn-maths1-2025-p1", "paperId": "tn-maths1-2025", "label": "Problème, Partie I — Intégrales généralisées", "pageStart": 2, "pageEnd": 4, "chapterIds": ["integration-intervalle-quelconque", "integrales-parametre"], "primaryChapterId": "integration-intervalle-quelconque" },
-    { "id": "tn-maths1-2025-p2", "paperId": "tn-maths1-2025", "label": "Problème, Parties II–III — Intégrales à paramètre, séries entières", "pageStart": 4, "pageEnd": 6, "chapterIds": ["integrales-parametre", "series-entieres", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" }
+    { "id": "tn-maths1-2025-p2", "paperId": "tn-maths1-2025", "label": "Problème, Parties II–III — Intégrales à paramètre, séries entières", "pageStart": 4, "pageEnd": 6, "chapterIds": ["integrales-parametre", "series-entieres", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" },
+
+    { "id": "tn-maths1-2023-i", "paperId": "tn-maths1-2023", "label": "Parties I–II — Préliminaires et preuve de la formule de Stirling", "pageStart": 1, "pageEnd": 2, "chapterIds": ["analyse-asymptotique", "integration-intervalle-quelconque", "integrales-parametre"], "primaryChapterId": "analyse-asymptotique" },
+    { "id": "tn-maths1-2023-iii", "paperId": "tn-maths1-2023", "label": "Partie III — Un exemple d'une partie dense de C⁰(R₊)", "pageStart": 2, "pageEnd": 3, "chapterIds": ["suites-series-fonctions", "topologie-evn"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "tn-maths1-2023-iv", "paperId": "tn-maths1-2023", "label": "Partie IV — Application à une marche aléatoire", "pageStart": 3, "pageEnd": 3, "chapterIds": ["variables-aleatoires-discretes"], "primaryChapterId": "variables-aleatoires-discretes" },
+    { "id": "tn-maths1-2023-v", "paperId": "tn-maths1-2023", "label": "Partie V — Une série de fonctions", "pageStart": 3, "pageEnd": 4, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+
+    { "id": "tn-maths2-2023-i", "paperId": "tn-maths2-2023", "label": "Partie I — Endomorphismes diagonalisables qui commutent", "pageStart": 1, "pageEnd": 2, "chapterIds": ["reduction-endomorphismes", "dimension-finie"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "tn-maths2-2023-ii", "paperId": "tn-maths2-2023", "label": "Partie II — Diagonalisabilité de xA + yB et polynôme caractéristique", "pageStart": 2, "pageEnd": 3, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "tn-maths2-2023-iii", "paperId": "tn-maths2-2023", "label": "Partie III — Matrices symétriques réelles", "pageStart": 3, "pageEnd": 4, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "tn-maths1-2024-i", "paperId": "tn-maths1-2024", "label": "Parties I–II — Fonction intégrale à paramètre et régularité", "pageStart": 1, "pageEnd": 2, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" },
+    { "id": "tn-maths1-2024-iii", "paperId": "tn-maths1-2024", "label": "Parties III–IV — Coefficients de Fourier et noyau de Dirichlet", "pageStart": 2, "pageEnd": 3, "chapterIds": ["series-numeriques", "suites-series-fonctions", "integrales-parametre"], "primaryChapterId": "series-numeriques" },
+    { "id": "tn-maths1-2024-v", "paperId": "tn-maths1-2024", "label": "Partie V — Variable aléatoire discrète (partie indépendante)", "pageStart": 3, "pageEnd": 4, "chapterIds": ["variables-aleatoires-discretes"], "primaryChapterId": "variables-aleatoires-discretes" },
+
+    { "id": "tn-maths2-2024-i", "paperId": "tn-maths2-2024", "label": "Partie I — Racine carrée d'une matrice symétrique positive", "pageStart": 1, "pageEnd": 2, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+    { "id": "tn-maths2-2024-ii", "paperId": "tn-maths2-2024", "label": "Partie II — Étude d'une fonction matricielle de classe C^∞", "pageStart": 2, "pageEnd": 3, "chapterIds": ["calcul-differentiel", "prehilbertiens-euclidiens-y2"], "primaryChapterId": "calcul-differentiel" },
+    { "id": "tn-maths2-2024-iii", "paperId": "tn-maths2-2024", "label": "Partie III — Extrema sur la sphère unité et valeurs propres", "pageStart": 3, "pageEnd": 4, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "topologie-evn"], "primaryChapterId": "prehilbertiens-euclidiens-y2" }
   ]
 }
