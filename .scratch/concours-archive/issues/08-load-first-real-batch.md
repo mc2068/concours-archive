@@ -61,7 +61,12 @@
   - **Borderline (kept, in-program tools tagged rather than the hors-programme headline):** 2019 M2 (fonction caractéristique), 2021 M1 partie III–IV (loi du demi-cercle → tagged via méthode des moments / dénombrement), 2021 M2 (transformée de Fourier → tagged via intégrales à paramètre). Consistent with the 2015-M2-sous-gaussiennes call.
   - Licence note: Centrale's annales show no explicit reuse licence (unlike Mines-Ponts CC BY-NC-ND); bundled for this non-commercial prépa archive, consistent with the pre-existing Centrale papers.
 - **Archive: 152 exercises across 63 papers** — 🇫🇷 Mines-Ponts (2014–26) + Centrale (2019–26), 🇹🇳 (2023–25), 🇲🇦 CNC (2015–21). Only 2 papers untagged (TN 2026 M1/M2, answer-booklet format).
-- **Remaining:** grab recent CNC 2022+ (hashed iamateacher host); grab CCINP back-catalogue; tag TN 2026; de-impose TN booklets.
+- **CCINP grabbed & tagged — 2019–2026 (15 papers, 30 exercises).** Official annales (concours-commun-inp.fr). The page mixes sujets with jury *rapports* under near-identical names; only the `MP1M1`/`MP3M2`-pattern sujets were kept, each verified by its "SESSION 20xx" header (not "RAPPORT DE L'ÉPREUVE").
+  - CCINP structure is 2 exercices + 1 problème. Maths 2 papers are linear-algebra heavy (réduction, Dunford, Vandermonde, euclidien); Maths 1 mix analysis / séries / probabilités.
+  - **Informatique exercices excluded (ADR 0002 — hors-programme for a maths filter):** the Python/SQL/graphes "informatique commune / tronc commun" exercices in 2019 M2, 2023 M1, 2024 M2, 2025 M2, 2026 M1 are not tagged (they're CS, not a Tunisian maths chapitre).
+  - Licence: no explicit reuse licence shown; bundled as with the other French banks.
+- **Archive: 182 exercises across 78 papers** — 🇫🇷 Mines-Ponts 26 · Centrale 16 · CCINP 16 · 🇲🇦 CNC 13 · 🇹🇳 7. All four major French banks now covered. Only 2 papers untagged (TN 2026 M1/M2, answer-booklet).
+- **Remaining:** grab recent CNC 2022+ (hashed iamateacher host); tag TN 2026; de-impose TN booklets; X-ENS if a source is found.
 
 - [~] A first set of concours papers added with full metadata and bundled PDFs. — **1 of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
 - [x] Exercises entered as pointer records (paper + page range) with chapitre tags + primary — the 4-hour problème *"Exemples de contraintes symplectiques linéaires"* modelled as its 3 substantial parts: II Objets symplectiques (p1–3), III Déterminant/décomposition polaire/génération (p3–5), IV Injections symplectiques (p5–6).
