@@ -15,7 +15,14 @@
   - 2024 Maths 1 (intégrale de Dirichlet généralisée): 4 exercises — I intégrale à paramètre, II série pour sinus, III Dirichlet, IV espérance E(|Sₙ|).
   - 2024 Maths 2 (phénomènes de seuil dans les graphes): 3 exercises — I matrices d'adjacence, II fonction de seuil, III copie d'un graphe.
 - **Data-integrity guard added** (`src/data/dataset.integrity.test.ts`): every exercise's paper/chapters resolve, primary ∈ tags, sane page ranges, unique ids, every `pdfPath` bundled. Protects hand-entered content.
-- **Remaining:** tag Mines-Ponts 2014–2023 (18 papers still untagged, so their years don't yet surface in the chapter filter); continue TN/MA batch.
+- **Exercises tagged — Mines-Ponts 2021, 2022, 2023 (6 papers, 17 exercises).**
+  - 2023 Maths 1 (théorème de stabilité de Liapounov): 3 — A norme sur L(E), B système différentiel linéaire, C démonstration.
+  - 2023 Maths 2 (fonction de Wallis): 4 — ζ(1), régularité/équivalents, série entière, convexité logarithmique.
+  - 2022 Maths 1 (formule de Hardy-Ramanujan): 2 — A–B partitions/série entière, C–D estimations. **Parties E–G excluded** (fonctions caractéristiques → convergence vers une gaussienne: loi normale / TCL, hors-programme tunisien — ADR 0002).
+  - 2022 Maths 2 (exponentielles de matrices): 4 — préliminaires, Trotter-Kato, algèbres de Lie, comportement asymptotique.
+  - 2021 Maths 1 (théorème de De Moivre-Laplace): **1 only** — the in-programme opening (Stirling + convergence de l'intégrale de Gauss). The rest (convergence en loi vers la gaussienne) is **excluded** as hors-programme tunisien (ADR 0002).
+  - 2021 Maths 2 (fonctions de matrices symétriques): 3 — définition (calcul fonctionnel), continuité du spectre, convexité.
+- **Remaining:** tag Mines-Ponts 2014–2020 (14 papers still untagged, so those years don't yet surface in the chapter filter); continue TN/MA batch.
 
 - [~] A first set of concours papers added with full metadata and bundled PDFs. — **1 of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
 - [x] Exercises entered as pointer records (paper + page range) with chapitre tags + primary — the 4-hour problème *"Exemples de contraintes symplectiques linéaires"* modelled as its 3 substantial parts: II Objets symplectiques (p1–3), III Déterminant/décomposition polaire/génération (p3–5), IV Injections symplectiques (p5–6).
