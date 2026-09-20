@@ -22,7 +22,14 @@
   - 2022 Maths 2 (exponentielles de matrices): 4 — préliminaires, Trotter-Kato, algèbres de Lie, comportement asymptotique.
   - 2021 Maths 1 (théorème de De Moivre-Laplace): **1 only** — the in-programme opening (Stirling + convergence de l'intégrale de Gauss). The rest (convergence en loi vers la gaussienne) is **excluded** as hors-programme tunisien (ADR 0002).
   - 2021 Maths 2 (fonctions de matrices symétriques): 3 — définition (calcul fonctionnel), continuité du spectre, convexité.
-- **Remaining:** tag Mines-Ponts 2014–2020 (14 papers still untagged, so those years don't yet surface in the chapter filter); continue TN/MA batch.
+- **Exercises tagged — Mines-Ponts 2018, 2019, 2020 (6 papers, 17 exercises).** All mapped cleanly; nothing unmappable this batch.
+  - 2020 Maths 1 (endomorphismes nilpotents, th. de Gerstenhaber): 2 — I–III préliminaires, IV démonstration.
+  - 2020 Maths 2 (nombre de sites visités par une marche aléatoire): 3 — A–B récurrence, C–D marches de Bernoulli, E marche sur Z².
+  - 2019 Maths 1 (asymptotique de séries entières, équation d'Airy): 3 — A séries entières, B démonstration probabiliste, C Airy.
+  - 2019 Maths 2 (rayon spectral de la matrice de Hilbert): 3 — A Perron-Frobenius, B–C inégalité de Hilbert, D majoration.
+  - 2018 Maths 1 (lemme de Fekete, th. d'Erdős-Szekeres): 3 — A–B Fekete, C–D Erdős-Szekeres, E suite aléatoire.
+  - 2018 Maths 2 (racines carrées de matrices complexes, Newton): 3 — A–B existence, C algorithme de Newton, D–E stabilité.
+- **Remaining:** tag Mines-Ponts 2014–2017 (8 papers still untagged, so those years don't yet surface in the chapter filter); continue TN/MA batch.
 
 - [~] A first set of concours papers added with full metadata and bundled PDFs. — **1 of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
 - [x] Exercises entered as pointer records (paper + page range) with chapitre tags + primary — the 4-hour problème *"Exemples de contraintes symplectiques linéaires"* modelled as its 3 substantial parts: II Objets symplectiques (p1–3), III Déterminant/décomposition polaire/génération (p3–5), IV Injections symplectiques (p5–6).
