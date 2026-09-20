@@ -18,6 +18,11 @@ const examBrands = [...new Set(dataset.papers.map((p) => p.examBrand))].sort((a,
   a.localeCompare(b, 'fr'),
 );
 const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b - a);
+
+// Masthead facts. Counted off the dataset so they can never drift from what the
+// archive actually holds.
+const exerciseTotal = dataset.exercises.length;
+const paperTotal = dataset.papers.length;
 ---
 
 <!doctype html>
@@ -32,32 +37,54 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <title>Concours archive</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>Concours archive — exercices de concours par chapitre</title>
   </head>
-  <body class="min-h-screen bg-surface font-sans text-ink antialiased">
-    <div class="mx-auto max-w-6xl px-4 py-6 md:py-8">
-      <header class="mb-6 flex items-center justify-between gap-4">
-        <h1 class="text-xl font-semibold">Concours archive</h1>
-        <!-- Mobile only: the sidebar collapses into a sheet behind this toggle -->
-        <button
-          type="button"
-          id="sidebar-toggle"
-          class="btn btn--secondary sidebar-toggle"
-          aria-expanded="false"
-          aria-controls="sidebar"
-        >
-          Chapitres &amp; filtres
-        </button>
-      </header>
+  <body class="flex min-h-screen flex-col bg-surface font-sans text-ink antialiased">
+    <header class="masthead">
+      <div class="masthead__inner mx-auto max-w-6xl px-4 py-5 md:py-6">
+        <div class="masthead__brand">
+          <img class="masthead__mark" src="/logo.png" alt="" width="40" height="40" />
+          <div class="min-w-0">
+            <h1 class="masthead__title">Concours archive</h1>
+            <p class="masthead__tagline">
+              Exercices de concours classés par chapitre — programme tunisien 2ème prépa MP
+            </p>
+          </div>
+        </div>
+        <dl class="masthead__stats">
+          <div>
+            <dd class="masthead__stat-value">{exerciseTotal}</dd>
+            <dt class="masthead__stat-label">Exercices</dt>
+          </div>
+          <div>
+            <dd class="masthead__stat-value">{paperTotal}</dd>
+            <dt class="masthead__stat-label">Épreuves</dt>
+          </div>
+        </dl>
+      </div>
+    </header>
 
-      <div class="flex flex-col gap-6 md:flex-row md:gap-8">
+    <div class="mx-auto w-full max-w-6xl flex-1 px-4 py-6 md:py-8">
+      <!-- Mobile only: the sidebar collapses into a sheet behind this toggle -->
+      <button
+        type="button"
+        id="sidebar-toggle"
+        class="btn btn--secondary sidebar-toggle mb-4"
+        aria-expanded="false"
+        aria-controls="sidebar"
+      >
+        Chapitres &amp; filtres
+      </button>
+
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
         <!-- Sidebar: the chapitre front door (a collapsible sheet on mobile) -->
         <aside
           id="sidebar"
-          class="sidebar w-full shrink-0 md:w-72"
+          class="sidebar panel w-full shrink-0 p-4 md:w-72"
           data-open="false"
           aria-label="Chapitres et filtres"
         >
@@ -120,17 +147,26 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
 
       <!-- Main column: results -->
       <main class="min-w-0 flex-1">
-        <h2 id="heading" class="text-xl font-semibold">Tous les exercices</h2>
-        <p id="count" class="mt-1 text-ink-muted"></p>
-        <ul id="results" class="mt-4 overflow-hidden rounded-md border border-border bg-surface-raised"></ul>
-        <noscript>
-          <p class="empty-state">
-            Ce site a besoin de JavaScript pour filtrer les exercices.
-          </p>
-        </noscript>
+        <section class="panel overflow-hidden">
+          <div class="panel__header">
+            <h2 id="heading" class="panel__title">Tous les exercices</h2>
+            <p id="count" class="panel__count"></p>
+          </div>
+          <ul id="results"></ul>
+          <noscript>
+            <p class="empty-state">Ce site a besoin de JavaScript pour filtrer les exercices.</p>
+          </noscript>
+        </section>
       </main>
       </div>
     </div>
+
+    <footer class="site-footer">
+      <div class="mx-auto max-w-6xl px-4 py-6">
+        Concours archive — archives des concours de France, Tunisie et Maroc,
+        remises dans les chapitres du programme tunisien MP.
+      </div>
+    </footer>
 
     <script>
       import { dataset } from '../data/dataset';
@@ -236,7 +272,7 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
         const href = paper ? pdfHref(paper.pdfPath, ex.pageStart) : null;
         if (href) {
           const open = document.createElement('a');
-          open.className = 'btn btn--secondary';
+          open.className = 'btn btn--primary';
           open.href = href;
           open.target = '_blank';
           open.rel = 'noopener noreferrer';
@@ -267,6 +303,14 @@ const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b -
       function emptyState(): HTMLLIElement {
         const li = document.createElement('li');
         li.className = 'empty-state';
+
+        const art = document.createElement('img');
+        art.className = 'empty-state__art';
+        art.src = '/empty-state.png';
+        art.alt = '';
+        art.width = 72;
+        art.height = 72;
+        li.appendChild(art);
 
         const title = document.createElement('p');
         title.className = 'empty-state__title';
