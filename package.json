@@ -6,7 +6,8 @@
   "description": "Archive filtrable des exercices de concours (2ème prépa MP, Tunisie) par chapitre.",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run verify && astro build",
+    "verify": "vitest run src/data/archive.check.test.ts",
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run",
@@ -17,8 +18,9 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "sharp": "^0.34.5",
     "@tailwindcss/vite": "^4.0.17",
+    "@types/node": "^26.6.2",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.0.17",
     "typescript": "^5.8.2",
     "vite": "^6.4.3",

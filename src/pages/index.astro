@@ -1,28 +1,28 @@
 ---
 import '../styles/global.css';
-import { dataset } from '../data/dataset';
+import { archive } from '../data/archive';
 import { FLAGS } from '../lib/format';
 import type { Country } from '../lib/types';
 
-const chapitres = [...dataset.chapitres].sort((a, b) => a.order - b.order);
+const chapitres = [...archive.chapitres].sort((a, b) => a.order - b.order);
 const domains = [...new Set(chapitres.map((c) => c.domain))];
 
 // Refinement options, derived from the papers actually in the dataset so the
 // controls only ever offer values that can return a result.
 const COUNTRY_LABELS: Record<Country, string> = { FR: 'France', TN: 'Tunisie', MA: 'Maroc' };
-const presentCountries = new Set(dataset.papers.map((p) => p.country));
+const presentCountries = new Set(archive.papers.map((p) => p.country));
 const countries = (Object.keys(COUNTRY_LABELS) as Country[])
   .filter((code) => presentCountries.has(code))
   .map((code) => ({ code, label: COUNTRY_LABELS[code] }));
-const examBrands = [...new Set(dataset.papers.map((p) => p.examBrand))].sort((a, b) =>
+const examBrands = [...new Set(archive.papers.map((p) => p.examBrand))].sort((a, b) =>
   a.localeCompare(b, 'fr'),
 );
-const years = [...new Set(dataset.papers.map((p) => p.year))].sort((a, b) => b - a);
+const years = [...new Set(archive.papers.map((p) => p.year))].sort((a, b) => b - a);
 
 // Masthead facts. Counted off the dataset so they can never drift from what the
 // archive actually holds.
-const exerciseTotal = dataset.exercises.length;
-const paperTotal = dataset.papers.length;
+const exerciseTotal = archive.exercises.length;
+const paperTotal = archive.papers.length;
 ---
 
 <!doctype html>
@@ -169,14 +169,14 @@ const paperTotal = dataset.papers.length;
     </footer>
 
     <script>
-      import { dataset } from '../data/dataset';
+      import { archive } from '../data/archive';
       import { filterExercises } from '../lib/filter';
       import { FLAGS, exerciseCount, paperEpreuve } from '../lib/format';
       import { pdfHref } from '../lib/pdf';
       import type { Country, Exercise, FilterCriteria } from '../lib/types';
 
-      const chapitreById = new Map(dataset.chapitres.map((c) => [c.id, c]));
-      const paperById = new Map(dataset.papers.map((p) => [p.id, p]));
+      const chapitreById = new Map(archive.chapitres.map((c) => [c.id, c]));
+      const paperById = new Map(archive.papers.map((p) => [p.id, p]));
 
       const heading = document.getElementById('heading')!;
       const countEl = document.getElementById('count')!;
@@ -283,7 +283,7 @@ const paperTotal = dataset.papers.length;
       }
 
       function render(): void {
-        const matches = filterExercises(dataset, currentCriteria());
+        const matches = filterExercises(archive, currentCriteria());
 
         heading.textContent = selectedChapterId
           ? (chapitreById.get(selectedChapterId)?.name ?? 'Exercices')
