@@ -60,8 +60,20 @@ from the archive in v1 (see ADR 0002) — it is noise for a Tunisian student.
 
 ### Filter axes
 The dimensions a student narrows by: **chapitre** (primary, single-select) plus
-optional stackable **country** (🇫🇷/🇹🇳/🇲🇦), **exam brand**, and **year**,
-combined with AND logic.
+the optional **refinements** — country (🇫🇷/🇹🇳/🇲🇦), exam brand, and year.
+
+### Selection
+What the student has currently narrowed the **archive** to: one **chapitre** (or
+all of them) plus whatever **refinements** are active. A selection always
+exists — "all chapitres, no refinements" is one, not the absence of one. It is
+what a student browses *from*; the matching **exercises** are what it produces.
+NOT the results themselves.
+
+### Refinement
+An optional narrowing stacked on top of the **chapitre**: country, exam brand,
+or year. Refinements combine with the chapitre and with each other by AND, and
+they are **clearable without losing the chapitre** — "réinitialiser les filtres"
+returns a student to the chapitre-only view, never to the whole archive.
 
 ## Scope of the MVP
 
