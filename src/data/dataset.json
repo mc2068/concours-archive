@@ -110,6 +110,16 @@
     { "id": "cnc-maths1-2020", "examBrand": "CNC", "year": 2020, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2020.pdf" },
     { "id": "cnc-maths1-2021", "examBrand": "CNC", "year": 2021, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2021.pdf" },
     { "id": "cnc-maths2-2021", "examBrand": "CNC", "year": 2021, "country": "MA", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/cnc-maths2-2021.pdf" },
+    { "id": "cnc-maths1-2022", "examBrand": "CNC", "year": 2022, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2022.pdf" },
+    { "id": "cnc-maths2-2022", "examBrand": "CNC", "year": 2022, "country": "MA", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/cnc-maths2-2022.pdf" },
+    { "id": "cnc-maths1-2023", "examBrand": "CNC", "year": 2023, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2023.pdf" },
+    { "id": "cnc-maths2-2023", "examBrand": "CNC", "year": 2023, "country": "MA", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/cnc-maths2-2023.pdf" },
+    { "id": "cnc-maths1-2024", "examBrand": "CNC", "year": 2024, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2024.pdf" },
+    { "id": "cnc-maths2-2024", "examBrand": "CNC", "year": 2024, "country": "MA", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/cnc-maths2-2024.pdf" },
+    { "id": "cnc-maths1-2025", "examBrand": "CNC", "year": 2025, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2025.pdf" },
+    { "id": "cnc-maths2-2025", "examBrand": "CNC", "year": 2025, "country": "MA", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/cnc-maths2-2025.pdf" },
+    { "id": "cnc-maths1-2026", "examBrand": "CNC", "year": 2026, "country": "MA", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/cnc-maths1-2026.pdf" },
+    { "id": "cnc-maths2-2026", "examBrand": "CNC", "year": 2026, "country": "MA", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/cnc-maths2-2026.pdf" },
     { "id": "tn-maths1-2023", "examBrand": "Concours tunisien", "year": 2023, "country": "TN", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/tn-maths1-2023.pdf" },
     { "id": "tn-maths2-2023", "examBrand": "Concours tunisien", "year": 2023, "country": "TN", "subject": "Maths", "label": "Maths 2", "pdfPath": "/papers/tn-maths2-2023.pdf" },
     { "id": "tn-maths1-2024", "examBrand": "Concours tunisien", "year": 2024, "country": "TN", "subject": "Maths", "label": "Maths 1", "pdfPath": "/papers/tn-maths1-2024.pdf" },
@@ -238,21 +248,21 @@
     { "id": "tn-maths1-2025-p2", "paperId": "tn-maths1-2025", "label": "Problème, Parties II–III — Intégrales à paramètre, séries entières", "pageStart": 4, "pageEnd": 6, "chapterIds": ["integrales-parametre", "series-entieres", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" },
 
     { "id": "tn-maths1-2023-i", "paperId": "tn-maths1-2023", "label": "Parties I–II — Préliminaires et preuve de la formule de Stirling", "pageStart": 2, "pageEnd": 2, "chapterIds": ["analyse-asymptotique", "integration-intervalle-quelconque", "integrales-parametre"], "primaryChapterId": "analyse-asymptotique" },
-    { "id": "tn-maths1-2023-iii", "paperId": "tn-maths1-2023", "label": "Partie III — Un exemple d'une partie dense de C⁰(R₊)", "pageStart": 2, "pageEnd": 2, "chapterIds": ["suites-series-fonctions", "topologie-evn"], "primaryChapterId": "suites-series-fonctions" },
-    { "id": "tn-maths1-2023-iv", "paperId": "tn-maths1-2023", "label": "Partie IV — Application à une marche aléatoire", "pageStart": 1, "pageEnd": 1, "chapterIds": ["variables-aleatoires-discretes"], "primaryChapterId": "variables-aleatoires-discretes" },
-    { "id": "tn-maths1-2023-v", "paperId": "tn-maths1-2023", "label": "Partie V — Une série de fonctions", "pageStart": 3, "pageEnd": 3, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "tn-maths1-2023-iii", "paperId": "tn-maths1-2023", "label": "Partie III — Un exemple d'une partie dense de C⁰(R₊)", "pageStart": 3, "pageEnd": 3, "chapterIds": ["suites-series-fonctions", "topologie-evn"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "tn-maths1-2023-iv", "paperId": "tn-maths1-2023", "label": "Partie IV — Application à une marche aléatoire", "pageStart": 4, "pageEnd": 4, "chapterIds": ["variables-aleatoires-discretes"], "primaryChapterId": "variables-aleatoires-discretes" },
+    { "id": "tn-maths1-2023-v", "paperId": "tn-maths1-2023", "label": "Partie V — Une série de fonctions", "pageStart": 5, "pageEnd": 5, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
 
-    { "id": "tn-maths2-2023-i", "paperId": "tn-maths2-2023", "label": "Partie I — Endomorphismes diagonalisables qui commutent", "pageStart": 1, "pageEnd": 1, "chapterIds": ["reduction-endomorphismes", "dimension-finie"], "primaryChapterId": "reduction-endomorphismes" },
-    { "id": "tn-maths2-2023-ii", "paperId": "tn-maths2-2023", "label": "Partie II — Diagonalisabilité de xA + yB et polynôme caractéristique", "pageStart": 2, "pageEnd": 2, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
-    { "id": "tn-maths2-2023-iii", "paperId": "tn-maths2-2023", "label": "Partie III — Matrices symétriques réelles", "pageStart": 3, "pageEnd": 3, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+    { "id": "tn-maths2-2023-i", "paperId": "tn-maths2-2023", "label": "Partie I — Endomorphismes diagonalisables qui commutent", "pageStart": 1, "pageEnd": 2, "chapterIds": ["reduction-endomorphismes", "dimension-finie"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "tn-maths2-2023-ii", "paperId": "tn-maths2-2023", "label": "Partie II — Diagonalisabilité de xA + yB et polynôme caractéristique", "pageStart": 3, "pageEnd": 4, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "tn-maths2-2023-iii", "paperId": "tn-maths2-2023", "label": "Partie III — Matrices symétriques réelles", "pageStart": 5, "pageEnd": 5, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
 
     { "id": "tn-maths1-2024-i", "paperId": "tn-maths1-2024", "label": "Parties I–II — Fonction intégrale à paramètre et régularité", "pageStart": 1, "pageEnd": 1, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" },
-    { "id": "tn-maths1-2024-iii", "paperId": "tn-maths1-2024", "label": "Parties III–IV — Coefficients de Fourier et noyau de Dirichlet", "pageStart": 2, "pageEnd": 2, "chapterIds": ["series-numeriques", "suites-series-fonctions", "integrales-parametre"], "primaryChapterId": "series-numeriques" },
-    { "id": "tn-maths1-2024-v", "paperId": "tn-maths1-2024", "label": "Partie V — Variable aléatoire discrète (partie indépendante)", "pageStart": 1, "pageEnd": 1, "chapterIds": ["variables-aleatoires-discretes"], "primaryChapterId": "variables-aleatoires-discretes" },
+    { "id": "tn-maths1-2024-iii", "paperId": "tn-maths1-2024", "label": "Parties III–IV — Coefficients de Fourier et noyau de Dirichlet", "pageStart": 2, "pageEnd": 3, "chapterIds": ["series-numeriques", "suites-series-fonctions", "integrales-parametre"], "primaryChapterId": "series-numeriques" },
+    { "id": "tn-maths1-2024-v", "paperId": "tn-maths1-2024", "label": "Partie V — Variable aléatoire discrète (partie indépendante)", "pageStart": 4, "pageEnd": 5, "chapterIds": ["variables-aleatoires-discretes"], "primaryChapterId": "variables-aleatoires-discretes" },
 
-    { "id": "tn-maths2-2024-i", "paperId": "tn-maths2-2024", "label": "Partie I — Racine carrée d'une matrice symétrique positive", "pageStart": 2, "pageEnd": 2, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+    { "id": "tn-maths2-2024-i", "paperId": "tn-maths2-2024", "label": "Partie I — Racine carrée d'une matrice symétrique positive", "pageStart": 1, "pageEnd": 1, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
     { "id": "tn-maths2-2024-ii", "paperId": "tn-maths2-2024", "label": "Partie II — Étude d'une fonction matricielle de classe C^∞", "pageStart": 2, "pageEnd": 2, "chapterIds": ["calcul-differentiel", "prehilbertiens-euclidiens-y2"], "primaryChapterId": "calcul-differentiel" },
-    { "id": "tn-maths2-2024-iii", "paperId": "tn-maths2-2024", "label": "Partie III — Extrema sur la sphère unité et valeurs propres", "pageStart": 2, "pageEnd": 2, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "topologie-evn"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+    { "id": "tn-maths2-2024-iii", "paperId": "tn-maths2-2024", "label": "Partie III — Extrema sur la sphère unité et valeurs propres", "pageStart": 3, "pageEnd": 5, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "topologie-evn"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
 
     { "id": "cnc-maths1-2015-p1", "paperId": "cnc-maths1-2015", "label": "Problème 1 — Équation différentielle vectorielle, dimension et normes équivalentes", "pageStart": 2, "pageEnd": 3, "chapterIds": ["equations-differentielles", "dimension-finie", "topologie-evn", "fonctions-convexes"], "primaryChapterId": "equations-differentielles" },
     { "id": "cnc-maths1-2015-p2", "paperId": "cnc-maths1-2015", "label": "Problème 2 — Théorème de Liouville (fonctions harmoniques sur Z^d)", "pageStart": 3, "pageEnd": 6, "chapterIds": ["topologie-evn", "reels-suites"], "primaryChapterId": "topologie-evn" },
@@ -286,6 +296,35 @@
 
     { "id": "cnc-maths2-2021-e", "paperId": "cnc-maths2-2021", "label": "Exercice — Réduction et matrices", "pageStart": 1, "pageEnd": 1, "chapterIds": ["reduction-endomorphismes", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
     { "id": "cnc-maths2-2021-p", "paperId": "cnc-maths2-2021", "label": "Problème — Racines carrées de matrices réelles", "pageStart": 2, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "cnc-maths1-2022-e", "paperId": "cnc-maths1-2022", "label": "Exercice — Polynôme complexe et suite de fonctions", "pageStart": 1, "pageEnd": 1, "chapterIds": ["suites-series-fonctions", "polynomes-fractions", "nombres-complexes-trigo"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "cnc-maths1-2022-p", "paperId": "cnc-maths1-2022", "label": "Problème (Parties 1–3)", "pageStart": 2, "pageEnd": 5, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+
+    { "id": "cnc-maths2-2022-p", "paperId": "cnc-maths2-2022", "label": "Problème — Matrices circulantes et diagonalisation", "pageStart": 1, "pageEnd": 4, "chapterIds": ["reduction-endomorphismes", "matrices", "nombres-complexes-trigo"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "cnc-maths1-2023-e", "paperId": "cnc-maths1-2023", "label": "Exercice — Fonction de deux variables", "pageStart": 1, "pageEnd": 1, "chapterIds": ["calcul-differentiel"], "primaryChapterId": "calcul-differentiel" },
+    { "id": "cnc-maths1-2023-p", "paperId": "cnc-maths1-2023", "label": "Problème — Intégrale de Dirichlet", "pageStart": 2, "pageEnd": 5, "chapterIds": ["integration-intervalle-quelconque", "integrales-parametre"], "primaryChapterId": "integration-intervalle-quelconque" },
+
+    { "id": "cnc-maths2-2023-e", "paperId": "cnc-maths2-2023", "label": "Exercice — Réduction dans M₂(R)", "pageStart": 1, "pageEnd": 1, "chapterIds": ["reduction-endomorphismes", "matrices"], "primaryChapterId": "reduction-endomorphismes" },
+    { "id": "cnc-maths2-2023-p", "paperId": "cnc-maths2-2023", "label": "Problème — Endomorphismes euclidiens", "pageStart": 2, "pageEnd": 4, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "variables-aleatoires-discretes"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+
+    { "id": "cnc-maths1-2024-e", "paperId": "cnc-maths1-2024", "label": "Exercice", "pageStart": 1, "pageEnd": 1, "chapterIds": ["suites-series-fonctions", "series-numeriques"], "primaryChapterId": "suites-series-fonctions" },
+    { "id": "cnc-maths1-2024-p", "paperId": "cnc-maths1-2024", "label": "Problème — Fonctions, intégrales et probabilités", "pageStart": 2, "pageEnd": 5, "chapterIds": ["integration-intervalle-quelconque", "variables-aleatoires-discretes", "series-numeriques"], "primaryChapterId": "integration-intervalle-quelconque" },
+
+    { "id": "cnc-maths2-2024-e", "paperId": "cnc-maths2-2024", "label": "Exercice — Matrices de M₃(R)", "pageStart": 1, "pageEnd": 1, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "cnc-maths2-2024-p", "paperId": "cnc-maths2-2024", "label": "Problème — Réduction et polynômes d'endomorphismes", "pageStart": 2, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "cnc-maths1-2025-e", "paperId": "cnc-maths1-2025", "label": "Exercice — Fonction définie par une intégrale", "pageStart": 1, "pageEnd": 1, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque"], "primaryChapterId": "integrales-parametre" },
+    { "id": "cnc-maths1-2025-p", "paperId": "cnc-maths1-2025", "label": "Problème — Séries et probabilités", "pageStart": 2, "pageEnd": 5, "chapterIds": ["series-numeriques", "variables-aleatoires-discretes", "integration-intervalle-quelconque"], "primaryChapterId": "series-numeriques" },
+
+    { "id": "cnc-maths2-2025-e", "paperId": "cnc-maths2-2025", "label": "Exercice — Matrices et vecteurs", "pageStart": 1, "pageEnd": 1, "chapterIds": ["matrices", "reduction-endomorphismes"], "primaryChapterId": "matrices" },
+    { "id": "cnc-maths2-2025-p", "paperId": "cnc-maths2-2025", "label": "Problème — Réduction des endomorphismes", "pageStart": 2, "pageEnd": 5, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
+
+    { "id": "cnc-maths1-2026-e", "paperId": "cnc-maths1-2026", "label": "Exercice — La loi binomiale négative", "pageStart": 2, "pageEnd": 2, "chapterIds": ["variables-aleatoires-discretes", "series-entieres", "denombrement"], "primaryChapterId": "variables-aleatoires-discretes" },
+    { "id": "cnc-maths1-2026-p", "paperId": "cnc-maths1-2026", "label": "Problème — Intégrale auxiliaire et étude de F(x)=Σxⁿ/(n!)²", "pageStart": 3, "pageEnd": 5, "chapterIds": ["integrales-parametre", "series-entieres", "integration-intervalle-quelconque", "fonctions-convexes"], "primaryChapterId": "integrales-parametre" },
+
+    { "id": "cnc-maths2-2026-e", "paperId": "cnc-maths2-2026", "label": "Exercice — Réflexions dans un espace euclidien", "pageStart": 1, "pageEnd": 1, "chapterIds": ["prehilbertiens-euclidiens-y2", "dimension-finie"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
+    { "id": "cnc-maths2-2026-p", "paperId": "cnc-maths2-2026", "label": "Problème — Endomorphismes orthogonaux et réduction", "pageStart": 2, "pageEnd": 4, "chapterIds": ["prehilbertiens-euclidiens-y2", "reduction-endomorphismes", "matrices"], "primaryChapterId": "prehilbertiens-euclidiens-y2" },
 
     { "id": "cnc-maths1-2017-e", "paperId": "cnc-maths1-2017", "label": "Exercice — Somme de la série de Riemann Σ1/n²", "pageStart": 2, "pageEnd": 2, "chapterIds": ["series-numeriques", "integration"], "primaryChapterId": "series-numeriques" },
     { "id": "cnc-maths1-2017-p1", "paperId": "cnc-maths1-2017", "label": "Problème 1 — Opérateur intégral Nₙ(f)", "pageStart": 2, "pageEnd": 4, "chapterIds": ["integrales-parametre", "integration-intervalle-quelconque", "suites-series-fonctions"], "primaryChapterId": "integrales-parametre" },
