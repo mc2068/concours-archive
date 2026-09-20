@@ -9,26 +9,50 @@
   and marked DERIVED. Roles, and the reasoning behind each reversal of the older
   "ink & paper" system, live in .scratch/concours-archive/design.md.
 */
-@theme {
-  /* Colours — the five from the board */
+
+/*
+  The board's five colours. They live outside `@theme` on purpose: they are the
+  palette, not roles, so no utility should be generated for them, and a theme
+  variable nothing references can be tree-shaken out from under the `var()`
+  chain below. These five hexes are the only ones in this file.
+*/
+:root {
   --color-charcoal: #1f1f1f;
   --color-brown: #4a3f2f;
   --color-beige: #c9b8a4;
   --color-ivory: #ede6dc;
   --color-cream: #f7f5ef;
 
+  /*
+    Spacing. Also outside `@theme`, because Tailwind generates its own spacing
+    utilities (`px-4`, `gap-6`) from a built-in scale on the same 4px base, and
+    naming these `--spacing-*` would redefine what those utilities mean in the
+    markup. Only the component classes below use them.
+  */
+  --space-half: 2px; /* the one sub-step: a label tight under its value */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+}
+
+@theme {
   /* Colours — roles */
-  --color-surface: #f7f5ef; /* cream: the page */
+  --color-surface: var(--color-cream); /* the page */
   --color-surface-raised: #ffffff; /* panels, result rows */
-  --color-surface-sunken: #ede6dc; /* ivory: hover ground, chip ground */
-  --color-ink: #1f1f1f; /* charcoal: primary text */
+  --color-surface-sunken: var(--color-ivory); /* hover ground, emphasis chip */
+  --color-ink: var(--color-charcoal); /* primary text */
   --color-ink-muted: #6e6355; /* DERIVED: secondary text, 5.4:1 on cream */
   --color-border: #e0d8ca; /* DERIVED: decorative hairlines only */
   --color-border-strong: #8a7b66; /* DERIVED: a control's own boundary, 3.8:1 on cream */
-  --color-accent: #4a3f2f; /* brown: selected chapitre, primary action */
-  --color-accent-strong: #1f1f1f; /* charcoal: outline on accent fills */
-  --color-on-accent: #f7f5ef; /* cream text on brown/charcoal fills */
-  --color-focus-ring: #1f1f1f;
+  --color-accent: var(--color-brown); /* selected chapitre, primary action */
+  --color-accent-strong: var(--color-charcoal); /* outline on accent fills */
+  --color-on-accent: var(--color-cream); /* text on brown/charcoal fills */
+  --color-focus-ring: var(--color-charcoal);
 
   /* Typography — two families: Playfair Display sets, Inter runs */
   --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
@@ -56,6 +80,28 @@
   look in CSS keeps one source of truth for both server and client markup.
 */
 
+/* ------------------------------------------------------------ shared rules */
+
+/* The board's caption style: every small uppercase label on the page. */
+.masthead__stat-label,
+.domain-label,
+.filter-field > label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+/* One focus treatment for everything focusable (design.md §Tokens). */
+.chapitre-btn:focus-visible,
+.btn:focus-visible,
+.filter-select:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
 /* ---------------------------------------------------------------- masthead */
 
 /*
@@ -73,18 +119,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: var(--space-6);
   flex-wrap: wrap;
 }
 .masthead__brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--space-3);
   min-width: 0;
 }
+/* The mark is not square: width leads and the height follows, or it stretches. */
 .masthead__mark {
   width: 40px;
-  height: 40px;
+  height: auto;
   flex-shrink: 0;
 }
 .masthead__title {
@@ -96,7 +143,7 @@
   text-transform: uppercase;
 }
 .masthead__tagline {
-  margin-top: 2px;
+  margin-top: var(--space-half);
   font-size: 13px;
   line-height: 20px;
   color: var(--color-beige);
@@ -105,10 +152,17 @@
 /*
   Dataset facts, the board's "statistiques" row reduced to the two counts this
   archive actually has. They are read off the dataset, never typed in.
+
+  `column-reverse` lets the markup keep `<dt>` before its `<dd>`, as a
+  definition list requires, while the number still reads above its label.
 */
 .masthead__stats {
   display: flex;
-  gap: 32px;
+  gap: var(--space-8);
+}
+.masthead__stat {
+  display: flex;
+  flex-direction: column-reverse;
 }
 .masthead__stat-value {
   font-family: var(--font-display);
@@ -118,11 +172,6 @@
   font-variant-numeric: tabular-nums;
 }
 .masthead__stat-label {
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--color-beige);
 }
 
@@ -138,7 +187,6 @@
   }
   .masthead__mark {
     width: 32px;
-    height: 32px;
   }
   .masthead__stats {
     display: none;
@@ -155,7 +203,7 @@
   box-shadow: var(--shadow-card);
 }
 .panel__header {
-  padding: 20px 20px 16px;
+  padding: var(--space-5) var(--space-5) var(--space-4);
   border-bottom: 1px solid var(--color-border);
 }
 .panel__title {
@@ -166,13 +214,10 @@
   color: var(--color-ink);
 }
 .panel__count {
-  margin-top: 2px;
+  margin-top: var(--space-half);
   font-size: 14px;
   line-height: 20px;
   color: var(--color-ink-muted);
-}
-.panel__body {
-  padding: 16px;
 }
 
 /* --------------------------------------------------------- chapitre column */
@@ -181,7 +226,7 @@
   display: block;
   width: 100%;
   text-align: left;
-  padding: 8px 12px;
+  padding: var(--space-2) var(--space-3);
   border: 0;
   border-radius: var(--radius-sm);
   background: transparent;
@@ -203,19 +248,6 @@
   color: var(--color-on-accent);
   font-weight: 600;
 }
-.chapitre-btn:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-
-.domain-label {
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
-}
 
 /* ------------------------------------------------------------- result rows */
 
@@ -223,16 +255,19 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  padding: 16px 20px;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
   border-bottom: 1px solid var(--color-border);
 }
 .result-row:last-child {
   border-bottom: 0;
 }
-.result-row:hover {
-  background: var(--color-cream);
-}
+/*
+  Deliberately no hover ground. A row is not clickable — only its "Ouvrir"
+  button is — so tinting the whole row promises a click that isn't there. It
+  also has nowhere to go: every ground in this palette sits within ~1.1:1 of the
+  chips', so a hovered row would swallow them. The button carries the hover.
+*/
 /* The content column; min-width:0 lets it shrink so a long label wraps
    instead of forcing the row wider than a phone screen. */
 .result-row__main {
@@ -247,16 +282,16 @@
   overflow-wrap: anywhere;
 }
 .result-row__meta {
-  margin-top: 2px;
+  margin-top: var(--space-half);
   font-size: 13px;
   line-height: 20px;
   color: var(--color-ink-muted);
 }
 .result-row__chips {
-  margin-top: 10px;
+  margin-top: var(--space-3);
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: var(--space-2);
 }
 
 /* ----------------------------------------------------------------- buttons */
@@ -269,7 +304,7 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
-  padding: 7px 14px;
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-md);
   text-decoration: none;
   cursor: pointer;
@@ -290,10 +325,6 @@
 .btn--secondary:hover {
   background: var(--color-surface-sunken);
 }
-.btn:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
 
 /* ------------------------------------------------------------------- chips */
 
@@ -301,7 +332,7 @@
   font-size: 12px;
   line-height: 16px;
   font-weight: 500;
-  padding: 3px 10px;
+  padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
   background: var(--color-surface);
@@ -321,14 +352,16 @@
 /* ------------------------------------------------------------ empty states */
 
 .empty-state {
-  padding: 40px 20px;
+  padding: var(--space-10) var(--space-5);
   text-align: center;
   color: var(--color-ink-muted);
 }
+/* Not square either: width leads, height follows. */
 .empty-state__art {
+  display: block;
   width: 72px;
-  height: 72px;
-  margin: 0 auto 16px;
+  height: auto;
+  margin: 0 auto var(--space-4);
   opacity: 0.9;
 }
 .empty-state__title {
@@ -339,12 +372,12 @@
   color: var(--color-ink);
 }
 .empty-state__hint {
-  margin-top: 4px;
+  margin-top: var(--space-1);
   font-size: 14px;
   line-height: 20px;
 }
 .empty-state__reset {
-  margin-top: 16px;
+  margin-top: var(--space-4);
 }
 
 /* ------------------------------------------------------------ mobile sheet */
@@ -377,60 +410,33 @@
 /*
   Refinement filters (country / exam brand / year + reset). They live in the
   sidebar under the chapitre list (design.md §Layout), so the fields stack
-  vertically and the controls span the sidebar's width.
+  vertically and the controls span the sidebar's width. The reset is a plain
+  secondary Button — the same control as the one in the empty state.
 */
 .filter-bar {
-  margin-top: 24px;
-  padding-top: 24px;
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
   border-top: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 .filter-field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-}
-.filter-field > label {
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
+  gap: var(--space-1);
 }
 .filter-select {
   width: 100%;
   font: inherit;
   font-size: 14px;
   line-height: 20px;
-  padding: 7px 10px;
+  padding: var(--space-2) var(--space-3);
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   background: var(--color-surface-raised);
   color: var(--color-ink);
   cursor: pointer;
-}
-.filter-reset {
-  align-self: flex-start;
-  font: inherit;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 6px 12px;
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-md);
-  background: transparent;
-  color: var(--color-ink);
-  cursor: pointer;
-}
-.filter-reset:hover {
-  background: var(--color-surface-sunken);
-}
-.filter-select:focus-visible,
-.filter-reset:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
 }
 
 /* ------------------------------------------------------------------ footer */

@@ -47,7 +47,7 @@ const paperTotal = dataset.papers.length;
     <header class="masthead">
       <div class="masthead__inner mx-auto max-w-6xl px-4 py-5 md:py-6">
         <div class="masthead__brand">
-          <img class="masthead__mark" src="/logo.png" alt="" width="40" height="40" />
+          <img class="masthead__mark" src="/logo.png" alt="" width="128" height="114" />
           <div class="min-w-0">
             <h1 class="masthead__title">Concours archive</h1>
             <p class="masthead__tagline">
@@ -56,13 +56,13 @@ const paperTotal = dataset.papers.length;
           </div>
         </div>
         <dl class="masthead__stats">
-          <div>
-            <dd class="masthead__stat-value">{exerciseTotal}</dd>
+          <div class="masthead__stat">
             <dt class="masthead__stat-label">Exercices</dt>
+            <dd class="masthead__stat-value">{exerciseTotal}</dd>
           </div>
-          <div>
-            <dd class="masthead__stat-value">{paperTotal}</dd>
+          <div class="masthead__stat">
             <dt class="masthead__stat-label">Épreuves</dt>
+            <dd class="masthead__stat-value">{paperTotal}</dd>
           </div>
         </dl>
       </div>
@@ -89,60 +89,60 @@ const paperTotal = dataset.papers.length;
           aria-label="Chapitres et filtres"
         >
           <nav aria-label="Chapitres">
-          <button type="button" class="chapitre-btn" data-chapitre-reset aria-pressed="true">
-            Tous les chapitres
-          </button>
-          {
-            domains.map((domain) => (
-              <div class="mt-6">
-                <p class="domain-label">{domain}</p>
-                <div class="mt-2 flex flex-col gap-1">
-                  {chapitres
-                    .filter((c) => c.domain === domain)
-                    .map((c) => (
-                      <button
-                        type="button"
-                        class="chapitre-btn"
-                        data-chapitre-id={c.id}
-                        aria-pressed="false"
-                      >
-                        {c.name}
-                      </button>
-                    ))}
+            <button type="button" class="chapitre-btn" data-chapitre-reset aria-pressed="true">
+              Tous les chapitres
+            </button>
+            {
+              domains.map((domain) => (
+                <div class="mt-6">
+                  <p class="domain-label">{domain}</p>
+                  <div class="mt-2 flex flex-col gap-1">
+                    {chapitres
+                      .filter((c) => c.domain === domain)
+                      .map((c) => (
+                        <button
+                          type="button"
+                          class="chapitre-btn"
+                          data-chapitre-id={c.id}
+                          aria-pressed="false"
+                        >
+                          {c.name}
+                        </button>
+                      ))}
+                  </div>
                 </div>
-              </div>
-            ))
-          }
-        </nav>
+              ))
+            }
+          </nav>
 
-        <!-- Refinement filters: stackable AND on top of the chapitre -->
-        <div class="filter-bar" role="group" aria-label="Filtres">
-          <p class="domain-label">Affiner</p>
-          <div class="filter-field">
-            <label for="filter-country">Pays</label>
-            <select id="filter-country" class="filter-select">
-              <option value="">Tous</option>
-              {countries.map((c) => <option value={c.code}>{FLAGS[c.code]} {c.label}</option>)}
-            </select>
+          <!-- Refinement filters: stackable AND on top of the chapitre -->
+          <div class="filter-bar" role="group" aria-label="Filtres">
+            <p class="domain-label">Affiner</p>
+            <div class="filter-field">
+              <label for="filter-country">Pays</label>
+              <select id="filter-country" class="filter-select">
+                <option value="">Tous</option>
+                {countries.map((c) => <option value={c.code}>{FLAGS[c.code]} {c.label}</option>)}
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filter-brand">Concours</label>
+              <select id="filter-brand" class="filter-select">
+                <option value="">Tous</option>
+                {examBrands.map((b) => <option value={b}>{b}</option>)}
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filter-year">Année</label>
+              <select id="filter-year" class="filter-select">
+                <option value="">Toutes</option>
+                {years.map((y) => <option value={y}>{y}</option>)}
+              </select>
+            </div>
+            <button type="button" id="filter-reset" class="btn btn--secondary self-start">
+              Réinitialiser les filtres
+            </button>
           </div>
-          <div class="filter-field">
-            <label for="filter-brand">Concours</label>
-            <select id="filter-brand" class="filter-select">
-              <option value="">Tous</option>
-              {examBrands.map((b) => <option value={b}>{b}</option>)}
-            </select>
-          </div>
-          <div class="filter-field">
-            <label for="filter-year">Année</label>
-            <select id="filter-year" class="filter-select">
-              <option value="">Toutes</option>
-              {years.map((y) => <option value={y}>{y}</option>)}
-            </select>
-          </div>
-          <button type="button" id="filter-reset" class="filter-reset">
-            Réinitialiser les filtres
-          </button>
-        </div>
       </aside>
 
       <!-- Main column: results -->
@@ -308,8 +308,8 @@ const paperTotal = dataset.papers.length;
         art.className = 'empty-state__art';
         art.src = '/empty-state.png';
         art.alt = '';
-        art.width = 72;
-        art.height = 72;
+        art.width = 192;
+        art.height = 206;
         li.appendChild(art);
 
         const title = document.createElement('p');

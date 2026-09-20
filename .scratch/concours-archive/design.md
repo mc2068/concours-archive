@@ -56,7 +56,11 @@ without reading this section.
 
 ## Tokens (light theme)
 
-Colours. The first five are the board's, verbatim; the rest are roles.
+Colours come in two layers. The board's five are the **palette** and live in a
+plain `:root` block — they are the only hexes in `global.css`, and they are kept
+out of `@theme` so Tailwind generates no utility for them and cannot tree-shake
+one out from under the `var()` chain. The **roles** live in `@theme` and point at
+the palette.
 
 | token | value | role |
 | --- | --- | --- |
@@ -67,7 +71,7 @@ Colours. The first five are the board's, verbatim; the rest are roles.
 | `cream` | `#f7f5ef` | board colour 5 — the page |
 | `surface` | `#f7f5ef` | page background |
 | `surface-raised` | `#ffffff` | panels, result rows |
-| `surface-sunken` | `#ede6dc` | hover ground, chip ground |
+| `surface-sunken` | `#ede6dc` | hover ground (chapitre items, secondary buttons), emphasis-chip ground |
 | `ink` | `#1f1f1f` | primary text |
 | `ink-muted` | `#6e6355` | **DERIVED** — secondary text; 5.4:1 on cream |
 | `border` | `#e0d8ca` | **DERIVED** — decorative hairlines only |
@@ -92,7 +96,12 @@ title 24/32/600 display · row title 18/26/600 display · body 14–16 sans · m
 13/20 sans · chip and group label 12/16/500 sans, uppercase `+0.08em`. Years use
 tabular figures (`.tnum`).
 
-Spacing (**DERIVED**, carried over unchanged): 4 · 8 · 12 · 16 · 24 · 32.
+Spacing (**DERIVED**): real `--space-*` tokens, 4 · 8 · 12 · 16 · 20 · 24 · 32 ·
+40, plus one sub-step `--space-half` 2px for a label sitting tight under its
+value. Every component class spaces itself from these; nothing in `global.css`
+carries a loose pixel value. They sit in `:root`, not `@theme`, because naming
+them `--spacing-*` would redefine what Tailwind's own `px-4` / `gap-6` mean in
+the markup.
 Radius: `sm` 4 (chapitre items) · `md` 8 (buttons, selects) · `lg` 12 (panels) ·
 `pill` 999 (chips).
 Shadow (**DERIVED**): `shadow-card` — a 1px contact shadow plus a wide, faint
@@ -114,21 +123,33 @@ lift. One value; nothing else on the page is elevated.
   select. The selected chapitre is a **filled brown bar with cream text**, not a
   tint: on a page this neutral, a tint cannot carry the only state that matters.
 - **ResultRow** — display-serif label / `meta` `🇫🇷 Mines Maths 1 · 2019` line /
-  ChapterChips / "Ouvrir" button; hairline separated, cream on hover.
-- **ChapterChip** — `radius-pill`, outlined not filled. The primary chapitre
-  takes an ivory ground, a beige border and brown text, so it cannot compete
-  with the filled selection in the column.
+  ChapterChips / "Ouvrir" button; hairline separated. **No hover ground**: a row
+  is not clickable, only its button is, and every ground in this palette sits
+  within ~1.1:1 of the chips', so a tinted row would swallow them.
+- **ChapterChip** — `radius-pill`, outlined not filled: a cream ground and a
+  hairline border, so chips read as objects on the white sheet. The primary
+  chapitre takes the ivory ground, a beige border and brown text, so it cannot
+  compete with the filled selection in the column.
 - **ResultsState** — the match count in the panel header, and an "Aucun
   résultat" empty state built around `design/empty-state.png` with a reset.
 - **Footer** — one muted line over a hairline, saying what the archive is.
 
 ## Brand assets
 
-`design/` holds the full-size source art (~800 KB each, painted on an opaque
-cream ground). `scripts/build-brand-assets.mjs` unmixes that ground back out to
-an alpha channel, trims and downscales, and writes `public/logo.png`,
-`public/favicon.png` and `public/empty-state.png` — about 8 KB total. Re-run it
-after changing anything in `design/`; never hand-edit the files in `public/`.
+`design/` holds the full-size source art: `logo.png` and `empty-state.png`, 1.6
+MB between them, painted on an opaque cream ground.
+`scripts/build-brand-assets.mjs` keys that ground back out to an alpha channel,
+trims and downscales, and writes `public/logo.png`, `public/favicon.png` and
+`public/empty-state.png` — **about 21 KB total**, each at ~3x its CSS box.
+
+Neither mark is square. The pages size them by width with `height: auto`, and
+the script never forces a square — except the favicon, which browsers expect to
+be square and which is therefore *padded* onto a transparent 64x64 canvas, never
+stretched.
+
+The script depends on `sharp`, which is declared in `devDependencies` so the
+documented "re-run it" step survives a clean `npm ci`. Re-run it after changing
+anything in `design/`; never hand-edit the files in `public/`.
 
 ## CSS approach
 

@@ -40,20 +40,67 @@ engine, or any tested seam).
 - [x] Three reversals of "ink & paper" (one typeface → two; no shadows → one
       card shadow; amber accent → neutral fills) recorded in design.md with the
       reasoning, so they are not re-argued. Amber survives in the brand art only.
-- [x] Brand art shipped: `scripts/build-brand-assets.mjs` unmixes the cream
-      ground out of the `design/` source PNGs to alpha, trims and downscales —
-      2.5 MB of source art becomes ~8 KB in `public/` (logo, favicon, empty
-      state), and the mark sits on the charcoal masthead with no cream block.
+- [x] Brand art shipped: `scripts/build-brand-assets.mjs` keys the cream ground
+      out of the `design/` source PNGs to alpha, trims and downscales — 1.6 MB of
+      source art becomes ~21 KB in `public/` (logo, favicon, empty state), each
+      at ~3x its CSS box, and the mark sits on the charcoal masthead with no
+      cream block. Neither mark is square, so the pages size them by width with
+      `height: auto`; only the favicon is squared, by padding onto a transparent
+      canvas rather than by stretching.
 - [x] Verified in the browser at desktop and 375px: selection, empty state,
       focus rings, mobile sheet, no console errors, no horizontal scroll. Below
       640px the masthead counts are dropped so two results clear the fold.
-- [x] No regression — `astro check` clean, 34 tests pass. Nothing outside
-      `src/pages/index.astro`, `src/styles/global.css`, `public/` and `design/`
-      was touched.
+- [x] No regression — `astro check` clean, 34 tests pass. Beyond
+      `src/pages/index.astro`, `src/styles/global.css`, `public/` and `design/`,
+      the change adds `scripts/build-brand-assets.mjs` and declares its `sharp`
+      dependency in `package.json`; nothing else is touched.
 
 ## Notes
 
 - `CONTEXT.md` is unchanged on purpose: this ticket introduced no domain term.
   The glossary is not where visual decisions live.
+- The masthead's archive totals (exercices / épreuves) are the one addition no
+  user story asks for — the spec's count story is "how many match my filters",
+  which `panel__count` serves. They are kept deliberately, as the board's
+  "statistiques" row reduced to what this archive actually has, and they are
+  dropped below 640px.
 - No ADR: the decision is reversible in one file and already carries its
   reasoning in design.md, which is where the next reader will look.
+
+## Comments
+
+**Review round (`/code-review` against `25b4755`), all findings fixed.**
+
+Standards axis found 6 hard breaches and 7 judgement calls; Spec axis found 8.
+Both were told the ticket and design.md were written by the commit under review,
+so ticked boxes proved nothing. What changed:
+
+- **Aspect ratio.** `logo.png` (128x114) was pinned into a 40x40 box and
+  `empty-state.png` (96x103) into 72x72 — every brand image was stretched ~11%
+  and ~7%. Now `height: auto` with the intrinsic size on the tag, and the
+  favicon is padded square instead of squashed. The empty-state render also went
+  from 96px to 192px so it is ~3x its box on a phone.
+- **Spacing scale.** design.md claimed a derived scale that did not exist; ~14
+  values sat off it. Real `--space-*` tokens now, in `:root` so they cannot
+  redefine Tailwind's own `px-4` / `gap-6`.
+- **`sharp` was undeclared** — it resolved only through Astro's *optional*
+  dependency, so the documented "re-run the script" step would break under
+  `npm ci --omit=optional`. Declared in `devDependencies`.
+- **Asset size claims were wrong**: ~8 KB from 2.5 MB was really ~15 KB from
+  1.6 MB. Corrected here and in design.md, and now ~21 KB after the empty-state
+  bump.
+- **Invalid `<dl>`**: `<dd>` preceded `<dt>`. Reordered; `column-reverse` keeps
+  the number above its label.
+- **Row hover removed.** It used a palette colour outside its documented role,
+  and on hover a row's chips lost their ground. A row is not clickable anyway —
+  only its button is — so the tint promised a click that isn't there.
+- **Dead weight**: `design/favicon.ico` (838 KB) was shipped but consumed by
+  nothing, since the favicon derives from `logo.png`. Deleted; recoverable at
+  `25b4755:design/Favicon.ico`.
+- **Duplication**: the caption style (3x), the focus ring (3x) and
+  `.filter-reset` (a restatement of `.btn--secondary`) are now each one rule.
+  `--color-ivory` was declared and unused; palette and roles are now two layers,
+  with the roles pointing at the palette.
+- **Script**: the `floor` option no caller varied is a constant; `logo.png` is
+  keyed once and encoded twice instead of twice over; and an all-ground image
+  now throws a sentence instead of an opaque `extract` error.
