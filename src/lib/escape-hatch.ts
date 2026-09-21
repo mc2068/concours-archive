@@ -1,5 +1,5 @@
 import { filterExercises } from './filter';
-import type { Archive, FilterCriteria } from './types';
+import type { Archive, Selection } from './types';
 
 /**
  * The one button an empty result offers. `label` is its French text; `kind`
@@ -14,7 +14,7 @@ export interface EscapeHatch {
 }
 
 /**
- * Pick the escape hatch for criteria that match nothing: the smallest widening
+ * Pick the escape hatch for a selection that matches nothing: the smallest widening
  * that lands on results, so no button ever leads to a second empty page
  * (ticket 13).
  *
@@ -25,8 +25,8 @@ export interface EscapeHatch {
  *   everything, whatever refinements are active.
  * - `null` only when the archive itself is empty: there is nowhere to go.
  */
-export function escapeHatch(archive: Archive, criteria: FilterCriteria): EscapeHatch | null {
-  const { chapterId, country, examBrand, year } = criteria;
+export function escapeHatch(archive: Archive, selection: Selection): EscapeHatch | null {
+  const { chapterId, country, examBrand, year } = selection;
   const refined = country != null || examBrand != null || year != null;
 
   if (refined && filterExercises(archive, { chapterId }).length > 0) {

@@ -93,16 +93,6 @@ describe('filterExercises', () => {
       expect(ids(filterExercises(archive, { year: 2021 }))).toEqual(['e2']);
     });
 
-    it('filters by an inclusive year range', () => {
-      // 2020..2021 excludes the 2019 paper (e1). Order stays year-desc.
-      expect(ids(filterExercises(archive, { year: { from: 2020, to: 2021 } }))).toEqual(['e2', 'e3']);
-    });
-
-    it('treats an open-ended year range bound as unbounded', () => {
-      expect(ids(filterExercises(archive, { year: { from: 2020 } }))).toEqual(['e2', 'e3']); // 2020 and later
-      expect(ids(filterExercises(archive, { year: { to: 2020 } }))).toEqual(['e3', 'e1']); // up to 2020
-    });
-
     it('stacks chapter AND country AND brand together', () => {
       // series matches e1 (MA/CNC) and e3 (TN/Concours tunisien).
       // Add country TN → only e3.

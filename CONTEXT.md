@@ -71,9 +71,10 @@ NOT the results themselves.
 
 ### Refinement
 An optional narrowing stacked on top of the **chapitre**: country, exam brand,
-or year. Refinements combine with the chapitre and with each other by AND, and
-they are **clearable without losing the chapitre** — "réinitialiser les filtres"
-returns a student to the chapitre-only view, never to the whole archive.
+or year (a single year, not a range). Refinements combine with the chapitre
+and with each other by AND, and they are **clearable without losing the
+chapitre** — "réinitialiser les filtres" returns a student to the chapitre-only
+view, never to the whole archive.
 
 ## Scope of the MVP
 
