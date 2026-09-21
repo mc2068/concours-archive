@@ -93,3 +93,15 @@ export interface FilterCriteria {
   examBrand?: string;
   year?: number | YearRange;
 }
+
+/**
+ * What the student has narrowed the Archive to (CONTEXT.md, "Selection"): one
+ * chapitre or all of them, plus whatever refinements are active. Absent fields
+ * mean "all chapitres" / "no constraint", so `{}` — the whole archive — is a
+ * Selection too, not the absence of one. It is the {@link FilterCriteria} a
+ * student can actually express — a single year, never a range (ticket 14) —
+ * and what the matching exercises are produced from.
+ */
+export interface Selection extends Omit<FilterCriteria, 'year'> {
+  year?: number;
+}

@@ -169,14 +169,13 @@ const paperTotal = archive.papers.length;
     </footer>
 
     <script>
+      // The adapter: every line here either turns an event into an archive-view
+      // command or paints view() into the DOM. The state lives in archive-view.
       import { archive } from '../data/archive';
-      import { filterExercises } from '../lib/filter';
-      import { FLAGS, exerciseCount, paperEpreuve } from '../lib/format';
-      import { pdfHref } from '../lib/pdf';
-      import type { Country, Exercise, FilterCriteria } from '../lib/types';
+      import { createArchiveView, type Chip, type Row } from '../lib/archive-view';
+      import type { EscapeHatch } from '../lib/escape-hatch';
 
-      const chapitreById = new Map(archive.chapitres.map((c) => [c.id, c]));
-      const paperById = new Map(archive.papers.map((p) => [p.id, p]));
+      const archiveView = createArchiveView(archive);
 
       const heading = document.getElementById('heading')!;
       const countEl = document.getElementById('count')!;
@@ -190,51 +189,18 @@ const paperTotal = archive.papers.length;
       const resetBtn = document.getElementById('filter-reset') as HTMLButtonElement;
       const sidebar = document.getElementById('sidebar')!;
       const sidebarToggle = document.getElementById('sidebar-toggle') as HTMLButtonElement;
-      const chapitreResetBtn = document.querySelector('[data-chapitre-reset]') as HTMLButtonElement;
       // Tracks Tailwind's `md` breakpoint (768px); the CSS sheet rule uses the
       // same 767px boundary and the two must stay in lockstep.
       const isMobile = window.matchMedia('(max-width: 767px)');
 
-      let selectedChapterId: string | null = null;
-
-      function hasRefinements(): boolean {
-        return Boolean(countrySel.value || brandSel.value || yearSel.value);
-      }
-
-      // Reset returns to the chapitre-only view: clear refinements, keep the chapitre.
-      function clearRefinements(): void {
-        countrySel.value = '';
-        brandSel.value = '';
-        yearSel.value = '';
-        render();
-      }
-
-      function setSidebarOpen(open: boolean): void {
-        sidebar.dataset.open = String(open);
-        sidebarToggle.setAttribute('aria-expanded', String(open));
-      }
-
-      // Assemble the active criteria from the chapitre front door plus the
-      // optional refinement selects; an empty select value means "no constraint".
-      function currentCriteria(): FilterCriteria {
-        const criteria: FilterCriteria = {};
-        if (selectedChapterId) criteria.chapterId = selectedChapterId;
-        if (countrySel.value) criteria.country = countrySel.value as Country;
-        if (brandSel.value) criteria.examBrand = brandSel.value;
-        if (yearSel.value) criteria.year = Number(yearSel.value);
-        return criteria;
-      }
-
-      function chip(chapterId: string, isPrimary: boolean): HTMLElement {
+      function chipElement({ label, primary }: Chip): HTMLElement {
         const el = document.createElement('span');
-        el.className = isPrimary ? 'chip chip--primary' : 'chip';
-        el.textContent = chapitreById.get(chapterId)?.name ?? chapterId;
+        el.className = primary ? 'chip chip--primary' : 'chip';
+        el.textContent = label;
         return el;
       }
 
-      function row(ex: Exercise): HTMLLIElement {
-        const paper = paperById.get(ex.paperId);
-
+      function rowElement(r: Row): HTMLLIElement {
         const li = document.createElement('li');
         li.className = 'result-row';
 
@@ -243,25 +209,23 @@ const paperTotal = archive.papers.length;
 
         const title = document.createElement('div');
         title.className = 'result-row__title';
-        title.textContent = ex.label;
+        title.textContent = r.title;
         left.appendChild(title);
 
-        if (paper) {
+        if (r.meta) {
           const meta = document.createElement('div');
           meta.className = 'result-row__meta';
-          meta.append(`${FLAGS[paper.country]} ${paperEpreuve(paper)} · `);
+          meta.append(`${r.meta.flag} ${r.meta.epreuve} · `);
           const year = document.createElement('span');
           year.className = 'tnum';
-          year.textContent = String(paper.year);
+          year.textContent = r.meta.year;
           meta.appendChild(year);
           left.appendChild(meta);
         }
 
         const chips = document.createElement('div');
         chips.className = 'result-row__chips';
-        for (const id of ex.chapterIds) {
-          chips.appendChild(chip(id, id === ex.primaryChapterId));
-        }
+        chips.append(...r.chips.map(chipElement));
         left.appendChild(chips);
 
         li.appendChild(left);
@@ -269,11 +233,10 @@ const paperTotal = archive.papers.length;
         // "Ouvrir" opens the parent paper's PDF at the exercise's start page in
         // a new tab. Omitted entirely when there's no usable path, so a missing
         // pdfPath degrades to no action rather than a broken link.
-        const href = paper ? pdfHref(paper.pdfPath, ex.pageStart) : null;
-        if (href) {
+        if (r.href) {
           const open = document.createElement('a');
           open.className = 'btn btn--primary';
-          open.href = href;
+          open.href = r.href;
           open.target = '_blank';
           open.rel = 'noopener noreferrer';
           open.textContent = 'Ouvrir';
@@ -282,25 +245,9 @@ const paperTotal = archive.papers.length;
         return li;
       }
 
-      function render(): void {
-        const matches = filterExercises(archive, currentCriteria());
-
-        heading.textContent = selectedChapterId
-          ? (chapitreById.get(selectedChapterId)?.name ?? 'Exercices')
-          : 'Tous les exercices';
-        countEl.textContent = exerciseCount(matches.length);
-
-        results.replaceChildren();
-        if (matches.length === 0) {
-          results.appendChild(emptyState());
-          return;
-        }
-        for (const ex of matches) results.appendChild(row(ex));
-      }
-
-      // A clear "aucun résultat" state, never a blank list. Offers a reset when
-      // refinements are what narrowed the list to nothing (design.md ResultsState).
-      function emptyState(): HTMLLIElement {
+      // A clear "aucun résultat" state, never a blank list, with the one reset
+      // archive-view chose (design.md ResultsState).
+      function emptyState(escape: EscapeHatch | null): HTMLLIElement {
         const li = document.createElement('li');
         li.className = 'empty-state';
 
@@ -322,48 +269,70 @@ const paperTotal = archive.papers.length;
         hint.textContent = 'Aucun exercice ne correspond à ces filtres.';
         li.appendChild(hint);
 
-        // Always offer a way out of an empty result: clear the refinements that
-        // narrowed it, or — if only a chapitre is selected — widen to all.
-        const reset = document.createElement('button');
-        reset.type = 'button';
-        reset.className = 'btn btn--secondary empty-state__reset';
-        if (hasRefinements()) {
-          reset.textContent = 'Réinitialiser les filtres';
-          reset.addEventListener('click', clearRefinements);
-          li.appendChild(reset);
-        } else if (selectedChapterId) {
-          reset.textContent = 'Voir tous les exercices';
-          reset.addEventListener('click', () => chapitreResetBtn.click());
+        if (escape) {
+          const reset = document.createElement('button');
+          reset.type = 'button';
+          reset.className = 'btn btn--secondary empty-state__reset';
+          reset.textContent = escape.label;
+          reset.addEventListener(
+            'click',
+            command(() =>
+              escape.kind === 'clear-refinements' ? archiveView.clearRefinements() : archiveView.showAll(),
+            ),
+          );
           li.appendChild(reset);
         }
         return li;
       }
 
+      function paint(): void {
+        const v = archiveView.view();
+        heading.textContent = v.heading;
+        countEl.textContent = v.count;
+        for (const b of buttons) {
+          b.setAttribute('aria-pressed', String((b.dataset.chapitreId ?? null) === v.pressedChapitreId));
+        }
+        countrySel.value = v.refinements.country;
+        brandSel.value = v.refinements.examBrand;
+        yearSel.value = v.refinements.year;
+        sidebar.dataset.open = String(v.sheetOpen);
+        sidebarToggle.setAttribute('aria-expanded', String(v.sheetOpen));
+        results.replaceChildren(
+          ...(v.results.kind === 'rows' ? v.results.rows.map(rowElement) : [emptyState(v.results.escape)]),
+        );
+      }
+
+      // Wrap a command so the page repaints after it runs.
+      function command(run: () => void): () => void {
+        return () => {
+          run();
+          paint();
+        };
+      }
+
       for (const btn of buttons) {
-        btn.addEventListener('click', () => {
-          selectedChapterId = btn.dataset.chapitreId ?? null;
-          for (const b of buttons) {
-            const active = b === btn;
-            b.setAttribute('aria-pressed', String(active));
-          }
-          render();
-          // On mobile the sidebar is a collapsible sheet above the results;
-          // picking a chapitre closes it so the student lands on the matches.
-          if (isMobile.matches) setSidebarOpen(false);
-        });
+        btn.addEventListener('click', command(() => archiveView.selectChapitre(btn.dataset.chapitreId)));
       }
+      countrySel.addEventListener('change', command(() => archiveView.refine({ country: countrySel.value })));
+      brandSel.addEventListener('change', command(() => archiveView.refine({ examBrand: brandSel.value })));
+      yearSel.addEventListener('change', command(() => archiveView.refine({ year: yearSel.value })));
+      resetBtn.addEventListener('click', command(() => archiveView.clearRefinements()));
+      sidebarToggle.addEventListener('click', command(() => archiveView.toggleSheet()));
 
-      for (const sel of [countrySel, brandSel, yearSel]) {
-        sel.addEventListener('change', render);
-      }
+      const reportViewport = () => archiveView.setViewport(isMobile.matches ? 'mobile' : 'desktop');
+      isMobile.addEventListener('change', reportViewport);
+      reportViewport();
 
-      resetBtn.addEventListener('click', clearRefinements);
+      // A reload or back/forward can restore the selects' values — before this
+      // script runs in some browsers, after it in others (Chrome). Adopt them
+      // as the student's refinements now and again on pageshow, which fires
+      // once restoration is done, so the selects and the results never disagree.
+      const adoptSelects = () =>
+        archiveView.refine({ country: countrySel.value, examBrand: brandSel.value, year: yearSel.value });
+      adoptSelects();
+      window.addEventListener('pageshow', command(adoptSelects));
 
-      sidebarToggle.addEventListener('click', () => {
-        setSidebarOpen(sidebar.dataset.open !== 'true');
-      });
-
-      render();
+      paint();
     </script>
   </body>
 </html>

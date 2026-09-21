@@ -8,7 +8,7 @@ review that produced ticket 11, and its larger prize.
 
 **Blocked by:** None. Ticket 11 landed the Archive seam underneath this.
 
-**Status:** ready to build — grilled 2026-09-21; the decisions below are settled
+**Status:** done (commit pending)
 
 ## Context
 
@@ -120,7 +120,8 @@ no `pdfHref` call in the script.
 This kills `chapitreResetBtn.click()` (`:336`). "Voir tous les exercices" calls
 `selectChapitre(undefined)`, `pressedChapitreId` goes `null`, and the adapter's
 existing pass repaints `aria-pressed` across all 37 buttons — now as a node
-assertion.
+assertion. *(Amended by ticket 13, see Comments: `show-all` must now also
+clear the refinements, and the choice of hatch comes from `escapeHatch`.)*
 
 Rejected: DOM-shaped instructions (`[{ op: 'setText', target: 'heading', … }]`).
 They make the script an interpreter, with no type safety and an opcode stream to
@@ -204,28 +205,29 @@ in `docs/agents/domain.md`.
 
 ## Acceptance
 
-- [ ] The page's behaviour is unchanged for a student: same filtering, same
+- [x] The page's behaviour is unchanged for a student: same filtering, same
       ordering, same empty states, same mobile sheet, same URLs on "Ouvrir".
-- [ ] **Proved by a characterization diff, not by eye alone.** Before touching
+- [x] **Proved by a characterization diff, not by eye alone.** Before touching
       anything, drive the current page and dump `heading`, `count` and
       `results.innerHTML` for all 37 chapitres plus a handful of stacked and
       zero-result combinations; dump again after; diff. One `innerHTML` sweep
       covers ordering, meta, chips and every `#page=` anchor across all 205 rows
       at once. Snapshots live in the scratchpad, never the repo.
-- [ ] Selection, refinement and reset semantics are exercised by tests crossing
+- [x] Selection, refinement and reset semantics are exercised by tests crossing
       `archive-view`'s interface — including both empty-state escape hatches,
       `escape: null` (empty archive), "keep the chapitre, drop the refinements",
       `pressedChapitreId` going `null` after "Voir tous les exercices",
       close-on-selection only when mobile, and an unresolvable chapitre id.
-- [ ] No test reaches into `archive-view`'s own state or private helpers, and
+- [x] No test reaches into `archive-view`'s own state or private helpers, and
       its tests assert row-level `href` and `meta` directly rather than
       delegating to `pdf.test.ts`.
-- [ ] The `<script>` holds only `addEventListener → command` and
+- [x] The `<script>` holds only `addEventListener → command` and
       `view() → DOM`.
-- [ ] `vitest.config.ts` still `environment: 'node'`; no DOM dependency added.
-- [ ] `harness.test.ts` deleted; the remaining leaf tests pass unchanged.
-- [ ] The client bundle does not grow meaningfully (77,725 bytes at HEAD).
-- [ ] `astro check` clean, all tests pass, page verified in the browser at
+- [x] `vitest.config.ts` still `environment: 'node'`; no DOM dependency added.
+- [x] `harness.test.ts` deleted; the remaining leaf tests pass unchanged.
+- [x] The client bundle does not grow meaningfully (77,725 bytes when this was
+      written; 77,926 after ticket 13 — see Comments for the measured result).
+- [x] `astro check` clean, all tests pass, page verified in the browser at
       desktop and 375px.
 
 ## Notes
@@ -245,3 +247,91 @@ happens, whether the mobile sheet crosses the seam, what becomes of the 24
 existing leaf tests, how "behaviour unchanged" is actually proved, and the
 glossary gap. Two findings spun off as tickets 13 and 14 rather than absorbed.
 `CONTEXT.md` gained `Selection` and `Refinement` in the same pass.
+
+**2026-09-21 — ticket 13 landed first.** Three things this ticket now builds on:
+
+- **The choice of hatch already has a home.** `src/lib/escape-hatch.ts` exports
+  `escapeHatch(archive, criteria)`, which returns `{ label, kind } | null`: the
+  `escape` field above, verbatim. `archive-view` calls it instead of re-deriving
+  the choice. It becomes a public neighbour like `filter.ts`, with its own 7
+  tests. `archive-view`'s tests still assert both hatches through its own
+  interface.
+- **`show-all` now also clears the refinements.** It used to be reachable only
+  with no refinements active; now it's also offered when a chapitre with zero
+  exercises has refinements on it. So `selectChapitre(undefined)` alone is no
+  longer enough for that kind: the adapter must also call `clearRefinements()`,
+  or `archive-view` needs one command that does both.
+- **Take the characterization baseline after 13, not at 073afb8.** 13 changed
+  the empty state for 2,680 selections on purpose. The bundle baseline is now
+  77,926 bytes. The `index.astro` line numbers quoted above predate 13 and have
+  drifted by a few lines.
+
+**2026-09-21 — built.** `src/lib/archive-view.ts` owns the Selection and the
+sheet. The `<script>` is now the adapter: `command(() => archiveView.x())` on
+every event, and one `paint()` of `view()`. 22 tests cross the interface; the
+leaf tests are untouched. `harness.test.ts` is gone (77 tests, all green).
+
+Proof, following the plan above, with the baseline taken on 16acc85 (after 13):
+
+- **Characterization diff: 0 of 12,768 selections changed.** For each chapitre ×
+  pays × concours × année it recorded the heading, the count, a 64-bit hash of
+  `results.innerHTML`, `aria-pressed`, the select values and `data-open`; for
+  every empty result it clicked the escape button and recorded the same again.
+  The sweep drives the page only through real `click` / `change` events,
+  because the new script never reads state out of the DOM. Snapshots were
+  kept in the browser's localStorage, never the repo.
+- **Sheet scenario, 12 steps, identical at 1280px and at 375px**: toggle,
+  refine, pick a chapitre, both escape hatches. On mobile, picking a chapitre
+  or "Voir tous les exercices" closes the sheet; refining or "Réinitialiser"
+  does not.
+- **Speed: no regression.** Old and new pages timed side by side on identical
+  events: 205-row render 5.6 → 5.3 ms, country change 8.7 → 5.7 ms.
+- **Bundle 77,926 → 79,089 bytes (+1,163, +1.5%)**, as committed: the module, the row
+  objects `view()` builds, and the restored-selects fix. Judged not
+  meaningful; flag it if you disagree.
+
+Two commands beyond the four decided above, both forced by the one-way flow:
+
+- `showAll()`: after 13, "show-all" means clear the refinements *and* select
+  all chapitres. Folding that into one command keeps the escape switch in the
+  adapter at one call per kind, as decided.
+- `toggleSheet()`: `sheetOpen` crosses back in the view, so the toggle button
+  needs a command. It can't read `data-open` out of the DOM.
+
+One thing for whoever next automates this page: `setViewport` is fed by a
+`matchMedia` change listener, as decided. Chrome delivers those events during
+a rendering update, so in a **hidden** tab a resize doesn't reach the page until
+it's shown again. Students never hit this (a visible tab renders every frame).
+But a headless or background test that resizes and then clicks will see desktop
+behaviour. Load the page at the target width instead; the startup
+`reportViewport()` reads `.matches` synchronously.
+
+**2026-09-21 — reviewed** (`/code-review` against 16acc85, before committing).
+No hard violations on either axis. Acted on:
+
+- **Restored selects: fixed, and the old page was wrong too.** A reload or
+  back/forward can restore the `<select>`s' values. The first cut of `paint()`
+  blanked them, which the sweep couldn't see because every sweep starts from a
+  fresh load. Testing the fix showed the restore timing varies: Chrome restores
+  *after* the script's startup read. On the old page (served side by side, at
+  16acc85) that meant a desync after Back: the selects showed "CNC, 2019" over
+  all 205 exercises. The adapter now adopts the selects' values at startup
+  *and* on `pageshow`, which fires once restoration is done. After Back it now
+  shows the 3 CNC 2019 exercises under "CNC, 2019". Both are events turned
+  into commands, so the one-way flow holds. This is the one student-visible
+  change in the ticket, and it's a fix: the selects and the results can no
+  longer disagree.
+- **The missing-paper rule is documented once but enforced in two places.**
+  Half of it (a paper-less exercise satisfies no refinement) still runs in
+  `filterExercises`, and the paper lookup still happens there as well as in
+  `row()`. Moving it would change `filter.ts`, which this ticket keeps as a
+  public neighbour with its tests untouched. So `createArchiveView`'s doc now
+  says where each half is enforced, and candidate C is only half absorbed.
+- `Selection` is derived from `FilterCriteria` (`Omit<…, 'year'>` plus a
+  single-year `year`) instead of copying its fields; `Chip` is a named type;
+  the adapter's builders are `rowElement` / `chipElement`, so they no longer
+  share names with the module's `row()`.
+
+Left as judgement calls: the unchecked `as Country` in `refine` (same cast the
+old script had) and `refine`'s three near-identical `if` lines (each parses
+differently).
