@@ -18,8 +18,9 @@ export interface EscapeHatch {
  * that lands on results, so no button ever leads to a second empty page
  * (ticket 13).
  *
- * - Refinements active and the chapitre on its own has exercises → clear the
- *   refinements and keep the chapitre (CONTEXT.md, "Refinement").
+ * - Refinements active and dropping them would leave results (the chapitre has
+ *   exercises, or no chapitre is selected) → clear the refinements and keep
+ *   the chapitre (CONTEXT.md, "Refinement").
  * - Otherwise — the chapitre has no exercises at all, or is unknown — show
  *   everything, whatever refinements are active.
  * - `null` only when the archive itself is empty: there is nowhere to go.

@@ -5,7 +5,7 @@ matches, give the student a way out that works in one click instead of two.
 
 **Blocked by:** ~~12~~ — landed ahead of 12 instead; see Decision.
 
-**Status:** done (commit pending)
+**Status:** done (commit a7168bc)
 
 ## Context
 
@@ -51,11 +51,16 @@ combinations: 2,680 of the page's 12,768 selections.
 
 1. **One button that looks ahead** (question 1). The empty state offers the
    smallest widening that actually lands on results:
-   - refinements active and the chapitre alone has exercises → "Réinitialiser
-     les filtres" (keeps the chapitre — `CONTEXT.md`, "Refinement", unchanged);
+   - refinements active and dropping them would leave results — the chapitre
+     has exercises, or no chapitre is selected and the archive has any →
+     "Réinitialiser les filtres" (keeps the chapitre — `CONTEXT.md`,
+     "Refinement", unchanged);
    - otherwise → "Voir tous les exercices", which now clears the chapitre *and*
      the refinements in one click;
-   - empty archive → no button.
+   - empty archive → no button, whatever is selected. This is a small change
+     too: with refinements active, the old code offered "Réinitialiser les
+     filtres" into a second empty page. Unreachable while the archive holds any
+     exercises (205 today), but it follows from the same rule.
 2. **Moot** (question 2). Still one `btn--secondary`; `design.md` is untouched.
 3. **Not upstream** (question 3). Marking or disabling the empty chapitres in
    the sidebar is a separate call: it's a design-system change, and it wouldn't
