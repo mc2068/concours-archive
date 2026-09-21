@@ -4,7 +4,7 @@
 
 **Blocked by:** 02.
 
-**Status:** done (commit pending)
+**Status:** done (commit f960a62)
 
 - [x] Each result has an "Ouvrir" action linking to `<pdfPath>#page=<pageStart>`, `target="_blank"` + `rel="noopener noreferrer"` (`src/pages/index.astro`, href built by the tested `pdfHref` seam in `src/lib/pdf.ts`).
 - [x] A sample multi-page PDF is bundled for **every** seed paper under `public/papers/` and served (`200`, `application/pdf`, no attachment disposition → renders inline), so no "Ouvrir" is a broken link. Each is sized to cover its exercises' pages; real concours replace these placeholders in ticket 08.

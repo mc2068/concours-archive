@@ -4,7 +4,7 @@
 
 **Blocked by:** 02.
 
-**Status:** done (commit pending)
+**Status:** done (commit 5000b60)
 
 - [x] `filterExercises` accepts optional `country`, `examBrand`, and `year`/year-range in `criteria`, combined with the chapitre via AND; absent axes don't constrain (`src/lib/types.ts` `FilterCriteria` + `YearRange`, `src/lib/filter.ts`).
 - [x] Tests cover: stacked axes AND together; an exercise excluded when any active axis doesn't match; each axis alone; single year and inclusive/open-ended year range (`src/lib/filter.test.ts`, 16 tests).

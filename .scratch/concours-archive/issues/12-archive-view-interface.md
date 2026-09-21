@@ -8,7 +8,7 @@ review that produced ticket 11, and its larger prize.
 
 **Blocked by:** None. Ticket 11 landed the Archive seam underneath this.
 
-**Status:** done (commit pending)
+**Status:** done (commit e11e5cd, PR #11)
 
 ## Context
 
