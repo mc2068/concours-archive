@@ -4,7 +4,7 @@
 
 **Blocked by:** 03.
 
-**Status:** done (commit pending)
+**Status:** done (commit 433284f)
 
 - [x] A no-match combination shows a clear "Aucun résultat" state with a hint and a reset (offered when refinements narrowed it), never a blank list (`emptyState()` in `src/pages/index.astro`; `.empty-state__*` in `global.css`). Verified live.
 - [x] The match count reads naturally — "3 exercices" / "0 exercices" / "1 exercice" (`exerciseCount`, now locked by `src/lib/format.test.ts`).

@@ -4,7 +4,7 @@
 
 **Blocked by:** 04, 07.
 
-**Status:** in progress — first real paper loaded end-to-end on branch `ticket-08-first-batch` (template for the batch); more papers (TN/MA) to follow
+**Status:** done (first paper f58f6fc, first batch 8bcea65 in PR #2, the rest of the archive in PRs #4–#9). The archive holds 205 exercises across 88 papers, 0 untagged. The long tail below is follow-on work, not part of this ticket.
 
 ### Progress log
 
@@ -74,9 +74,9 @@
 - **CNC 2022–2026 grabbed & tagged (10 papers, 19 exercises).** Via mathencpge.ma → iamateacher.org (opaque content-hash URLs with no year; each file's session year verified from its content / page de garde before naming). CNC now complete 2015–2026.
   - Maths 2 are linear-algebra (matrices circulantes, réduction, endomorphismes euclidiens, réflexions); Maths 1 mix analysis / integrals / discrete probability (Dirichlet integral, loi binomiale négative, F(x)=Σxⁿ/(n!)²).
 - **Archive: 205 exercises across 88 papers, 0 untagged.** 🇫🇷 Mines-Ponts 26 (2014–26) · Centrale 16 (2019–26) · CCINP 16 (2019–26) · 🇲🇦 CNC 23 (2015–26) · 🇹🇳 7 (2023–26).
-- **Remaining (long tail):** de-impose the TN 2023–2024 booklet scans; older Centrale/CCINP (2014–2018); pre-2023 Tunisie; X-ENS if a first-party source is found.
+- **Remaining (long tail):** older Centrale/CCINP (2014–2018); pre-2023 Tunisie. (The TN 2023–2024 de-imposition is done in 25b4755. X-ENS is a sourcing dead end with no redistribution-friendly source, recorded in fe9960b.)
 
-- [~] A first set of concours papers added with full metadata and bundled PDFs. — **1 of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
+- [x] A first set of concours papers added with full metadata and bundled PDFs. The batch grew to all 88 papers (see the progress log). **First of the batch:** Centrale Maths 1 2022 (`public/papers/centrale-maths1-2022.pdf`, FR). The 4 placeholder papers + their sample PDFs are removed. More FR/TN/MA papers extend the batch.
 - [x] Exercises entered as pointer records (paper + page range) with chapitre tags + primary — the 4-hour problème *"Exemples de contraintes symplectiques linéaires"* modelled as its 3 substantial parts: II Objets symplectiques (p1–3), III Déterminant/décomposition polaire/génération (p3–5), IV Injections symplectiques (p5–6).
 - [x] Foreign exercise mapped to Tunisian chapitres — symplectic isn't a Tunisian chapter, but the problème maps via the tools it uses (matrices, déterminants, endomorphismes euclidiens/décomposition polaire, réduction, topologie des EVN). Nothing unmappable here to exclude.
 - [x] Spot-check (this paper): Matrices → Partie II; Déterminants → III + IV; Topologie EVN → III + IV; Préhilbertiens/euclidiens → III; an untouched chapitre → empty state; each "Ouvrir" opens the paper at the part's page (verified in browser).

@@ -4,7 +4,7 @@
 
 **Blocked by:** 01.
 
-**Status:** done (commit pending)
+**Status:** done (commits c6fd2f4, e420606)
 
 - [x] A seed dataset exists with the shapes from the spec: Chapitre `{id, name, order}`, Concours paper `{id, examBrand, year, country, subject, pdfPath}`, Exercise `{id, paperId, label, pageStart, pageEnd, chapterIds[], primaryChapterId}` — 5 chapitres, 4 papers, 8 exercises (`src/data/dataset.json`). Chapitre also carries `domain` for sidebar grouping.
 - [x] A pure `filterExercises(dataset, criteria)` returns exercises whose `chapterIds` include the selected chapitre (the "touches at all" rule), ordered year-desc then exam brand then label (`src/lib/filter.ts`).

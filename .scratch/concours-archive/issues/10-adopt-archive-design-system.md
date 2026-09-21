@@ -9,7 +9,7 @@ the structural presence it was missing: a real masthead, framed panels, a footer
 **Blocked by:** None (presentation only; no change to the dataset, the filter
 engine, or any tested seam).
 
-**Status:** done (commit pending)
+**Status:** done (commits e98a716, 374d460)
 
 ## Context
 

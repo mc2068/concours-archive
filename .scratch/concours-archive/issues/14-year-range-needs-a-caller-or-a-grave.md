@@ -7,7 +7,7 @@ a capability the UI has never offered.
 **Blocked by:** None. Touches the same files as ticket 12; do it after, not
 during.
 
-**Status:** resolved — dropped
+**Status:** done: dropped (commit 180fe15 in PR #13, review fixes f231754 in PR #14)
 
 ## Context
 

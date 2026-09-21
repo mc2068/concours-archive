@@ -4,7 +4,7 @@
 
 **Blocked by:** None (can start immediately, in parallel).
 
-**Status:** in review — seeded on branch `ticket-07-tunisian-chapters`, awaiting sign-off on the chapter list
+**Status:** done (commit e51c5e0, merged in PR #1; the chapter list was signed off by that merge)
 
 Scope note: the list covers the **full MP program (1ère + 2ème année)**, since concours test both years. The 1ère-année linear-algebra block was consolidated from the source's over-split rendering (18 → 13 Algèbre chapters) toward the official breakdown. Final spine: **37 chapitres** (Analyse 18, Algèbre 16, Probabilités 3).
 

@@ -4,7 +4,7 @@
 
 **Blocked by:** None (small enhancement on the existing schema; independent of content batches).
 
-**Status:** done (commit pending)
+**Status:** done (commit 3684539, PR #3)
 
 ## Context
 
