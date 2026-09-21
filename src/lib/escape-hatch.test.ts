@@ -25,16 +25,16 @@ const CLEAR: EscapeHatch = { label: 'Réinitialiser les filtres', kind: 'clear-r
 const SHOW_ALL: EscapeHatch = { label: 'Voir tous les exercices', kind: 'show-all' };
 
 /** What the page does on click, per the kind's documented contract. */
-function widen(criteria: Selection, hatch: EscapeHatch): Selection {
-  return hatch.kind === 'clear-refinements' ? { chapterId: criteria.chapterId } : {};
+function widen(selection: Selection, hatch: EscapeHatch): Selection {
+  return hatch.kind === 'clear-refinements' ? { chapterId: selection.chapterId } : {};
 }
 
 describe('escapeHatch', () => {
   it('clears the refinements and keeps the chapitre when the chapitre has exercises', () => {
     // series only has e1 (MA) — France narrows it to nothing.
-    const criteria = { chapterId: 'series', country: 'FR' as const };
-    expect(filterExercises(archive, criteria)).toEqual([]);
-    expect(escapeHatch(archive, criteria)).toEqual(CLEAR);
+    const selection = { chapterId: 'series', country: 'FR' as const };
+    expect(filterExercises(archive, selection)).toEqual([]);
+    expect(escapeHatch(archive, selection)).toEqual(CLEAR);
   });
 
   it('shows everything in one step when the chapitre has no exercises, even with refinements active', () => {
@@ -73,12 +73,12 @@ describe('escapeHatch', () => {
       for (const country of countries)
         for (const examBrand of brands)
           for (const year of years) {
-            const criteria: Selection = { chapterId, country, examBrand, year };
-            if (filterExercises(archive, criteria).length > 0) continue;
+            const selection: Selection = { chapterId, country, examBrand, year };
+            if (filterExercises(archive, selection).length > 0) continue;
             emptyCombos++;
-            const hatch = escapeHatch(archive, criteria);
-            expect(hatch, JSON.stringify(criteria)).not.toBeNull();
-            expect(filterExercises(archive, widen(criteria, hatch!)).length, JSON.stringify(criteria)).toBeGreaterThan(0);
+            const hatch = escapeHatch(archive, selection);
+            expect(hatch, JSON.stringify(selection)).not.toBeNull();
+            expect(filterExercises(archive, widen(selection, hatch!)).length, JSON.stringify(selection)).toBeGreaterThan(0);
           }
     expect(emptyCombos).toBeGreaterThan(0); // the sweep actually exercised something
   });

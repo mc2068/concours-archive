@@ -31,8 +31,8 @@ be a feature inside a ticket whose acceptance is "behaviour unchanged".
    design system has no slider.
 2. Does a range replace the single-year select, or sit beside it? Two ways to
    express one axis is a worse UI than either alone.
-3. Is the demand real? 88 papers across a handful of years — a range may be
-   solving a problem the archive is too small to have yet. **Dropping
+3. Is the demand real? 88 papers across a handful of years (wrong: 13 years, see Comments) — a
+   range may be solving a problem the archive is too small to have yet. **Dropping
    `YearRange`, its branch, its three tests and story 8 is a legitimate answer**,
    and the cheapest one to reverse if the archive grows.
 
@@ -40,7 +40,8 @@ be a feature inside a ticket whose acceptance is "behaviour unchanged".
 
 - [x] Either the range is reachable from the UI and `YearRange` has a caller, or
       `YearRange`, its `yearMatches` branch and its three tests are gone and
-      spec story 8 is struck.
+      spec story 8 is struck. (Story 8 was rewritten to a single year rather
+      than struck, because that half of it shipped. See Comments.)
 - [x] No third state: the type does not outlive the decision.
 
 ## Comments
@@ -48,7 +49,7 @@ be a feature inside a ticket whose acceptance is "behaviour unchanged".
 **Grilled 2026-09-21 — decision: drop.**
 
 - **The fact behind question 3 was wrong.** The archive is 88 papers across
-  **13 years (2014–2026)**, not "a handful": 4 a year for 2014–2018, 8–10 a
+  **13 years (2014–2026)**, not "a handful": 2–4 a year for 2014–2018, 7–10 a
   year since 2019. A range was plausible on size alone, so size is not why it
   went.
 - **Why drop anyway.** Story 8's goal was "prefer recent papers", and results
