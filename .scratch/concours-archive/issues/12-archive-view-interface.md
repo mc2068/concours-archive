@@ -120,7 +120,8 @@ no `pdfHref` call in the script.
 This kills `chapitreResetBtn.click()` (`:336`). "Voir tous les exercices" calls
 `selectChapitre(undefined)`, `pressedChapitreId` goes `null`, and the adapter's
 existing pass repaints `aria-pressed` across all 37 buttons — now as a node
-assertion.
+assertion. *(Amended by ticket 13, see Comments: `show-all` must now also
+clear the refinements, and the choice of hatch comes from `escapeHatch`.)*
 
 Rejected: DOM-shaped instructions (`[{ op: 'setText', target: 'heading', … }]`).
 They make the script an interpreter, with no type safety and an opcode stream to
@@ -245,3 +246,21 @@ happens, whether the mobile sheet crosses the seam, what becomes of the 24
 existing leaf tests, how "behaviour unchanged" is actually proved, and the
 glossary gap. Two findings spun off as tickets 13 and 14 rather than absorbed.
 `CONTEXT.md` gained `Selection` and `Refinement` in the same pass.
+
+**2026-09-21 — ticket 13 landed first.** Three things this ticket now builds on:
+
+- **The choice of hatch already has a home.** `src/lib/escape-hatch.ts` exports
+  `escapeHatch(archive, criteria)`, which returns `{ label, kind } | null`: the
+  `escape` field above, verbatim. `archive-view` calls it instead of re-deriving
+  the choice. It becomes a public neighbour like `filter.ts`, with its own 7
+  tests. `archive-view`'s tests still assert both hatches through its own
+  interface.
+- **`show-all` now also clears the refinements.** It used to be reachable only
+  with no refinements active; now it's also offered when a chapitre with zero
+  exercises has refinements on it. So `selectChapitre(undefined)` alone is no
+  longer enough for that kind: the adapter must also call `clearRefinements()`,
+  or `archive-view` needs one command that does both.
+- **Take the characterization baseline after 13, not at 073afb8.** 13 changed
+  the empty state for 2,680 selections on purpose. The bundle baseline is now
+  77,926 bytes. The `index.astro` line numbers quoted above predate 13 and have
+  drifted by a few lines.

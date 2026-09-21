@@ -170,6 +170,7 @@ const paperTotal = archive.papers.length;
 
     <script>
       import { archive } from '../data/archive';
+      import { escapeHatch } from '../lib/escape-hatch';
       import { filterExercises } from '../lib/filter';
       import { FLAGS, exerciseCount, paperEpreuve } from '../lib/format';
       import { pdfHref } from '../lib/pdf';
@@ -197,16 +198,21 @@ const paperTotal = archive.papers.length;
 
       let selectedChapterId: string | null = null;
 
-      function hasRefinements(): boolean {
-        return Boolean(countrySel.value || brandSel.value || yearSel.value);
-      }
-
       // Reset returns to the chapitre-only view: clear refinements, keep the chapitre.
       function clearRefinements(): void {
         countrySel.value = '';
         brandSel.value = '';
         yearSel.value = '';
         render();
+      }
+
+      // The whole archive: clear refinements, then widen to all chapitres
+      // (whose click handler renders once, with the selects already blank).
+      function showAll(): void {
+        countrySel.value = '';
+        brandSel.value = '';
+        yearSel.value = '';
+        chapitreResetBtn.click();
       }
 
       function setSidebarOpen(open: boolean): void {
@@ -283,7 +289,8 @@ const paperTotal = archive.papers.length;
       }
 
       function render(): void {
-        const matches = filterExercises(archive, currentCriteria());
+        const criteria = currentCriteria();
+        const matches = filterExercises(archive, criteria);
 
         heading.textContent = selectedChapterId
           ? (chapitreById.get(selectedChapterId)?.name ?? 'Exercices')
@@ -292,15 +299,15 @@ const paperTotal = archive.papers.length;
 
         results.replaceChildren();
         if (matches.length === 0) {
-          results.appendChild(emptyState());
+          results.appendChild(emptyState(criteria));
           return;
         }
         for (const ex of matches) results.appendChild(row(ex));
       }
 
-      // A clear "aucun résultat" state, never a blank list. Offers a reset when
-      // refinements are what narrowed the list to nothing (design.md ResultsState).
-      function emptyState(): HTMLLIElement {
+      // A clear "aucun résultat" state, never a blank list, with one reset
+      // that lands on results (design.md ResultsState).
+      function emptyState(criteria: FilterCriteria): HTMLLIElement {
         const li = document.createElement('li');
         li.className = 'empty-state';
 
@@ -322,18 +329,18 @@ const paperTotal = archive.papers.length;
         hint.textContent = 'Aucun exercice ne correspond à ces filtres.';
         li.appendChild(hint);
 
-        // Always offer a way out of an empty result: clear the refinements that
-        // narrowed it, or — if only a chapitre is selected — widen to all.
-        const reset = document.createElement('button');
-        reset.type = 'button';
-        reset.className = 'btn btn--secondary empty-state__reset';
-        if (hasRefinements()) {
-          reset.textContent = 'Réinitialiser les filtres';
-          reset.addEventListener('click', clearRefinements);
-          li.appendChild(reset);
-        } else if (selectedChapterId) {
-          reset.textContent = 'Voir tous les exercices';
-          reset.addEventListener('click', () => chapitreResetBtn.click());
+        // Always offer a way out, and never one that leads to a second empty
+        // page: escapeHatch picks the smallest widening with results.
+        const escape = escapeHatch(archive, criteria);
+        if (escape) {
+          const reset = document.createElement('button');
+          reset.type = 'button';
+          reset.className = 'btn btn--secondary empty-state__reset';
+          reset.textContent = escape.label;
+          reset.addEventListener(
+            'click',
+            escape.kind === 'clear-refinements' ? clearRefinements : showAll,
+          );
           li.appendChild(reset);
         }
         return li;

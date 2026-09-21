@@ -3,10 +3,9 @@
 **What to build:** When a chapitre *and* refinements are both active and nothing
 matches, give the student a way out that works in one click instead of two.
 
-**Blocked by:** 12 — the escape-hatch choice moves into `archive-view` there,
-and this is a change to that choice.
+**Blocked by:** ~~12~~ — landed ahead of 12 instead; see Decision.
 
-**Status:** open — needs a design call before building
+**Status:** done (commit pending)
 
 ## Context
 
@@ -40,10 +39,51 @@ into a refactor is a change nobody reviewed.
    empty-state problem for a sidebar that changes as refinements change, which
    may be worse.
 
-## Acceptance (provisional — settle the above first)
+## Decision
 
-- [ ] A student who has narrowed to nothing can reach a page with results in one
+Settled 2026-09-21.
+
+**The trigger is static data, not the refinements.** Clearing the refinements
+leads to a second empty page only when the chapitre has **no exercises
+anywhere in the archive**. If it has any, the chapitre-only view is never empty.
+Today that is 8 of 37 chapitres, each dead-ending under all 335 refinement
+combinations: 2,680 of the page's 12,768 selections.
+
+1. **One button that looks ahead** (question 1). The empty state offers the
+   smallest widening that actually lands on results:
+   - refinements active and the chapitre alone has exercises → "Réinitialiser
+     les filtres" (keeps the chapitre — `CONTEXT.md`, "Refinement", unchanged);
+   - otherwise → "Voir tous les exercices", which now clears the chapitre *and*
+     the refinements in one click;
+   - empty archive → no button.
+2. **Moot** (question 2). Still one `btn--secondary`; `design.md` is untouched.
+3. **Not upstream** (question 3). Marking or disabling the empty chapitres in
+   the sidebar is a separate call: it's a design-system change, and it wouldn't
+   remove the need for a correct empty state. Rejected alternative: two buttons.
+   On an empty chapitre, "Réinitialiser" would still lead to a dead end; it just
+   wouldn't be the only option.
+
+**Why not wait for 12.** The choice lives in `src/lib/escape-hatch.ts` —
+`escapeHatch(archive, criteria)` returns `{ label, kind } | null`, exactly the
+`escape` field of ticket 12's view model. The script only maps `kind` to a
+command. `archive-view` calls it instead of re-deriving the choice, so 12 has
+nothing to undo.
+
+## Acceptance
+
+- [x] A student who has narrowed to nothing can reach a page with results in one
       click, whatever combination got them there.
-- [ ] The choice of hatch is exercised by tests crossing `archive-view`'s
-      interface, including the chapitre-with-zero-exercises case.
-- [ ] `astro check` clean, all tests pass, verified at desktop and 375px.
+- [x] The choice of hatch is exercised by tests crossing `escapeHatch`'s
+      interface (not `archive-view`'s — that doesn't exist yet), including the
+      chapitre-with-zero-exercises case and an exhaustive "one click lands on
+      results from every empty combination" sweep over the fixture.
+- [x] `astro check` clean, all tests pass, verified at desktop and 375px.
+
+## Comments
+
+**2026-09-21 — built.** Proved with a characterization sweep of the live page
+over all 12,768 chapitre × pays × concours × année selections. For each empty
+result it clicked the escape button and recorded where it landed. Before: 2,680
+clicks landed on a second empty page. After: 0. Exactly those 2,680 selections
+changed, and only in the button (label, plus where it lands). The other 10,088
+are byte-identical, rows included. Client bundle 77,725 → 77,926 bytes.
