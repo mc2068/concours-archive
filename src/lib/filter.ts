@@ -11,7 +11,7 @@ import type { Archive, Exercise, Selection } from './types';
  *   (the "touches at all" rule, not "primary only").
  * - Country, exam brand, and year are refinements read from the exercise's
  *   parent paper; every active axis is combined with AND.
- * - Absent criteria do not constrain.
+ * - Absent fields do not constrain.
  * - Pure: never mutates the archive.
  */
 export function filterExercises(

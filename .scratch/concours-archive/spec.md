@@ -97,13 +97,13 @@ filter is the front door.
     prerequisite content task, tracked separately from this feature.
 
 - **Filter engine (the one seam):** a pure function
-  `filterExercises(dataset, criteria) -> Exercise[]`. `criteria` = an optional
+  `filterExercises(dataset, selection) -> Exercise[]`. `selection` = an optional
   primary `chapterId` plus optional `country`, `examBrand`, and a single `year`.
   Semantics:
   - An exercise matches a chapter when that chapter is in its `chapterIds` (the
     "touches at all" rule, not "primary only").
   - Multiple axes combine with **AND**.
-  - Absent criteria don't constrain (no chapter selected ⇒ all chapters).
+  - Absent fields don't constrain (no chapter selected ⇒ all chapters).
   - Result ordering is deterministic (e.g. year descending, then paper, then
     exercise label) so the UI and tests agree.
 
@@ -137,7 +137,7 @@ filter is the front door.
     it (including multi-chapter exercises appearing under each of their chapters);
   - stacked filters combine with AND;
   - an exercise is excluded when any active axis doesn't match;
-  - empty/absent criteria return everything;
+  - the empty selection `{}` (or none passed) returns everything;
   - a filter combination with no matches returns an empty list (drives the
     "no results" UI state);
   - result ordering is the specified deterministic order.

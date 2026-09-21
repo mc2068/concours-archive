@@ -26,11 +26,11 @@ const archive: Archive = {
 const ids = (xs: Exercise[]) => xs.map((x) => x.id);
 
 describe('filterExercises', () => {
-  it('returns every exercise when no criteria are given', () => {
+  it('returns every exercise when no selection is passed', () => {
     expect(ids(filterExercises(archive))).toEqual(['e2', 'e3', 'e1']); // year desc: 2021, 2020, 2019
   });
 
-  it('returns every exercise for empty criteria object', () => {
+  it('returns every exercise for the empty selection {}', () => {
     expect(ids(filterExercises(archive, {}))).toEqual(['e2', 'e3', 'e1']);
   });
 
