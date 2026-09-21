@@ -1,23 +1,12 @@
 ---
 import '../styles/global.css';
 import { archive } from '../data/archive';
-import { FLAGS } from '../lib/format';
-import type { Country } from '../lib/types';
+import { createArchiveView } from '../lib/archive-view';
 
-const chapitres = [...archive.chapitres].sort((a, b) => a.order - b.order);
-const domains = [...new Set(chapitres.map((c) => c.domain))];
-
-// Refinement options, derived from the papers actually in the dataset so the
-// controls only ever offer values that can return a result.
-const COUNTRY_LABELS: Record<Country, string> = { FR: 'France', TN: 'Tunisie', MA: 'Maroc' };
-const presentCountries = new Set(archive.papers.map((p) => p.country));
-const countries = (Object.keys(COUNTRY_LABELS) as Country[])
-  .filter((code) => presentCountries.has(code))
-  .map((code) => ({ code, label: COUNTRY_LABELS[code] }));
-const examBrands = [...new Set(archive.papers.map((p) => p.examBrand))].sort((a, b) =>
-  a.localeCompare(b, 'fr'),
-);
-const years = [...new Set(archive.papers.map((p) => p.year))].sort((a, b) => b - a);
+// What the student can choose from — the chapitre groups and the refinement
+// options — comes from the archive view, so the page renders it and decides
+// none of it.
+const { chapitreGroups, refinements } = createArchiveView(archive).controls();
 
 // Masthead facts. Counted off the dataset so they can never drift from what the
 // archive actually holds.
@@ -93,22 +82,20 @@ const paperTotal = archive.papers.length;
               Tous les chapitres
             </button>
             {
-              domains.map((domain) => (
+              chapitreGroups.map(({ domain, chapitres }) => (
                 <div class="mt-6">
                   <p class="domain-label">{domain}</p>
                   <div class="mt-2 flex flex-col gap-1">
-                    {chapitres
-                      .filter((c) => c.domain === domain)
-                      .map((c) => (
-                        <button
-                          type="button"
-                          class="chapitre-btn"
-                          data-chapitre-id={c.id}
-                          aria-pressed="false"
-                        >
-                          {c.name}
-                        </button>
-                      ))}
+                    {chapitres.map((c) => (
+                      <button
+                        type="button"
+                        class="chapitre-btn"
+                        data-chapitre-id={c.id}
+                        aria-pressed="false"
+                      >
+                        {c.name}
+                      </button>
+                    ))}
                   </div>
                 </div>
               ))
@@ -122,21 +109,21 @@ const paperTotal = archive.papers.length;
               <label for="filter-country">Pays</label>
               <select id="filter-country" class="filter-select">
                 <option value="">Tous</option>
-                {countries.map((c) => <option value={c.code}>{FLAGS[c.code]} {c.label}</option>)}
+                {refinements.country.map((o) => <option value={o.value}>{o.label}</option>)}
               </select>
             </div>
             <div class="filter-field">
               <label for="filter-brand">Concours</label>
               <select id="filter-brand" class="filter-select">
                 <option value="">Tous</option>
-                {examBrands.map((b) => <option value={b}>{b}</option>)}
+                {refinements.examBrand.map((o) => <option value={o.value}>{o.label}</option>)}
               </select>
             </div>
             <div class="filter-field">
               <label for="filter-year">Année</label>
               <select id="filter-year" class="filter-select">
                 <option value="">Toutes</option>
-                {years.map((y) => <option value={y}>{y}</option>)}
+                {refinements.year.map((o) => <option value={o.value}>{o.label}</option>)}
               </select>
             </div>
             <button type="button" id="filter-reset" class="btn btn--secondary self-start">

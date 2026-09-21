@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { escapeHatch, type EscapeHatch } from './escape-hatch';
-import { filterExercises } from './filter';
+import { filterExercises, placeExercises } from './filter';
 import type { Archive, Country, Selection } from './types';
 
 // Small in-memory fixture. `vide` is a chapitre with no exercises at all — the
@@ -21,6 +21,8 @@ const archive: Archive = {
   ],
 };
 
+const placed = placeExercises(archive);
+
 const CLEAR: EscapeHatch = { label: 'Réinitialiser les filtres', kind: 'clear-refinements' };
 const SHOW_ALL: EscapeHatch = { label: 'Voir tous les exercices', kind: 'show-all' };
 
@@ -33,33 +35,32 @@ describe('escapeHatch', () => {
   it('clears the refinements and keeps the chapitre when the chapitre has exercises', () => {
     // series only has e1 (MA) — France narrows it to nothing.
     const selection = { chapterId: 'series', country: 'FR' as const };
-    expect(filterExercises(archive, selection)).toEqual([]);
-    expect(escapeHatch(archive, selection)).toEqual(CLEAR);
+    expect(filterExercises(placed, selection)).toEqual([]);
+    expect(escapeHatch(placed, selection)).toEqual(CLEAR);
   });
 
   it('shows everything in one step when the chapitre has no exercises, even with refinements active', () => {
     // Clearing the refinements here would land on a second empty page.
-    expect(escapeHatch(archive, { chapterId: 'vide', country: 'FR' })).toEqual(SHOW_ALL);
-    expect(escapeHatch(archive, { chapterId: 'vide', examBrand: 'Mines', year: 2021 })).toEqual(SHOW_ALL);
+    expect(escapeHatch(placed, { chapterId: 'vide', country: 'FR' })).toEqual(SHOW_ALL);
+    expect(escapeHatch(placed, { chapterId: 'vide', examBrand: 'Mines', year: 2021 })).toEqual(SHOW_ALL);
   });
 
   it('shows everything when the chapitre has no exercises and nothing else is active', () => {
-    expect(escapeHatch(archive, { chapterId: 'vide' })).toEqual(SHOW_ALL);
+    expect(escapeHatch(placed, { chapterId: 'vide' })).toEqual(SHOW_ALL);
   });
 
   it('clears the refinements when no chapitre is selected', () => {
     // No FR paper from 2019 — the refinements alone narrow to nothing.
-    expect(escapeHatch(archive, { country: 'FR', year: 2019 })).toEqual(CLEAR);
+    expect(escapeHatch(placed, { country: 'FR', year: 2019 })).toEqual(CLEAR);
   });
 
   it('treats an unknown chapitre id like an empty chapitre', () => {
-    expect(escapeHatch(archive, { chapterId: 'bogus', country: 'FR' })).toEqual(SHOW_ALL);
+    expect(escapeHatch(placed, { chapterId: 'bogus', country: 'FR' })).toEqual(SHOW_ALL);
   });
 
   it('offers no way out of an empty archive', () => {
-    const emptyArchive: Archive = { chapitres: archive.chapitres, papers: archive.papers, exercises: [] };
-    expect(escapeHatch(emptyArchive, {})).toBeNull();
-    expect(escapeHatch(emptyArchive, { chapterId: 'series', country: 'FR' })).toBeNull();
+    expect(escapeHatch([], {})).toBeNull();
+    expect(escapeHatch([], { chapterId: 'series', country: 'FR' })).toBeNull();
   });
 
   it('lands on results in one click from every combination that matches nothing', () => {
@@ -74,11 +75,11 @@ describe('escapeHatch', () => {
         for (const examBrand of brands)
           for (const year of years) {
             const selection: Selection = { chapterId, country, examBrand, year };
-            if (filterExercises(archive, selection).length > 0) continue;
+            if (filterExercises(placed, selection).length > 0) continue;
             emptyCombos++;
-            const hatch = escapeHatch(archive, selection);
+            const hatch = escapeHatch(placed, selection);
             expect(hatch, JSON.stringify(selection)).not.toBeNull();
-            expect(filterExercises(archive, widen(selection, hatch!)).length, JSON.stringify(selection)).toBeGreaterThan(0);
+            expect(filterExercises(placed, widen(selection, hatch!)).length, JSON.stringify(selection)).toBeGreaterThan(0);
           }
     expect(emptyCombos).toBeGreaterThan(0); // the sweep actually exercised something
   });
