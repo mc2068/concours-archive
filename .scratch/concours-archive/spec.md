@@ -42,8 +42,9 @@ filter is the front door.
    focus on (say) only Tunisian concours if I choose.
 7. As a student, I want to further filter by exam brand (Centrale, Mines, X-ENS,
    CNC, Concours tunisien…), so that I can target a specific exam I'm preparing.
-8. As a student, I want to further filter by year (or a year range), so that I
-   can prefer recent papers.
+8. As a student, I want to further filter by year (a single year), so that I
+   can work a given year's papers. (A year range was dropped in ticket 14:
+   results are already newest first.)
 9. As a student, I want to stack these filters together (chapitre AND country AND
    exam AND year), so that I can precisely target my revision.
 10. As a student, I want the extra filters to be optional, so that the simple case
@@ -97,7 +98,7 @@ filter is the front door.
 
 - **Filter engine (the one seam):** a pure function
   `filterExercises(dataset, criteria) -> Exercise[]`. `criteria` = an optional
-  primary `chapterId` plus optional `country`, `examBrand`, and `year`/year-range.
+  primary `chapterId` plus optional `country`, `examBrand`, and a single `year`.
   Semantics:
   - An exercise matches a chapter when that chapter is in its `chapterIds` (the
     "touches at all" rule, not "primary only").

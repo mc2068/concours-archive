@@ -1,16 +1,8 @@
-import type { Archive, Exercise, FilterCriteria } from './types';
-
-/** True when `year` falls inside the criteria's single year or inclusive range. */
-function yearMatches(year: number, criterion: NonNullable<FilterCriteria['year']>): boolean {
-  if (typeof criterion === 'number') return year === criterion;
-  if (criterion.from != null && year < criterion.from) return false;
-  if (criterion.to != null && year > criterion.to) return false;
-  return true;
-}
+import type { Archive, Exercise, Selection } from './types';
 
 /**
  * The filter seam. Given the whole {@link Archive} and the current
- * {@link FilterCriteria}, return the matching exercises in a deterministic
+ * {@link Selection}, return the matching exercises in a deterministic
  * order (year descending, then exam brand, then paper, then label — so a
  * paper's own exercises stay contiguous).
  *
@@ -24,9 +16,9 @@ function yearMatches(year: number, criterion: NonNullable<FilterCriteria['year']
  */
 export function filterExercises(
   archive: Archive,
-  criteria: FilterCriteria = {},
+  selection: Selection = {},
 ): Exercise[] {
-  const { chapterId, country, examBrand, year } = criteria;
+  const { chapterId, country, examBrand, year } = selection;
   const paperById = new Map(archive.papers.map((p) => [p.id, p]));
 
   const matches = archive.exercises.filter((ex) => {
@@ -40,7 +32,7 @@ export function filterExercises(
       if (!paper) return false;
       if (country != null && paper.country !== country) return false;
       if (examBrand != null && paper.examBrand !== examBrand) return false;
-      if (year != null && !yearMatches(paper.year, year)) return false;
+      if (year != null && paper.year !== year) return false;
     }
     return true;
   });

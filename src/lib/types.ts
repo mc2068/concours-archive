@@ -74,34 +74,16 @@ export interface Archive {
 }
 
 /**
- * An inclusive year range. Either bound may be omitted to leave that side
- * unbounded (`{ from: 2019 }` = 2019 and later; `{ to: 2020 }` = up to 2020).
+ * What the student has narrowed the Archive to (CONTEXT.md, "Selection"): one
+ * chapitre or all of them, plus whatever refinements are active, combined with
+ * AND. Absent fields mean "all chapitres" / "no constraint", so `{}` — the
+ * whole archive — is a Selection too, not the absence of one. It is what the
+ * matching exercises are produced from. `year` is a single year, never a range
+ * (ticket 14).
  */
-export interface YearRange {
-  from?: number;
-  to?: number;
-}
-
-/**
- * Filter selections combined with AND. Chapter is the primary axis; country,
- * exam brand, and year are optional stackable refinements. Absent fields do not
- * constrain. `year` accepts a single year or an inclusive {@link YearRange}.
- */
-export interface FilterCriteria {
+export interface Selection {
   chapterId?: string;
   country?: Country;
   examBrand?: string;
-  year?: number | YearRange;
-}
-
-/**
- * What the student has narrowed the Archive to (CONTEXT.md, "Selection"): one
- * chapitre or all of them, plus whatever refinements are active. Absent fields
- * mean "all chapitres" / "no constraint", so `{}` — the whole archive — is a
- * Selection too, not the absence of one. It is the {@link FilterCriteria} a
- * student can actually express — a single year, never a range (ticket 14) —
- * and what the matching exercises are produced from.
- */
-export interface Selection extends Omit<FilterCriteria, 'year'> {
   year?: number;
 }

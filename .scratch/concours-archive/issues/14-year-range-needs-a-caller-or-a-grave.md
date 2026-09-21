@@ -7,7 +7,7 @@ a capability the UI has never offered.
 **Blocked by:** None. Touches the same files as ticket 12; do it after, not
 during.
 
-**Status:** open — decide the control first
+**Status:** resolved — dropped
 
 ## Context
 
@@ -36,9 +36,41 @@ be a feature inside a ticket whose acceptance is "behaviour unchanged".
    `YearRange`, its branch, its three tests and story 8 is a legitimate answer**,
    and the cheapest one to reverse if the archive grows.
 
-## Acceptance (provisional — settle the above first)
+## Acceptance
 
-- [ ] Either the range is reachable from the UI and `YearRange` has a caller, or
+- [x] Either the range is reachable from the UI and `YearRange` has a caller, or
       `YearRange`, its `yearMatches` branch and its three tests are gone and
       spec story 8 is struck.
-- [ ] No third state: the type does not outlive the decision.
+- [x] No third state: the type does not outlive the decision.
+
+## Comments
+
+**Grilled 2026-09-21 — decision: drop.**
+
+- **The fact behind question 3 was wrong.** The archive is 88 papers across
+  **13 years (2014–2026)**, not "a handful": 4 a year for 2014–2018, 8–10 a
+  year since 2019. A range was plausible on size alone, so size is not why it
+  went.
+- **Why drop anyway.** Story 8's goal was "prefer recent papers", and results
+  are already ordered newest first, so the order serves that goal without a
+  control. The single-year select does a job a range would lose: year + brand
+  isolates one paper (up to Maths 1 / Maths 2), which is how a student sits a
+  full past paper. A "Depuis" select would trade that away, and a range beside
+  the select would give one axis two controls in a `md:w-72` sidebar.
+- **What changed.**
+  - `YearRange` and the range branch of `yearMatches` are gone. The year test
+    is inline: `paper.year !== year`.
+  - Two range tests are removed (the three assertions this ticket named). The
+    single-year test stays.
+  - `FilterCriteria` is folded into `Selection`, because once `year` became a
+    `number` the two had the same shape. `Selection` keeps the name, since it
+    is the glossary's term. `filterExercises` and `escapeHatch` now take a
+    `Selection`.
+  - Spec story 8 is rewritten to the single year that shipped, not struck,
+    because that half of it is built. The engine line (spec §filter engine) is
+    fixed too.
+  - `CONTEXT.md` *Refinement* now says "a single year, not a range", so the
+    next reader finds the answer where they would look.
+  - The PRD already said "single year only" and is unchanged.
+- **No ADR.** It is a real trade-off, but git restores about 10 lines, so it
+  fails the hard-to-reverse test.

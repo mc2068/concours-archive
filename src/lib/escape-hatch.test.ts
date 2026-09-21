@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { escapeHatch, type EscapeHatch } from './escape-hatch';
 import { filterExercises } from './filter';
-import type { Archive, Country, FilterCriteria } from './types';
+import type { Archive, Country, Selection } from './types';
 
 // Small in-memory fixture. `vide` is a chapitre with no exercises at all — the
 // case that used to dead-end twice.
@@ -25,7 +25,7 @@ const CLEAR: EscapeHatch = { label: 'Réinitialiser les filtres', kind: 'clear-r
 const SHOW_ALL: EscapeHatch = { label: 'Voir tous les exercices', kind: 'show-all' };
 
 /** What the page does on click, per the kind's documented contract. */
-function widen(criteria: FilterCriteria, hatch: EscapeHatch): FilterCriteria {
+function widen(criteria: Selection, hatch: EscapeHatch): Selection {
   return hatch.kind === 'clear-refinements' ? { chapterId: criteria.chapterId } : {};
 }
 
@@ -73,7 +73,7 @@ describe('escapeHatch', () => {
       for (const country of countries)
         for (const examBrand of brands)
           for (const year of years) {
-            const criteria: FilterCriteria = { chapterId, country, examBrand, year };
+            const criteria: Selection = { chapterId, country, examBrand, year };
             if (filterExercises(archive, criteria).length > 0) continue;
             emptyCombos++;
             const hatch = escapeHatch(archive, criteria);
