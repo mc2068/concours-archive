@@ -26,6 +26,33 @@ const rowIds = (v: ArchiveViewModel) => (v.results.kind === 'rows' ? v.results.r
 const escapeOf = (v: ArchiveViewModel) => (v.results.kind === 'empty' ? v.results.escape : 'not empty');
 
 describe('createArchiveView', () => {
+  describe('the controls', () => {
+    it('groups the chapitres by domain, in program order', () => {
+      expect(createArchiveView(archive).controls().chapitreGroups).toEqual([
+        { domain: 'Analyse', chapitres: [{ id: 'series', name: 'Séries numériques' }, { id: 'vide', name: 'Limites, continuité' }] },
+        { domain: 'Algèbre', chapitres: [{ id: 'reduc', name: 'Réduction' }] },
+      ]);
+    });
+
+    it('offers only the refinement values some paper has, flagged, sorted and newest first', () => {
+      const noTunisia: Archive = { ...archive, papers: archive.papers.filter((p) => p.country !== 'TN') };
+      expect(createArchiveView(noTunisia).controls().refinements).toEqual({
+        country: [
+          { value: 'FR', label: '🇫🇷 France' },
+          { value: 'MA', label: '🇲🇦 Maroc' },
+        ],
+        examBrand: [
+          { value: 'CNC', label: 'CNC' },
+          { value: 'Mines-Ponts', label: 'Mines-Ponts' },
+        ],
+        year: [
+          { value: '2021', label: '2021' },
+          { value: '2019', label: '2019' },
+        ],
+      });
+    });
+  });
+
   describe('the selection', () => {
     it('starts on the whole archive, newest first, with nothing pressed or refined', () => {
       const v = createArchiveView(archive).view();
@@ -69,6 +96,13 @@ describe('createArchiveView', () => {
       av.refine({ country: 'FR', year: '2021' });
       expect(av.view().refinements).toEqual({ country: 'FR', examBrand: '', year: '2021' });
       expect(rowIds(av.view())).toEqual(['e2']);
+    });
+
+    it('treats a value no option offers as no constraint', () => {
+      const av = createArchiveView(archive);
+      av.refine({ country: 'XX', examBrand: 'Polytechnique', year: '1999' });
+      expect(av.view().refinements).toEqual({ country: '', examBrand: '', year: '' });
+      expect(av.view().count).toBe('3 exercices');
     });
 
     it("treats '' as no constraint — never as year 0", () => {

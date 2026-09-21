@@ -7,6 +7,13 @@ export const FLAGS: Record<Country, string> = {
   MA: '🇲🇦',
 };
 
+/** French name per country, for the country refinement's options. */
+export const COUNTRY_NAMES: Record<Country, string> = {
+  FR: 'France',
+  TN: 'Tunisie',
+  MA: 'Maroc',
+};
+
 /**
  * The paper's heading for a result row: exam brand plus its épreuve label when
  * one is set (e.g. "Mines-Ponts Maths 1"), so two papers of the same brand and

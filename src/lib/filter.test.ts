@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { filterExercises } from './filter';
-import type { Archive, Exercise } from './types';
+import { filterExercises, placeExercises, type PlacedExercise } from './filter';
+import type { Archive } from './types';
 
 // Small in-memory fixture — no real data, no DOM, no PDFs.
 // Papers span three years so ordering (year desc) is observable.
@@ -23,35 +23,36 @@ const archive: Archive = {
   ],
 };
 
-const ids = (xs: Exercise[]) => xs.map((x) => x.id);
+const placed = placeExercises(archive);
+const ids = (xs: PlacedExercise[]) => xs.map((x) => x.exercise.id);
 
 describe('filterExercises', () => {
   it('returns every exercise when no selection is passed', () => {
-    expect(ids(filterExercises(archive))).toEqual(['e2', 'e3', 'e1']); // year desc: 2021, 2020, 2019
+    expect(ids(filterExercises(placed))).toEqual(['e2', 'e3', 'e1']); // year desc: 2021, 2020, 2019
   });
 
   it('returns every exercise for the empty selection {}', () => {
-    expect(ids(filterExercises(archive, {}))).toEqual(['e2', 'e3', 'e1']);
+    expect(ids(filterExercises(placed, {}))).toEqual(['e2', 'e3', 'e1']);
   });
 
   it('matches exercises whose chapterIds include the selected chapter', () => {
-    expect(ids(filterExercises(archive, { chapterId: 'reduc' }))).toEqual(['e2']);
+    expect(ids(filterExercises(placed, { chapterId: 'reduc' }))).toEqual(['e2']);
   });
 
   it('includes a multi-chapter exercise under each of its chapters', () => {
     // e1 is tagged [series, integ] — it must appear under BOTH.
-    expect(ids(filterExercises(archive, { chapterId: 'series' }))).toContain('e1');
-    expect(ids(filterExercises(archive, { chapterId: 'integ' }))).toEqual(['e1']);
-    expect(ids(filterExercises(archive, { chapterId: 'series' }))).toEqual(['e3', 'e1']); // 2020 then 2019
+    expect(ids(filterExercises(placed, { chapterId: 'series' }))).toContain('e1');
+    expect(ids(filterExercises(placed, { chapterId: 'integ' }))).toEqual(['e1']);
+    expect(ids(filterExercises(placed, { chapterId: 'series' }))).toEqual(['e3', 'e1']); // 2020 then 2019
   });
 
   it('orders results by year descending', () => {
     // series matches e3 (2020) and e1 (2019) → newest first.
-    expect(ids(filterExercises(archive, { chapterId: 'series' }))).toEqual(['e3', 'e1']);
+    expect(ids(filterExercises(placed, { chapterId: 'series' }))).toEqual(['e3', 'e1']);
   });
 
   it('returns an empty list when nothing matches', () => {
-    expect(filterExercises(archive, { chapterId: 'nonexistent' })).toEqual([]);
+    expect(filterExercises(placed, { chapterId: 'nonexistent' })).toEqual([]);
   });
 
   it('keeps a single paper\'s exercises contiguous within the same year', () => {
@@ -70,45 +71,55 @@ describe('filterExercises', () => {
       ],
     };
     // Centrale sorts before Mines (brand), and its two exercises stay together.
-    expect(ids(filterExercises(sameYear))).toEqual(['c1', 'c2', 'm1']);
+    expect(ids(filterExercises(placeExercises(sameYear)))).toEqual(['c1', 'c2', 'm1']);
   });
 
-  it('does not mutate the input archive', () => {
-    const before = ids(archive.exercises);
-    filterExercises(archive, { chapterId: 'series' });
-    expect(ids(archive.exercises)).toEqual(before);
+  it('does not mutate its input', () => {
+    const before = ids(placed);
+    filterExercises(placed, { chapterId: 'series' });
+    expect(ids(placed)).toEqual(before);
+  });
+
+  it('matches a paper-less exercise by chapter, but under no refinement', () => {
+    const orphaned = placeExercises({
+      ...archive,
+      exercises: [{ id: 'lost', paperId: 'gone', label: 'Exercice 9', pageStart: 1, pageEnd: 1, chapterIds: ['reduc'], primaryChapterId: 'reduc' }],
+    });
+    expect(orphaned[0].paper).toBeNull();
+    expect(ids(filterExercises(orphaned, { chapterId: 'reduc' }))).toEqual(['lost']);
+    expect(filterExercises(orphaned, { chapterId: 'reduc', year: 2021 })).toEqual([]);
   });
 
   describe('refinement axes (country, exam brand, year)', () => {
     it('filters by country alone', () => {
       // e3 is on the TN paper; e1 on MA, e2 on FR.
-      expect(ids(filterExercises(archive, { country: 'TN' }))).toEqual(['e3']);
+      expect(ids(filterExercises(placed, { country: 'TN' }))).toEqual(['e3']);
     });
 
     it('filters by exam brand alone', () => {
-      expect(ids(filterExercises(archive, { examBrand: 'CNC' }))).toEqual(['e1']);
+      expect(ids(filterExercises(placed, { examBrand: 'CNC' }))).toEqual(['e1']);
     });
 
     it('filters by a single year alone', () => {
-      expect(ids(filterExercises(archive, { year: 2021 }))).toEqual(['e2']);
+      expect(ids(filterExercises(placed, { year: 2021 }))).toEqual(['e2']);
     });
 
     it('stacks chapter AND country AND brand together', () => {
       // series matches e1 (MA/CNC) and e3 (TN/Concours tunisien).
       // Add country TN → only e3.
-      expect(ids(filterExercises(archive, { chapterId: 'series', country: 'TN' }))).toEqual(['e3']);
+      expect(ids(filterExercises(placed, { chapterId: 'series', country: 'TN' }))).toEqual(['e3']);
       // Add brand CNC on top of series → only e1.
-      expect(ids(filterExercises(archive, { chapterId: 'series', examBrand: 'CNC' }))).toEqual(['e1']);
+      expect(ids(filterExercises(placed, { chapterId: 'series', examBrand: 'CNC' }))).toEqual(['e1']);
     });
 
     it('excludes an exercise when any single active axis does not match', () => {
       // e1 matches chapter series but sits on an MA paper — country TN rules it out,
       // and no other exercise matches that whole combination.
-      expect(filterExercises(archive, { chapterId: 'series', country: 'FR' })).toEqual([]);
+      expect(filterExercises(placed, { chapterId: 'series', country: 'FR' })).toEqual([]);
     });
 
     it('returns everything when refinement axes are absent', () => {
-      expect(ids(filterExercises(archive, { country: undefined, year: undefined }))).toEqual(['e2', 'e3', 'e1']);
+      expect(ids(filterExercises(placed, { country: undefined, year: undefined }))).toEqual(['e2', 'e3', 'e1']);
     });
   });
 });

@@ -1,5 +1,5 @@
-import { filterExercises } from './filter';
-import type { Archive, Selection } from './types';
+import { filterExercises, type PlacedExercise } from './filter';
+import type { Selection } from './types';
 
 /**
  * The one button an empty result offers. `label` is its French text; `kind`
@@ -25,14 +25,14 @@ export interface EscapeHatch {
  *   everything, whatever refinements are active.
  * - `null` only when the archive itself is empty: there is nowhere to go.
  */
-export function escapeHatch(archive: Archive, selection: Selection): EscapeHatch | null {
+export function escapeHatch(placed: PlacedExercise[], selection: Selection): EscapeHatch | null {
   const { chapterId, country, examBrand, year } = selection;
   const refined = country != null || examBrand != null || year != null;
 
-  if (refined && filterExercises(archive, { chapterId }).length > 0) {
+  if (refined && filterExercises(placed, { chapterId }).length > 0) {
     return { label: 'Réinitialiser les filtres', kind: 'clear-refinements' };
   }
-  if (archive.exercises.length > 0) {
+  if (placed.length > 0) {
     return { label: 'Voir tous les exercices', kind: 'show-all' };
   }
   return null;
