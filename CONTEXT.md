@@ -28,10 +28,17 @@ returns. Every exercise remembers its parent paper, so a student can see "this
 came from Mines 2019". An exercise may carry **more than one** chapter tag.
 
 ### Page range
-Where an **exercise** sits inside its parent paper's PDF: the first and last
-page it appears on. **Both ends are inclusive** — a one-page exercise starts and
-ends on the same page, and the last exercise of a paper ends on the paper's
-final page, never one past it (ADR 0003).
+Where an **exercise** sits inside its parent paper's PDF: a first and a last
+page. **Both ends are inclusive** — a one-page exercise starts and ends on the
+same page, and the last exercise of a paper ends on the paper's final page,
+never one past it (ADR 0003).
+
+The first page is the first one holding any of the exercise's **own** text:
+its introduction, its definitions, or its first question. A bare heading at
+the foot of a page, with none of that under it, doesn't count. The first page
+is never a cover or instructions page, and never a page that holds only an
+earlier exercise. A page of notations for the whole paper, sitting just before
+the exercise, is also an acceptable start.
 
 ### Chapitre (chapter)
 A topic in the curriculum, drawn from the **Tunisian 2ème prépa MP program**,

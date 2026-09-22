@@ -58,3 +58,21 @@ whose `pageEnd` exceeds its PDF's page count.
   exclusive inside one record, which is the exact trap that produced the split.
 - **Leave it undefined and check nothing.** It has been free so far only because
   the field is unread; that ends with the first crop.
+
+## Amendment — 2026-09-22: `pageStart` was ambiguous too
+
+The Context above says `pageStart` "has never been ambiguous". That turned out
+to be wrong. Ticket 16 checked every exercise against its paper and found 28
+whose `pageStart` sent "Ouvrir" to the wrong page. Some were a page late,
+because Centrale's Partie I begins on page 1 and was treated as if page 1 were
+a cover. Others were a page early, on a cover page or on the previous
+exercise.
+
+The decision here is unchanged: both ends are inclusive. What was missing was
+a definition of where an exercise *starts*. That definition now lives in
+`CONTEXT.md` under "Page range". Under it, the first page is not always a page
+the exercise "appears on" in the narrow sense: a whole-paper notations page
+just before the exercise is an acceptable start.
+
+Unlike `pageEnd`'s `anchor-past-end`, no rule can check this. Where an
+exercise starts is only visible by reading the paper.
