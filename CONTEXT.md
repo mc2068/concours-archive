@@ -33,6 +33,13 @@ page it appears on. **Both ends are inclusive** — a one-page exercise starts a
 ends on the same page, and the last exercise of a paper ends on the paper's
 final page, never one past it (ADR 0003).
 
+The first page is where the exercise's **own** content begins: its heading,
+its opening definitions, or its first question. It is never a cover or
+instructions page, and never a page that holds only an earlier exercise. A
+page of notations for the whole paper, sitting just before the exercise, is
+an acceptable start. The first page is what "Ouvrir" opens, so an error
+there puts the student somewhere else in the paper.
+
 ### Chapitre (chapter)
 A topic in the curriculum, drawn from the **Tunisian 2ème prépa MP program**,
 which is the *canonical* chapter list. Chapters are the primary filter axis:
