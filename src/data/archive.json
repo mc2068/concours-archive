@@ -6,7 +6,7 @@
     { "id": "derivation", "name": "Dérivation", "order": 4, "domain": "Analyse" },
     { "id": "fonctions-convexes", "name": "Fonctions convexes", "order": 5, "domain": "Analyse" },
     { "id": "analyse-asymptotique", "name": "Analyse asymptotique", "order": 6, "domain": "Analyse" },
-    { "id": "integration", "name": "Intégration", "order": 7, "domain": "Analyse" },
+    { "id": "integration", "name": "Intégration sur un segment", "order": 7, "domain": "Analyse" },
     { "id": "series-numeriques", "name": "Séries numériques", "order": 8, "domain": "Analyse" },
     { "id": "suites-series-fonctions", "name": "Suites et séries de fonctions", "order": 9, "domain": "Analyse" },
     { "id": "fonctions-vectorielles-arcs", "name": "Fonctions vectorielles, arcs paramétrés", "order": 10, "domain": "Analyse" },

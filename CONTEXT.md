@@ -46,6 +46,19 @@ which is the *canonical* chapter list. Chapters are the primary filter axis:
 choosing chapter X returns every exercise tagged with X, regardless of the
 exercise's country of origin.
 
+The program meant here is the **reformed** one that the current concours
+tests, and it includes probability. It is NOT the pre-reform list, which still
+circulates and has Séries de Fourier, formes quadratiques, espaces hermitiens
+and multiple integrals, but no probability. Its topics count as having no
+Tunisian equivalent.
+
+A topic the program teaches in both years is **several chapitres, not one**,
+and an exercise is tagged with the one it actually uses, not the first-year
+one by default. Integration is three: on a segment (1ère année), on an
+arbitrary interval, and integrals with a parameter (both 2ème année). The same
+goes for séries numériques and their 2ème-année compléments, the two
+structures algébriques chapitres, and the two préhilbertien chapitres.
+
 ### Domain
 The broad area of the program a **chapitre** belongs to. The list is **closed**:
 Analyse, Algèbre, Géométrie, Probabilités are the whole program, and a fifth
