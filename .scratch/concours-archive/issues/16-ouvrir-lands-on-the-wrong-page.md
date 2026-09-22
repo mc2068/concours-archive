@@ -5,7 +5,7 @@ begins on, so "Ouvrir" (`paper.pdf#page=N`) opens at the exercise.
 
 **Blocked by:** none
 
-**Status:** done
+**Status:** done (commit 573ff97)
 
 ## Context
 
