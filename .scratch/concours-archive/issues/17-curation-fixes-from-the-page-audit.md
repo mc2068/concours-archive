@@ -6,7 +6,7 @@ read the paper and decide.
 
 **Blocked by:** none
 
-**Status:** open
+**Status:** done (commit 6f114bd)
 
 ## Context
 
@@ -42,6 +42,45 @@ fix. Some of them can affect what the chapitre filter returns.
 
 ## Acceptance
 
-- [ ] Each item is fixed in `archive.json` (or its PDF replaced), or it is
+- [x] Each item is fixed in `archive.json` (or its PDF replaced), or it is
       recorded below as a deliberate choice.
-- [ ] `npm run verify` passes.
+- [x] `npm run verify` passes.
+
+## Comments
+
+**2026-09-22 — done.** Each fix below came from reading the paper. The chapter
+tags are a curator's judgement, so they are worth checking in review.
+
+1. **CNC 2017 Maths 2: removed.** `cnc-maths2-2017.pdf` has the same text as
+   Maths I, apart from indentation. The mistake is at the source: the
+   groupe-reussite file `cnc-maths2-mp-2017.pdf`, which mathencpge.ma also
+   links to, is 1,072,104 bytes, exactly the bundled file, and it is Maths I.
+   The paper, its two exercises and the PDF are gone. They showed the Maths I
+   exercises a second time under "Maths 2", one of them under a made-up
+   label. The archive is now 87 papers and 203 exercises. Sourcing the real
+   paper is ticket 18.
+2. **Labels corrected, with tags to match:**
+   - `cnc-maths2-2019-p` is now "Déterminants de Cauchy et de Gram, distance à
+     un sous-espace". Tags: euclidiens, determinants and polynomes-fractions;
+     it drops reduction and matrices, which the Problème doesn't use.
+   - `cnc-maths2-2018` had its two labels swapped. The unit-vector family in a
+     Euclidean space is the **Exercice**, together with a real symmetric
+     matrix, and it is now tagged euclidiens. The Problème is Aupetit's
+     theorem on endomorphisms where (x, f(x), …) is bound: reduction,
+     polynomes-fractions, espaces-vectoriels. It is no longer tagged
+     euclidien.
+   - `centrale-maths1-2026-i` is now "Sous-groupes finis de Oₙ(R) et
+     sous-groupes compacts de GLₙ(R)", with primary structures-algebriques.
+     Fonctions-convexes and topologie-evn are added for B.II (the
+     log-concavity of det) and for compactness.
+   - `-ii` was labelled "Convexité et déterminants…", which is really Partie
+     B.II. Its actual Partie C is the growth of the discrete Heisenberg group:
+     groups, denombrement, analyse-asymptotique.
+3. **`tn-maths2-2024`:** all three labels described other parts.
+   - I (Q1–8) is the trace étoilée in a Euclidean space, pages 1–2.
+   - II (Q9–19) bounds ‖N‖² below by the eigenvalues of N: reduction, pages
+     2–3.
+   - III (Q20+) covers the matrix exponential, a C^∞ function and extrema on
+     the unit sphere, pages 3–5, with primary calcul-differentiel.
+4. **`tn-maths1-2026-i`** now names Partie III in its label and is tagged
+   topologie-evn.
