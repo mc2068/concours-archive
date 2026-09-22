@@ -182,6 +182,13 @@ first-party concours sources**. Aggregators are listed as clearly-labelled secon
 - **Usage/copyright:** None of these state a reuse licence. groupe-reussite.fr is a commercial
   company hosting the papers as free resources; iamateacher.org is a personal teaching site. CNC
   subjects are the exam's IP. **Do not assume redistribution rights — confirm before bundling.**
+- **Known bad file — CNC 2017 MP Maths 2 (ticket 18, 2026-09-22):** three mirrors serve the
+  **Maths I** subject under a Maths 2 name: groupe-reussite's `cnc-maths2-mp-2017.pdf` (1,072,104
+  bytes), rtc.ma's `CNC 2017 Math-2 MP.pdf` and alloschool's `cnc-mp-2017-maths-2-epreuve.pdf` (both
+  720,196 bytes). The real Maths II (one problem: matrix norms, matrix exponential, differential
+  systems) is iamateacher.org's "2017-2-énoncé",
+  `https://www.iamateacher.org/_files/ugd/99b3c9_b5f540b690084c73a15b26ae975b6649.pdf` (304,174
+  bytes, footer "Épreuve de Mathématiques II"). Check page content, not file names.
 
 ### 4b. Other Moroccan aggregators (SECONDARY)
 - **alloschool.com**, **masup.ma**, **rtc.ma** (Road To CNC), **cpge-paradise.com** — all host CNC
