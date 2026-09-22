@@ -59,24 +59,24 @@ the rule now written under "Page range" in `CONTEXT.md`.
 That makes 30 field edits in `archive.json`. The gate passes and all 79 tests
 pass.
 
-## Found, not fixed (need the curator)
+## Found, not fixed
 
-- **`cnc-maths2-2017.pdf` looks like a second copy of Maths I.** Both files
-  carry the PDF title "CNC Maths I MP 2017", and their pages have the same
-  structure. If so, the real Maths 2 paper is missing and
-  `cnc-maths2-2017-*` points at Maths I content.
-- **Labels that don't match the pages:**
-  - `cnc-maths2-2019-p` says "Endomorphismes d'un espace euclidien"; the
-    Problème is "Déterminants de Cauchy et de Gram".
-  - `cnc-maths2-2018-p` says "Famille de vecteurs d'un espace euclidien"; the
-    Problème is about endomorphisms where (x, f(x), …) is bound (Aupetit).
-  - `centrale-maths1-2026-i` says "Matrices symétriques positives…"; its
-    Partie A is "Sous-groupes finis de On(R)".
+Moved to ticket 17. They need the curator, not a page fix.
 
-  If the labels are wrong, the chapter tags may be wrong too, and that
-  affects the filter.
-- **Partie III of tn-maths1-2026** (pages 18–23, a normed space of functions)
-  now falls inside `-i`'s range, but none of `-i`'s tags covers it.
-- **No rule enforces this.** The gate can't know where an exercise starts
-  without reading the PDF. The rule now lives in `CONTEXT.md`, and this ticket
-  records the method.
+## Comments
+
+**2026-09-22 — review (`/code-review` against `origin/main`).**
+
+- **Standards:** no hard violations. ADR 0003's Context claimed `pageStart`
+  "has never been ambiguous", which this ticket disproves. It now has a dated
+  amendment that points to the rule in `CONTEXT.md`, rather than a rewrite.
+  The `CONTEXT.md` entry was tightened: the rationale sentence came out, and
+  "the first and last page it appears on" became "a first and a last page",
+  so it no longer clashes with the notations-page allowance.
+- **Spec:** the 30 edits match exactly. The reviewer independently re-checked
+  14 of them (by text and by image) and 8 exercises that were left alone.
+- **`cnc-maths1-2020-p` stays on page 2.** Only the Problème's bare title sits
+  at the foot of page 1. Page 1 would open on Exercice 1, so the rule now says
+  a bare heading doesn't count.
+- The reviewer also found that `tn-maths2-2024`'s ranges are wrong, a problem
+  from before this branch. It went to ticket 17.
