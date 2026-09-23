@@ -402,7 +402,7 @@
     { "id": "ccinp-maths2-2023-p", "paperId": "ccinp-maths2-2023", "label": "Problème — Réduction des endomorphismes", "pageStart": 3, "pageEnd": 7, "chapterIds": ["reduction-endomorphismes", "matrices", "polynomes-fractions"], "primaryChapterId": "reduction-endomorphismes" },
 
     { "id": "ccinp-maths1-2024-e", "paperId": "ccinp-maths1-2024", "label": "Exercices I et II — Variable aléatoire et équations différentielles", "pageStart": 2, "pageEnd": 2, "chapterIds": ["variables-aleatoires-discretes", "equations-differentielles"], "primaryChapterId": "variables-aleatoires-discretes" },
-    { "id": "ccinp-maths1-2024-p", "paperId": "ccinp-maths1-2024", "label": "Problème — Séries et intégrales", "pageStart": 3, "pageEnd": 4, "chapterIds": ["series-numeriques", "integration-intervalle-quelconque", "integrales-parametre"], "primaryChapterId": "series-numeriques" },
+    { "id": "ccinp-maths1-2024-p", "paperId": "ccinp-maths1-2024", "label": "Problème — Séries et intégrales", "pageStart": 3, "pageEnd": 4, "chapterIds": ["series-numeriques", "integration", "integration-intervalle-quelconque", "integrales-parametre", "series-entieres"], "primaryChapterId": "series-numeriques" },
 
     { "id": "ccinp-maths2-2024-e", "paperId": "ccinp-maths2-2024", "label": "Exercice 1 — Suites réelles", "pageStart": 2, "pageEnd": 2, "chapterIds": ["reels-suites", "suites-series-fonctions"], "primaryChapterId": "reels-suites" },
     { "id": "ccinp-maths2-2024-p", "paperId": "ccinp-maths2-2024", "label": "Problème — Matrices et déterminants", "pageStart": 3, "pageEnd": 7, "chapterIds": ["matrices", "determinants", "reduction-endomorphismes"], "primaryChapterId": "matrices" },

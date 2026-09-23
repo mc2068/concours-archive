@@ -41,7 +41,7 @@ earlier exercise. A page of notations for the whole paper, sitting just before
 the exercise, is also an acceptable start.
 
 ### Chapitre (chapter)
-A topic in the curriculum, drawn from the **Tunisian 2ème prépa MP program**,
+A topic in the curriculum, drawn from the **Tunisian MP program** (both years),
 which is the *canonical* chapter list. Chapters are the primary filter axis:
 choosing chapter X returns every exercise tagged with X, regardless of the
 exercise's country of origin.

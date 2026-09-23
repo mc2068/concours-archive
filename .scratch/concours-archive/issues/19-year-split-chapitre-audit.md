@@ -201,3 +201,12 @@ Counts after the audit: `series-numeriques` 42→32, `-complements` 1→11;
 `structures-algebriques-y1` 0→1, `-y2` 6→5; `prehilbertiens-y1` 7→18,
 `-euclidiens-y2` 33→29; `integration` 15→16, `integration-intervalle-quelconque`
 28→43, `integrales-parametre` 17→26.
+
+### After the branch review
+
+The whole-branch review found that `ccinp-maths1-2024-p` still lacked
+`integration`, although Part I computes the Wallis integrals by IPP on
+[0, π/2] and Q12 integrates a series term by term on that segment. That is
+this ticket's own "on a segment" rule. It now carries `integration`, and also
+`series-entieres` for the power-series expansions in Q10 and Q14. So the
+count for `integration` is 15→17, not 15→16.
