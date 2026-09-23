@@ -43,3 +43,24 @@ bucket).
   students ask for it.
 - **Three separate program taxonomies with a country switch** — rejected: it
   splits the archive and defeats cross-country filtering, the whole point.
+
+## Amendment — 2026-09-22: which Tunisian program
+
+"The Tunisian program" was not specific enough. Two versions circulate. The
+**pre-reform** list is still on institute pages such as IPEIT's and is passed
+between students. It has Séries de Fourier, formes quadratiques, espaces
+hermitiens and multiple integrals, but no probability. The **reformed** program
+is close to the French MPSI→MP program and includes probability. myprepa.tn
+publishes it chapter by chapter, citing the ministry's `programme 2mp.pdf`.
+
+The canonical list is the **reformed** program, with **myprepa.tn** as the
+reference for its chapitres. The current concours tests it: `tn-maths1-2025`
+opens with an exercise on discrete random variables, which the old list has no
+place for. Topics found only in the pre-reform list have no Tunisian
+equivalent under this ADR.
+
+Switching versions would mean re-tagging the whole archive, which is why this
+is recorded. `CONTEXT.md` ("Chapitre") says the same in glossary terms. It also
+records that a topic split across the two years, such as integration or
+séries numériques, is several chapitres, and an exercise takes the one it
+really uses.
