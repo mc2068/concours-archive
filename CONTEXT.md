@@ -21,6 +21,17 @@ runs more than one maths épreuve in a year (Maths 1 / Maths 2), a paper's
 the *container*, not the unit a student filters by. NOT the live exam event; NOT
 a single exercise.
 
+A paper is the **sujet** only. When a source bundles a **corrigé** (the
+official or institute solution) after the sujet, the corrigé is not part of
+the paper. The paper's last page is the sujet's last page, and a paper with
+no exercise left after **mapping** is not in the archive at all.
+
+### Corrigé
+The worked solution to a concours paper, as published alongside it by the
+concours or by an institute. Not part of the archive in v1: solutions are a
+fast-follow. NOT the sujet, and NOT a student's own answers in an answer
+booklet.
+
 ### Exercise (exercice / problème)
 The **taggable unit** of the site: a single exercise or problème extracted from a
 concours paper. This is what gets tagged with chapters and what a chapter filter
@@ -77,6 +88,15 @@ foreign exercise is **mapped onto Tunisian chapters** rather than carrying its
 own country's chapter names. The Tunisian program is the spine everything hangs
 on. A foreign exercise whose topic has **no Tunisian equivalent is excluded**
 from the archive in v1 (see ADR 0002) — it is noise for a Tunisian student.
+
+The same holds for a Tunisian paper set on the **pre-reform** program. An
+exercise is judged by what it asks the student to do, not by the topic its
+paper is framed in. It is **in** when a student of the reformed program can
+answer it, and it is tagged with the chapitre it really uses. Results stated
+earlier in the paper count as given. It is **out** only when answering needs a
+pre-reform notion: Fourier's theorems, hermitian products, the signature of a
+quadratic form, multiple integrals. So a problem can keep its later parties
+and lose its first.
 
 ### Filter axes
 The dimensions a student narrows by: **chapitre** (primary, single-select) plus
