@@ -6,7 +6,7 @@ without exercises out of the archive.
 
 **Blocked by:** none
 
-**Status:** in progress
+**Status:** done (commit 094a1bf)
 
 ## Context
 
