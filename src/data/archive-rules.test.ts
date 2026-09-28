@@ -119,6 +119,17 @@ describe('checkArchive', () => {
       a.papers[0]!.pdfPath = '/papers/archive/mines-2019.pdf';
       expect(rulesOf(a)).toContain('pdf-outside-papers-dir');
     });
+
+    it('catches a paper no exercise points at', () => {
+      const a = clean();
+      // Every exercise of a pre-reform paper can fall to mapping. The paper
+      // must then go too, or its year offers a refinement that returns nothing
+      // (CONTEXT.md, "Concours (paper)").
+      a.exercises = [];
+      expect(checkArchive(a, PAGES)).toEqual([
+        expect.objectContaining({ rule: 'paper-without-exercises', subject: 'mines-2019' }),
+      ]);
+    });
   });
 
   describe('exercises', () => {

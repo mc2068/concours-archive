@@ -6,7 +6,7 @@ without exercises out of the archive.
 
 **Blocked by:** none
 
-**Status:** open
+**Status:** in progress
 
 ## Context
 
@@ -64,12 +64,83 @@ the rule in `CONTEXT.md` ("Mapping").
 
 ## Acceptance
 
-- [ ] 13 papers are bundled, each trimmed to its sujet, or recorded below as
+- [x] 13 papers are bundled, each trimmed to its sujet, or recorded below as
       not added because nothing survived mapping.
-- [ ] For each paper, the comments record its IPEIS URL and the page where
+- [x] For each paper, the comments record its IPEIS URL and the page where
       the corrigé starts in the original file, for the solutions fast-follow.
-- [ ] `paper-without-exercises` exists, is tested, and passes.
-- [ ] `npm run verify` and `npm test` pass.
-- [ ] The PRD's counts match the archive.
+- [x] `paper-without-exercises` exists, is tested, and passes.
+- [x] `npm run verify` and `npm test` pass.
+- [x] The PRD's counts match the archive.
 
 ## Comments
+
+**2026-09-28 — done.** All 13 papers are bundled, and every exercise maps onto
+the reformed program, so nothing was excluded and no paper was dropped. The
+archive is now 101 papers and 245 exercises. Page ranges and tags come from
+reading every sujet page as an image; they are a curator's judgement and worth
+checking in review.
+
+**Sources and corrigés.** Each file is
+`https://ipeis.rnu.tn/userfiles/files/concours/<year>.MP.Maths I.pdf` (or
+`Maths II`; `Math II` for 2025). It was trimmed to its sujet with poppler's
+`pdfseparate` + `pdfunite`, so pages are copied, not re-encoded. "Corrigé from"
+is the page of the original IPEIS file where the corrigé starts.
+
+| Paper | Sujet pages | Corrigé from | Original | Bundled |
+| --- | ---: | ---: | ---: | ---: |
+| tn-maths1-2017 | 4 | 5 | 17 p, 8.1 MB | 2.1 MB |
+| tn-maths2-2017 | 4 | 5 | 8 p, 4.1 MB | 2.0 MB |
+| tn-maths1-2018 | 4 | 5 | 11 p, 5.3 MB | 2.0 MB |
+| tn-maths2-2018 | 4 | 5 | 10 p, 4.8 MB | 2.4 MB |
+| tn-maths1-2019 | 4 | 5 | 16 p, 2.4 MB | 1.9 MB |
+| tn-maths2-2019 | 4 | 5 | 10 p, 2.8 MB | 2.4 MB |
+| tn-maths1-2020 | 5 | 6 | 18 p, 7.4 MB | 2.0 MB |
+| tn-maths2-2020 | 4 | 5 | 12 p, 2.7 MB | 2.1 MB |
+| tn-maths1-2021 | 5 | 6 | 12 p, 4.4 MB | 1.8 MB |
+| tn-maths2-2021 | 4 | 5 | 10 p, 4.5 MB | 1.9 MB |
+| tn-maths1-2022 | 5 | 6 | 12 p, 1.8 MB | 0.8 MB |
+| tn-maths2-2022 | 5 | 6 | 16 p, 2.3 MB | 0.7 MB |
+| tn-maths2-2025 | 5 | 6 | 16 p, 8.0 MB | 2.3 MB |
+
+2025 Maths 2 keeps the "BIB-IPEIS" watermark of its source; the older scans
+keep the IPEIS library stamps.
+
+**Start pages.** Where page 1 holds only the cover and notations for the whole
+paper, the first exercise starts on page 2, where its own text begins
+(`tn-maths2-2018`, `-2019`, `-2021`, `-2022`, `-2025`, `tn-maths1-2022`).
+`tn-maths2-2020-i` starts on page 1, because page 1 states the system (E)
+X′ = AX that the whole problem studies.
+
+**Tags a reviewer may want to check:**
+
+- `tn-maths1-2018-i` tags **Limites, continuité**, which had no exercise before
+  (the höldérienne functions of Partie II).
+- `tn-maths2-2022-i` tags **Fonctions vectorielles, arcs paramétrés**, for the
+  derivatives of t ↦ exp(φ(t)) in Mₙ(C). That chapitre now has 2 exercises.
+- `tn-maths1-2017-e2` tags **Espaces préhilbertiens réels** (1ère année) for
+  the distance to a finite-dimensional subspace, and **Suites et séries de
+  fonctions** for the Weierstrass question.
+- `tn-maths2-2017-ii` Q12 is a quadratic form ax² + 2bxy + cy², solved through
+  the eigenvalues of a symmetric matrix. It stays in under the Mapping rule and
+  is tagged with the euclidean chapitre, not with any quadratic-form notion.
+- Probability from 2017 onwards: binomial laws (2017), Bernstein polynomials
+  (2018), Poisson and generating functions (2019), Poisson approximation
+  (2020), a random walk and the CLT (2021), characteristic functions (2022),
+  and geometric laws inside algebra problems (2018 M2, 2021 M2).
+
+**Gate.** `paper-without-exercises` is in `archive-rules.ts` with a fixture
+test. `checkArchive`'s comment used to call "a paper not yet tagged" a legal
+authoring state; it now says a paper goes in together with its exercises, or
+not at all.
+
+**PRD.** Every count is recomputed from the archive with the page's own
+`createArchiveView`. Several were already stale before this ticket, because
+tickets 19–20 retagged exercises: Matrices, Séries numériques and the first
+row's label had moved. "Limites, continuité" now has an exercise, so S13, S14
+and S21 use "Calculs algébriques" as the chapitre with none. S3 is now
+"2 exercices", not the singular; S6 still covers "1 exercice". S10's
+"Année = 2014 → every row Mines-Ponts" holds until ticket 22.
+
+`npm run verify`, `npm test` (80 tests) and `astro check` pass. In the dev
+server, Pays = Tunisie shows 60 exercices, Année offers 2014–2026, and
+`/papers/tn-maths1-2018.pdf` is served as `application/pdf`.

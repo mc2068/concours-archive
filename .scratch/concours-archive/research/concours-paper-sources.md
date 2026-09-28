@@ -147,6 +147,27 @@ first-party concours sources**. Aggregators are listed as clearly-labelled secon
   **IPEIM** (`ipeim.rnu.tn`). These `.rnu.tn` (university) sites mirror national concours subjects
   and are reliable, but coverage/format varies by institute. Useful as a fallback locator.
 
+### 3d. IPEIS (Institut Préparatoire aux Études d'Ingénieurs de Sfax) — the source for 2000–2022
+*Added 2026-09-28, ticket 21.*
+- **Page:** https://ipeis.rnu.tn/fr/article/721/concours-nationaux — one table per filière
+  (Maths Physique, Physique Chimie, Technologie, Biologie Géologie) and session, 2000–2025.
+  Each cell is a drop-down menu, not a link list.
+- **MP maths PDFs:** `https://ipeis.rnu.tn/userfiles/files/concours/<year>.MP.Maths I.pdf` and
+  `… Maths II.pdf`. For 2025 the files are named `Math I` / `Math II`, without the s. Asking
+  for one in a browser downloads it instead of showing it.
+- **Every file is sujet + corrigé.** The sujet comes first, as many pages as its cover's
+  "Nb pages", and the institute's full corrigé follows. Some corrigés are typed, and 2001's is
+  handwritten. 2024 and 2025 are answer booklets with the corrigé typed into the boxes, still
+  after the sujet pages. The archive keeps only the sujet (`CONTEXT.md`, "Concours (paper)").
+  Each ticket that bundles an IPEIS file records where its corrigé starts.
+- **Scans.** Before about 2019 the sujets are scans with no text layer, stamped by the IPEIS
+  library. The 2024–2025 files carry a "BIB-IPEIS" watermark.
+- **Coverage vs the official site:** concours-ingenieurs.rnu.tn (§3a) starts at 2023 and has no
+  2025 MP Maths 2, so IPEIS is the only source found for 2000–2022 and for 2025 Maths 2.
+  The 2023–2025 files already bundled came from §3a and have no corrigé.
+- **Usage/copyright:** no terms shown. The same stance as §3a applies: official exam material
+  republished by a public institute.
+
 ---
 
 ## 4. Morocco — CNC (Concours National Commun), filière MP
