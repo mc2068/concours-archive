@@ -64,3 +64,27 @@ is recorded. `CONTEXT.md` ("Chapitre") says the same in glossary terms. It also
 records that a topic split across the two years, such as integration or
 séries numériques, is several chapitres, and an exercise takes the one it
 really uses.
+
+## Amendment — 2026-09-28: pre-reform Tunisian papers
+
+The archive now takes in Tunisian concours papers back to 2000. The ones set
+before the reform, up to about 2016, were written for the pre-reform
+program. The decision above covers their pre-reform topics: they have no
+Tunisian equivalent. It did not say how much of such a paper that removes.
+
+Each **exercise** is judged on its own, not the paper as a whole. An exercise
+is kept when a student of the reformed program can answer it, and it is tagged
+with the chapitre it really uses. Results stated earlier in the paper count as
+given; the papers themselves say "tout résultat énoncé peut être utilisé". It
+is excluded only when answering needs a pre-reform notion: Fourier's theorems,
+hermitian products, the signature of a quadratic form, multiple integrals. A
+problem can therefore lose its first partie and keep the rest. A paper with
+nothing left is not added at all.
+
+We chose this over dropping every pre-reform paper, or keeping only the
+papers where nothing needs excluding. Twenty years of Tunisian exercises on
+réduction, séries and intégrales are exactly what the audience trains on. The
+cost is judgement per exercise, and a reader may wonder why a 2012 Fourier
+problem is half in the archive. Changing the rule later means re-reading about
+47 papers, which is why it is recorded. `CONTEXT.md` ("Mapping") says the same
+in glossary terms.

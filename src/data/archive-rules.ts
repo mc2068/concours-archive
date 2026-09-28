@@ -57,9 +57,10 @@ function duplicates<T>(values: T[]): T[] {
  * problem with 55 subjects (see {@link formatViolations}).
  *
  * Says nothing about states that are legal mid-authoring — a chapitre with no
- * exercises yet, a paper not yet tagged, a program area with no chapitres (the
- * archive has no Géométrie chapitre today). A guard that cries about normal
- * work teaches you to ignore it.
+ * exercises yet, a program area with no chapitres (the archive has no Géométrie
+ * chapitre today). A guard that cries about normal work teaches you to ignore
+ * it. A paper with no exercises is not one of those: a paper goes in together
+ * with its exercises, or not at all.
  *
  * @param pageCounts page count per PDF file name; a paper whose file is absent
  *   from this map is reported as `missing-pdf`.
@@ -145,6 +146,16 @@ export function checkArchive(archive: Archive, pageCounts: PageCounts): Violatio
     const pages = paperPdf === null ? undefined : pageCounts[paperPdf];
     if (pages !== undefined && e.pageEnd > pages) {
       add('anchor-past-end', e.id, `pages ${e.pageStart}–${e.pageEnd}, PDF has ${pages}`);
+    }
+  }
+
+  // A paper with nothing left after mapping is not in the archive at all
+  // (CONTEXT.md, "Concours (paper)"). Left in, it is invisible in every result
+  // yet still offers its year as a refinement that can only return nothing.
+  const pointedAt = new Set(archive.exercises.map((e) => e.paperId));
+  for (const p of archive.papers) {
+    if (!pointedAt.has(p.id)) {
+      add('paper-without-exercises', p.id, 'no exercise points at this paper, so no result can ever show it');
     }
   }
 
