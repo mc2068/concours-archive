@@ -32,8 +32,7 @@ Already seen on the cover pages: 2009 Maths 1 is on séries trigonométriques
       needs, so the exclusions can be reviewed.
 - [x] For each paper, the comments record its IPEIS URL and the page where
       the corrigé starts in the original file.
-- [ ] New exercises' start pages and tags are audited, as in ticket 16.
-      (See "Still open".)
+- [x] New exercises' start pages and tags are audited, as in ticket 16.
 - [x] The PRD's counts match the archive; `npm run verify` and `npm test` pass.
 
 ## Comments
@@ -138,13 +137,28 @@ found no errors in the data:
 - Every chapitre slug exists, and the ids follow ticket 22's review.
 - The PRD's counts match the archive.
 
-It did not re-read the exercises against their pages, so it is not the
-ticket 16 audit. Tags and page ranges are still the curator's single
-reading of the scans.
+### Audit
 
-Three records carry both halves of a year pair, which "Chapitre" allows
-when both are really used: `tn-maths1-2005-p2` (séries), `tn-maths1-2009-ii-b`
-(intégration) and `tn-maths2-2005-e` (préhilbertien). They were not changed.
+This is the ticket 16 audit. All 54 sujet pages were rendered and read by
+eye, and every new exercise was checked against "Page range" in
+`CONTEXT.md` and its tags. All 40 page ranges hold, and nothing was changed.
+
+**Considered and left as they are.**
+
+- `tn-maths1-2009-ii-b` starts on page 3, where Partie B begins. The
+  definition of D² it uses is in Partie II's introduction on page 2. The
+  same holds for `tn-maths2-2011-ii-b` (ticket 22), which starts at its own
+  sub-partie too.
+- Page 1 of `tn-maths2-2006`, `-2007`, `-2009` and `-2010` holds the cover
+  and notations for the whole paper. Starting on page 2, where Partie I
+  begins, follows the rule. Page 1 would also have been acceptable.
+- The three records that carry both halves of a year pair use both:
+  - `tn-maths1-2005-p2`: séries numériques and their complements for the
+    abscisses of convergence.
+  - `tn-maths1-2009-ii-b`: Riemann integrals over [−π, π] in 4d–e, and G′
+    integrable on [0, +∞[ in 2b.
+  - `tn-maths2-2005-e`: orthogonal projectors (year 1), with the adjoint and
+    O(E) (year 2).
 
 **Still open:**
 
@@ -156,5 +170,11 @@ when both are really used: `tn-maths1-2005-p2` (séries), `tn-maths1-2009-ii-b`
 - For `/domain-modeling`: `CONTEXT.md` ("Mapping") and ADR 0002 give one
   reason to leave an exercise out, a pre-reform notion. This ticket adds a
   second one, an incomplete source, which neither document covers yet.
-- The ticket 16 audit of start pages and tags: read every new exercise
-  against its pages in an independent pass, as ticket 22's review did.
+- Two tag questions from the audit, for the curator:
+  - `tn-maths1-2010-iv` carries `familles-sommables`. The only swap of two
+    Σ, in IV.2b, is admitted by the statement ("en admettant … qu'on peut
+    intervertir les deux symboles Σ"). IV.4 needs term-by-term integration
+    on ℝ₊, which its other tags already cover.
+  - `tn-maths2-2010-iv` has no `systemes-lineaires`, although the Partie is
+    about solving the linear systems (3) and (4) iteratively. IV.3 also asks
+    that the matrix of (3) be invertible.
