@@ -8,7 +8,7 @@
 | **Authentication** | None. No accounts, no login, no credentials needed. |
 | **UI language** | French. Every UI string quoted below is verbatim. |
 | **Viewports** | Desktop, and mobile down to 375 px wide |
-| **Data snapshot** | ticket 21 (Tunisian papers 2017–2022) and its review's retags, 2026-09-29: 245 exercises, 101 papers, 37 chapitres |
+| **Data snapshot** | ticket 22 (Tunisian papers 2011–2016), 2026-09-29: 280 exercises, 113 papers, 37 chapitres |
 
 Numbers in this document are a snapshot of the data at that point. They
 will change when exercises are added. The **invariants** (marked *Invariant*)
@@ -84,12 +84,12 @@ One page, at `/`. Stable hooks for automation:
 On load, before any interaction:
 
 - `#heading` reads **"Tous les exercices"**.
-- `#count` reads **"245 exercices"**.
-- `#results` contains **245** `li.result-row`.
+- `#count` reads **"280 exercices"**.
+- `#results` contains **280** `li.result-row`.
 - "Tous les chapitres" has `aria-pressed="true"`; all 37 chapitre buttons have
   `aria-pressed="false"`.
 - Pays shows "Tous", Concours shows "Tous", Année shows "Toutes".
-- Masthead shows **Exercices 245** and **Épreuves 101**.
+- Masthead shows **Exercices 280** and **Épreuves 113**.
 - *Invariant:* the masthead "Exercices" value equals the default `#count`.
 
 ### FR-2 — Chapitre list
@@ -130,7 +130,7 @@ The options offered are only values that exist in the data:
 | --- | --- |
 | Pays | Tous · 🇫🇷 France · 🇹🇳 Tunisie · 🇲🇦 Maroc |
 | Concours | Tous · CCINP · Centrale · CNC · Concours tunisien · Mines-Ponts |
-| Année | Toutes · 2026 · 2025 · … · 2014 (descending; ticket 22 extends it to 2011) |
+| Année | Toutes · 2026 · 2025 · … · 2011 (descending) |
 
 - A refinement applies as soon as its value changes. There is no "apply"
   button.
@@ -203,7 +203,7 @@ The button offers the smallest widening that actually brings results back:
 | Condition | Button | Clicking it |
 | --- | --- | --- |
 | At least one refinement is active, **and** clearing the refinements would leave results — the selected chapitre has exercises, or no chapitre is selected | **Réinitialiser les filtres** | Clears the refinements and keeps the chapitre (same as FR-5) |
-| The selected chapitre has **no exercises at all**, whether or not refinements are active | **Voir tous les exercices** | Clears the chapitre **and** the refinements in one click: "Tous les chapitres" is pressed, the heading becomes "Tous les exercices", the selects read Tous / Tous / Toutes, and all 245 exercises show |
+| The selected chapitre has **no exercises at all**, whether or not refinements are active | **Voir tous les exercices** | Clears the chapitre **and** the refinements in one click: "Tous les chapitres" is pressed, the heading becomes "Tous les exercices", the selects read Tous / Tous / Toutes, and all 280 exercises show |
 | The archive holds no exercises | *(no button)* | Unreachable with the current data |
 
 - *Invariant:* clicking the empty-state button always lands on at least one
@@ -242,7 +242,7 @@ restored: it always starts at "Tous les chapitres".
 
 - *Invariant:* whatever the selects show once the page has settled, the results
   match them. If the selects come back as Concours = CNC, Année = 2019, the list
-  is those 3 exercises, not all 245.
+  is those 3 exercises, not all 280.
 
 ### FR-11 — Page basics
 
@@ -261,28 +261,28 @@ Unless a step says otherwise, each scenario starts from a fresh page load.
 
 | ID | Steps | Expected |
 | --- | --- | --- |
-| S1 | Load the page | Heading "Tous les exercices", count "245 exercices". First row "Exercice II — Fonction génératrice d'une somme de variables indépendantes", source "🇫🇷 CCINP Maths 1 · 2026", Ouvrir → `/papers/ccinp-maths1-2026.pdf#page=2`. Last row "Parties D–E — Généralisation et intégrales de Fredholm", source "🇫🇷 Mines-Ponts Maths 2 · 2014" (true until ticket 22 adds the Tunisian 2011–2016 papers). |
-| S2 | Click "Matrices" | Heading "Matrices", count "81 exercices", only "Matrices" pressed. First row "Exercices 1 et 2 — Matrices", source "🇫🇷 CCINP Maths 2 · 2026". |
+| S1 | Load the page | Heading "Tous les exercices", count "280 exercices". First row "Exercice II — Fonction génératrice d'une somme de variables indépendantes", source "🇫🇷 CCINP Maths 1 · 2026", Ouvrir → `/papers/ccinp-maths1-2026.pdf#page=2`. Last row "Partie II.B — Orthogonalité dans Mₙ(R) : puissances d'une matrice de décalage", source "🇹🇳 Concours tunisien Maths 2 · 2011". |
+| S2 | Click "Matrices" | Heading "Matrices", count "92 exercices", only "Matrices" pressed. First row "Exercices 1 et 2 — Matrices", source "🇫🇷 CCINP Maths 2 · 2026". |
 | S3 | Click "Fonctions vectorielles, arcs paramétrés" | "3 exercices". First row "Parties III–IV — Géodésiques : ligne droite et cycloïde", source "🇫🇷 Mines-Ponts Maths 1 · 2026". Chips: "Fonctions vectorielles, arcs paramétrés" (primary), "Calcul différentiel", "Intégration sur un segment". Ouvrir → `/papers/mines-ponts-maths1-2026.pdf#page=4`. |
 | S4 | Click "Calcul différentiel", then "Intégration sur un segment" | The S3 exercise is in both lists (multi-tag rule). |
-| S5 | Click "Séries numériques", then set Pays = Tunisie | "36 exercices", then "6 exercices". Every row shows 🇹🇳. First row's Ouvrir → `/papers/tn-maths1-2026.pdf#page=23`. |
+| S5 | Click "Séries numériques", then set Pays = Tunisie | "40 exercices", then "10 exercices". Every row shows 🇹🇳. First row's Ouvrir → `/papers/tn-maths1-2026.pdf#page=23`. |
 | S6 | Continue S5: set Année = 2024 | "1 exercice": "Parties III–IV — Coefficients de Fourier et noyau de Dirichlet", source "🇹🇳 Concours tunisien Maths 1 · 2024". |
-| S7 | Click "Matrices", set Pays = France, then click sidebar "Réinitialiser les filtres" | "48 exercices", then back to "81 exercices". Heading stays "Matrices", "Matrices" stays pressed, selects read Tous / Tous / Toutes. |
+| S7 | Click "Matrices", set Pays = France, then click sidebar "Réinitialiser les filtres" | "48 exercices", then back to "92 exercices". Heading stays "Matrices", "Matrices" stays pressed, selects read Tous / Tous / Toutes. |
 | S8 | Click "Matrices", set Concours = Mines-Ponts, set Année = 2025 | "2 exercices": "Partie C — Expression matricielle J(p) = VᵀDV", then "Parties D–E — Critère de Schur-Cohn et inversibilité de J(p)". Both open `/papers/mines-ponts-maths2-2025.pdf#page=5`. |
-| S9 | Set Pays = Tunisie, click "Séries numériques", then click "Matrices" | "60 exercices" → "6 exercices" → "15 exercices". Pays stays "Tunisie" throughout: refinements survive chapitre changes. |
-| S10 | With no chapitre, apply one refinement at a time, reloading between | Pays = Tunisie → "60 exercices". Concours = CNC → "47 exercices", every row 🇲🇦. Année = 2014 → "5 exercices", every row Mines-Ponts (true until ticket 22 adds the Tunisian 2011–2016 papers). |
-| S11 | Set Pays = Tunisie and Concours = Mines-Ponts | "0 exercices". Empty state "Aucun résultat" with button "Réinitialiser les filtres". Click it → "245 exercices", heading "Tous les exercices". |
+| S9 | Set Pays = Tunisie, click "Séries numériques", then click "Matrices" | "95 exercices" → "10 exercices" → "26 exercices". Pays stays "Tunisie" throughout: refinements survive chapitre changes. |
+| S10 | With no chapitre, apply one refinement at a time, reloading between | Pays = Tunisie → "95 exercices". Concours = CNC → "47 exercices", every row 🇲🇦. Année = 2014 → "10 exercices": five 🇹🇳 Concours tunisien rows, then five 🇫🇷 Mines-Ponts rows (brand order, FR-7). |
+| S11 | Set Pays = Tunisie and Concours = Mines-Ponts | "0 exercices". Empty state "Aucun résultat" with button "Réinitialiser les filtres". Click it → "280 exercices", heading "Tous les exercices". |
 | S12 | Click "Nombres réels et suites numériques", set Pays = Tunisie | "0 exercices", button "Réinitialiser les filtres". Click it → "5 exercices", and the heading is still "Nombres réels et suites numériques". |
-| S13 | Click "Calculs algébriques" | "0 exercices", button "Voir tous les exercices". Click it → "245 exercices", heading "Tous les exercices", "Tous les chapitres" pressed, "Calculs algébriques" not pressed. |
-| S14 | Click "Calculs algébriques", set Pays = France | "0 exercices", button **"Voir tous les exercices"** (not "Réinitialiser les filtres"). Click it once → "245 exercices", heading "Tous les exercices", "Tous les chapitres" pressed, selects read Tous / Tous / Toutes. |
+| S13 | Click "Calculs algébriques" | "0 exercices", button "Voir tous les exercices". Click it → "280 exercices", heading "Tous les exercices", "Tous les chapitres" pressed, "Calculs algébriques" not pressed. |
+| S14 | Click "Calculs algébriques", set Pays = France | "0 exercices", button **"Voir tous les exercices"** (not "Réinitialiser les filtres"). Click it once → "280 exercices", heading "Tous les exercices", "Tous les chapitres" pressed, selects read Tous / Tous / Toutes. |
 | S15 | In any view, inspect every row | `#count` equals the row count. Every row has exactly one `.chip--primary`. Every Ouvrir `href` matches `^/papers/[^/]+\.pdf#page=[1-9][0-9]*$`, with `target="_blank"` and `rel="noopener noreferrer"`. |
 | S16 | Request any Ouvrir URL (without the fragment) | HTTP 200, `Content-Type: application/pdf`. |
 | S17 | Set Année = 2025 | Rows run in brand order CCINP, Centrale, CNC, Concours tunisien, Mines-Ponts. |
-| S18 | Set Année = 2014 | Exactly: "Partie A — La représentation z ↦ e^z dans C", "Partie D — Représentation A ↦ e^A dans Mₙ(C)", "Parties B–C — Bloc de Jordan et forme de Jordan d'une matrice nilpotente" (all Mines-Ponts Maths 1), then "Parties A–C — Théorème du point fixe et invariance par homotopie", "Parties D–E — Généralisation et intégrales de Fredholm" (both Mines-Ponts Maths 2). True until ticket 22 adds the Tunisian 2014 papers. |
+| S18 | Set Année = 2014 | Exactly, in this order: "Problème I, Partie I — Intégrale de Gauss par une intégrale à paramètre et une équation différentielle", "Problème I, Parties II–III — Intégrales de Wallis et formule de Stirling", "Problème II, Parties I–II — La fonction ζ, x/(eˣ − 1) et les nombres de Bernoulli" (all Concours tunisien Maths 1), "Exercice, questions 1 et 3 — Inversibles de Z/nZ et points critiques de x⁴ + y⁴ − 2(x − y)²", "Problème — S = [Iₚ ᵗA ; A 0] : noyaux et images, valeurs propres de ᵗAA, AᵗA et S" (both Concours tunisien Maths 2), then "Partie A — La représentation z ↦ e^z dans C", "Partie D — Représentation A ↦ e^A dans Mₙ(C)", "Parties B–C — Bloc de Jordan et forme de Jordan d'une matrice nilpotente" (all Mines-Ponts Maths 1), then "Parties A–C — Théorème du point fixe et invariance par homotopie", "Parties D–E — Généralisation et intégrales de Fredholm" (both Mines-Ponts Maths 2). |
 | S19 | At 375 × 812 | Toggle visible, sidebar hidden, `aria-expanded="false"`. Tap the toggle → sidebar open, `"true"`. Set Pays = France → sidebar still open. Tap "Matrices" → sidebar closes, `"false"`, heading "Matrices". No horizontal scroll at any point. |
 | S20 | At 1280 × 800 | Sidebar visible as a left column. Toggle not visible. |
-| S21 | At 375 × 812 (loaded at that width): tap the toggle, tap "Calculs algébriques", tap the toggle again, set Pays = France, then click "Voir tous les exercices" | The sidebar closes on the chapitre tap, reopens on the toggle, stays open through the Pays change, and closes on "Voir tous les exercices" (FR-10). Ends on "245 exercices". |
-| S22 | Set Concours = CNC and Année = 2019 ("3 exercices"), navigate to another URL, then press Back | The chapitre is "Tous les chapitres". If the browser restored the selects to CNC / 2019, the list shows "3 exercices", all "🇲🇦 CNC … · 2019". If it did not, the selects read Tous / Tous / Toutes and the list shows "245 exercices". Never restored selects over an unfiltered list (FR-12). |
+| S21 | At 375 × 812 (loaded at that width): tap the toggle, tap "Calculs algébriques", tap the toggle again, set Pays = France, then click "Voir tous les exercices" | The sidebar closes on the chapitre tap, reopens on the toggle, stays open through the Pays change, and closes on "Voir tous les exercices" (FR-10). Ends on "280 exercices". |
+| S22 | Set Concours = CNC and Année = 2019 ("3 exercices"), navigate to another URL, then press Back | The chapitre is "Tous les chapitres". If the browser restored the selects to CNC / 2019, the list shows "3 exercices", all "🇲🇦 CNC … · 2019". If it did not, the selects read Tous / Tous / Toutes and the list shows "280 exercices". Never restored selects over an unfiltered list (FR-12). |
 
 ### Notes for automated tests
 
@@ -321,7 +321,7 @@ Tests should **pass** on these. Some are tracked as future UX improvements.
   et opérations élémentaires. Selecting one shows the empty state with "Voir tous
   les exercices", with or without refinements active.
 - **Label order is not page order** within a paper (FR-7). In the current data,
-  34 neighbouring pairs of exercises from the same paper appear out of page
+  37 neighbouring pairs of exercises from the same paper appear out of page
   order. This is the specified rule.
 - **Single year only.** No year-range control is offered.
 - **The heading shows the chapitre only**, never the refinements.
@@ -346,50 +346,50 @@ other than French · subjects other than maths.
 | 1 | Analyse | Techniques fondamentales de calcul en analyse | 0 |
 | 2 | Analyse | Nombres réels et suites numériques | 5 |
 | 3 | Analyse | Limites, continuité | 1 |
-| 4 | Analyse | Dérivation | 12 |
+| 4 | Analyse | Dérivation | 13 |
 | 5 | Analyse | Fonctions convexes | 11 |
-| 6 | Analyse | Analyse asymptotique | 29 |
-| 7 | Analyse | Intégration sur un segment | 19 |
-| 8 | Analyse | Séries numériques | 36 |
-| 9 | Analyse | Suites et séries de fonctions | 44 |
+| 6 | Analyse | Analyse asymptotique | 36 |
+| 7 | Analyse | Intégration sur un segment | 21 |
+| 8 | Analyse | Séries numériques | 40 |
+| 9 | Analyse | Suites et séries de fonctions | 52 |
 | 10 | Analyse | Fonctions vectorielles, arcs paramétrés | 3 |
-| 11 | Analyse | Séries entières | 26 |
-| 12 | Analyse | Équations différentielles linéaires | 17 |
-| 13 | Analyse | Calcul différentiel | 19 |
-| 14 | Analyse | Intégration sur un intervalle quelconque | 52 |
-| 15 | Analyse | Séries numériques (compléments de 2ème année) | 12 |
-| 16 | Analyse | Topologie des espaces vectoriels normés | 43 |
-| 17 | Analyse | Intégrales à paramètre | 32 |
-| 18 | Analyse | Familles sommables de nombres complexes | 3 |
-| 19 | Algèbre | Nombres complexes et trigonométrie | 4 |
+| 11 | Analyse | Séries entières | 36 |
+| 12 | Analyse | Équations différentielles linéaires | 22 |
+| 13 | Analyse | Calcul différentiel | 22 |
+| 14 | Analyse | Intégration sur un intervalle quelconque | 60 |
+| 15 | Analyse | Séries numériques (compléments de 2ème année) | 16 |
+| 16 | Analyse | Topologie des espaces vectoriels normés | 45 |
+| 17 | Analyse | Intégrales à paramètre | 38 |
+| 18 | Analyse | Familles sommables de nombres complexes | 4 |
+| 19 | Algèbre | Nombres complexes et trigonométrie | 5 |
 | 20 | Algèbre | Calculs algébriques | 0 |
-| 21 | Algèbre | Arithmétique dans l'ensemble des entiers relatifs | 2 |
+| 21 | Algèbre | Arithmétique dans l'ensemble des entiers relatifs | 3 |
 | 22 | Algèbre | Vocabulaire ensembliste | 0 |
 | 23 | Algèbre | Structures algébriques usuelles | 1 |
-| 24 | Algèbre | Polynômes et fractions rationnelles | 28 |
-| 25 | Algèbre | Espaces vectoriels et applications linéaires | 7 |
-| 26 | Algèbre | Espaces vectoriels de dimension finie | 13 |
-| 27 | Algèbre | Matrices | 81 |
+| 24 | Algèbre | Polynômes et fractions rationnelles | 38 |
+| 25 | Algèbre | Espaces vectoriels et applications linéaires | 9 |
+| 26 | Algèbre | Espaces vectoriels de dimension finie | 20 |
+| 27 | Algèbre | Matrices | 92 |
 | 28 | Algèbre | Systèmes linéaires et opérations élémentaires | 0 |
 | 29 | Algèbre | Groupe symétrique | 4 |
-| 30 | Algèbre | Déterminants | 13 |
-| 31 | Algèbre | Espaces préhilbertiens réels | 20 |
-| 32 | Algèbre | Réduction des endomorphismes et des matrices carrées | 78 |
-| 33 | Algèbre | Espaces préhilbertiens réels. Endomorphismes des espaces euclidiens | 41 |
-| 34 | Algèbre | Structures algébriques usuelles (2ème année) | 8 |
+| 30 | Algèbre | Déterminants | 14 |
+| 31 | Algèbre | Espaces préhilbertiens réels | 24 |
+| 32 | Algèbre | Réduction des endomorphismes et des matrices carrées | 90 |
+| 33 | Algèbre | Espaces préhilbertiens réels. Endomorphismes des espaces euclidiens | 43 |
+| 34 | Algèbre | Structures algébriques usuelles (2ème année) | 9 |
 | 35 | Probabilités | Dénombrement | 8 |
 | 36 | Probabilités | Probabilités | 10 |
 | 37 | Probabilités | Variables aléatoires discrètes | 42 |
 
-These add up to more than 245 because an exercise can carry several tags (237 of
-the 245 do).
+These add up to more than 280 because an exercise can carry several tags (272 of
+the 280 do).
 
 ## Appendix B — Exercises per refinement value (snapshot)
 
 | Pays | Exercises | Papers |
 | --- | ---: | ---: |
 | 🇫🇷 France | 138 | 58 |
-| 🇹🇳 Tunisie | 60 | 20 |
+| 🇹🇳 Tunisie | 95 | 32 |
 | 🇲🇦 Maroc | 47 | 23 |
 
 | Concours | Exercises |
@@ -397,9 +397,9 @@ the 245 do).
 | CCINP | 33 |
 | Centrale | 33 |
 | CNC | 47 |
-| Concours tunisien | 60 |
+| Concours tunisien | 95 |
 | Mines-Ponts | 72 |
 
-| Année | 2026 | 2025 | 2024 | 2023 | 2022 | 2021 | 2020 | 2019 | 2018 | 2017 | 2016 | 2015 | 2014 |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Exercises | 22 | 26 | 26 | 26 | 24 | 23 | 21 | 23 | 16 | 17 | 8 | 8 | 5 |
+| Année | 2026 | 2025 | 2024 | 2023 | 2022 | 2021 | 2020 | 2019 | 2018 | 2017 | 2016 | 2015 | 2014 | 2013 | 2012 | 2011 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Exercises | 22 | 26 | 26 | 26 | 24 | 23 | 21 | 23 | 16 | 17 | 15 | 15 | 10 | 7 | 3 | 6 |
