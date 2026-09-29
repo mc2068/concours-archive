@@ -144,3 +144,56 @@ and S21 use "Calculs algébriques" as the chapitre with none. S3 is now
 `npm run verify`, `npm test` (80 tests) and `astro check` pass. In the dev
 server, Pays = Tunisie shows 60 exercices, Année offers 2014–2026, and
 `/papers/tn-maths1-2018.pdf` is served as `application/pdf`.
+
+### After the branch review
+
+The review read every new exercise against its pages. Page ranges, splits
+and the trims to the sujet all held. Eleven exercises had a chapitre they
+really use missing or in the wrong year:
+
+- `tn-maths1-2021-i` gains `topologie-evn`: Q2a shows that H is a closed
+  hyperplane of C_b(R).
+- `tn-maths1-2021-ii` gains `reduction-endomorphismes` for "Étude spectrale
+  de T" (Q8–9), and `integration-intervalle-quelconque` for Φ_f and T_f,
+  which are integrals over [x, +∞[.
+- `tn-maths1-2022-i` gains `integration` for the segment integrals of Q1 and
+  Q4b. `tn-maths1-2022-ii` gains it too, for "Cas des fonctions continues sur
+  un segment" (Q7) and the integrations by parts on [1, 2] (Q14b).
+- `tn-maths1-2022-iii` gains `suites-series-fonctions`: Φ_X is a series of
+  functions shown to be continuous and C¹ (Q18–19), then integrated term by
+  term (Q21a).
+- `tn-maths2-2017-i` moves from `prehilbertiens-euclidiens-y2` to
+  `prehilbertiens-y1`. Partie I uses only the canonical scalar product and
+  its norm. No symmetric endomorphism appears until Partie II.
+- `tn-maths2-2018-i` gains `determinants` and `polynomes-fractions`: Q3c
+  finds a real α through the polynomial det(P₁ + XP₂).
+- `tn-maths2-2019-i` gains `polynomes-fractions` for the Lagrange
+  interpolation polynomial of I.3.2. `tn-maths2-2025-i` is tagged with it for
+  the same notion.
+- `tn-maths2-2019-ii` gains `fonctions-vectorielles-arcs`. II.2.1
+  differentiates x ↦ Tr(e^{xA}S), so it needs the derivative of x ↦ e^{xA}.
+  `tn-maths2-2022-i` is tagged the same way for the same kind of derivative.
+  It keeps `derivation` for f(x) ≤ f(0) ⇒ f′(0) = 0 (II.2.2).
+- `tn-maths2-2020-ii` gains `topologie-evn`: Partie II works with "une norme
+  quelconque sur ℂⁿ", and II.2c's constant C comes from finite dimension.
+- `tn-maths2-2025-iii` gains `determinants` (Q25) and `derivation` for the
+  Leibniz formula of Q35.
+
+Primaries are unchanged. The PRD's chapitre counts and S3 are recomputed.
+The PRD also had some stale lines. §7's count of out-of-page-order pairs,
+still at 21, is now 34. S4 and Appendix A now say "Intégration sur un segment".
+S1, S18 and FR-4's Année options gain the same "until ticket 22" note as S10.
+The snapshot line no longer refers to "the commit above".
+
+**Still open:**
+
+- `tn-maths2-2025.pdf` is incomplete in its IPEIS source. Every page is
+  scanned short, about 750 pt tall instead of A4's 842. Q.10 falls between
+  pages 2 and 3, and the review also reports Q.31 missing between pages 4
+  and 5. Q.20 is cut off, and page 5 ends at Q.41 with no "Fin du sujet". This
+  breaks "Concours (paper)", which says the paper is the whole sujet. It needs
+  a complete source, or a decision to keep it with a note or to drop it.
+- `tn-maths1-2020-p2`'s label says "Approximation par la loi de Poisson". The
+  paper titles Partie 4 "Formule de type Taylor et applications". It
+  approximates f by E[f(Sₙ/n)] with Sₙ ~ P(nx), which is not Poisson
+  approximating the binomial.
