@@ -78,8 +78,12 @@ with the chapitre it really uses. Results stated earlier in the paper count as
 given; the papers themselves say "tout résultat énoncé peut être utilisé". It
 is excluded only when answering needs a pre-reform notion: Fourier's theorems,
 hermitian products, the signature of a quadratic form, multiple integrals. A
-problem can therefore lose its first partie and keep the rest. A paper with
-nothing left is not added at all.
+problem can therefore lose its first partie and keep the rest. The unit is
+the exercise as the archive splits the paper, a partie or an Exercice, and
+never a single question inside it. An exercise with one pre-reform question is
+out, even when its other questions could use that question's result as given.
+Cutting at question level would leave exercises whose pages still show the
+excluded questions. A paper with nothing left is not added at all.
 
 We chose this over dropping every pre-reform paper, or keeping only the
 papers where nothing needs excluding. Twenty years of Tunisian exercises on
