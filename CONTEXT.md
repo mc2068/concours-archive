@@ -96,7 +96,10 @@ answer it, and it is tagged with the chapitre it really uses. Results stated
 earlier in the paper count as given. It is **out** only when answering needs a
 pre-reform notion: Fourier's theorems, hermitian products, the signature of a
 quadratic form, multiple integrals. So a problem can keep its later parties
-and lose its first.
+and lose its first. The unit judged is the exercise as the archive splits the
+paper, a partie or an Exercice, never a single question: one question that
+needs a pre-reform notion takes its whole exercise out, even when the others
+could take its result as given.
 
 ### Filter axes
 The dimensions a student narrows by: **chapitre** (primary, single-select) plus

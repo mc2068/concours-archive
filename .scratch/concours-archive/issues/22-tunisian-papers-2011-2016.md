@@ -36,11 +36,11 @@ Already seen on the cover pages: 2012 Maths 1 opens with Fourier coefficients.
 ## Comments
 
 **2026-09-29 — done.** All 12 papers are bundled. No paper lost every
-exercise, so none was dropped, but four blocks fell to mapping (below). The
-archive is now 113 papers and 280 exercises. Pays = Tunisie shows 95
-exercices, and Année offers 2011–2026. Page ranges and tags come from reading
-every sujet page as an image, since none of these files has a text layer.
-They are a curator's judgement and worth checking in review.
+exercise, so none was dropped. Three Fourier parties (or runs of parties) and
+one Exercice fell to mapping (below). After the review the archive is 113
+papers and 279 exercises. Pays = Tunisie shows 94 exercices, and Année offers
+2011–2026. Page ranges and tags come from reading every sujet page as an
+image, since none of these files has a text layer.
 
 **Sources and corrigés.** Each file is
 `https://ipeis.rnu.tn/userfiles/files/concours/<year>.MP.Maths I.pdf` (or
@@ -64,7 +64,7 @@ and the corrigé starts on the next page of the original file.
 | tn-maths2-2016 | 4 | 5 | 8 p, 3.3 MB | 1.6 MB |
 
 **Excluded under "Mapping".** Every exclusion is Fourier, except one
-quadratic-form question:
+quadratic-form Exercice:
 
 - `tn-maths1-2012`, Parties I–III (pp. 1–4). I.1b gets Σ1/n² = π²/6 from the
   coefficients bₙ(H), and I.5c gets ∫(ln(x² − 2x cos t + 1))² = 4πΣx²ⁿ/n².
@@ -81,11 +81,11 @@ quadratic-form question:
   f(r,θ) = u₀(r) + Σ(uₙ(r)e^{inθ} + u₋ₙ(r)e^{−inθ}): the convergence of the
   Fourier series of a C¹ periodic function. Partie III stays, taking
   Partie II's result as given.
-- `tn-maths2-2014`, Exercice, question 2 (p. 1). It asks for the Gauss
+- `tn-maths2-2014`, the Exercice (p. 1). Its question 2 asks for the Gauss
   decomposition of the quadratic form P ↦ P(0)P(1), and for a basis in which
-  q = a₁² − a₂², which is its signature. The paper says the three questions
-  are independent, so questions 1 and 3 stay, as one exercise
-  (`tn-maths2-2014-e`).
+  q = a₁² − a₂², which is its signature. Questions 1 (units of Z/nZ) and 3
+  (critical points) go with it, because the exercise is the unit (see "After
+  the branch review").
 
 **Judgement calls a reviewer may want to check:**
 
@@ -96,7 +96,7 @@ quadratic-form question:
   power series of Iₙ from the Deuxième partie (A.2). III.7 then follows by
   squaring that normally convergent series and integrating over [0, π], with
   no Parseval needed.
-- `tn-maths2-2011-ii` stays. It uses symmetric positive definite matrices, a
+- `tn-maths2-2011-ii-a` stays. It uses symmetric positive definite matrices, a
   square root, and a 2 × 2 criterion a > 0, ac − b² > 0. Those are symmetric
   endomorphisms, not a quadratic form's signature.
 - `tn-maths2-2013` (Jordan reduction) uses the dual E* only to name linear
@@ -112,14 +112,64 @@ whole paper, the first exercise starts on page 2. That applies to
 
 **PRD.** Every count is recomputed from the archive with the page's own view
 code. Several lines changed:
-- The totals go to 280 exercises and 113 papers. Tunisie has 95 exercises and
+- The totals go to 279 exercises and 113 papers. Tunisie has 94 exercises and
   32 papers.
 - Année now runs from 2026 down to 2011.
-- S1's last row is now `tn-maths2-2011-iii`.
-- Année = 2014 now gives 10 rows: five Concours tunisien, then five
+- S1's last row is now `tn-maths2-2011-ii-b`.
+- Année = 2014 now gives 9 rows: four Concours tunisien, then five
   Mines-Ponts (S10, S18).
 - The count of out-of-page-order pairs goes from 34 to 37.
 
 The "until ticket 22" notes that ticket 21 added are gone.
 
 `npm run verify` and `npm test` (80 tests) pass.
+
+### After the branch review
+
+The review read every new exercise against its pages again, in two
+independent passes, one for Maths 1 and one for Maths 2. This is the audit the
+acceptance asks for. Every page count, trim, split, start page and page range
+held. It also confirmed the calls on `tn-maths1-2013-p3`,
+`tn-maths2-2011-ii-a`, `tn-maths2-2012-ii` and `tn-maths2-2013`.
+
+**The Mapping unit.** The first pass cut at two sizes. It excluded whole
+parties for 2012, 2014 and 2015 Maths 1, and a single question for 2014
+Maths 2. The review showed that most questions in those Fourier parties could
+take the Fourier results as given, so the two sizes were inconsistent. The
+unit is now the exercise, as the archive splits the paper, and never a single
+question. `CONTEXT.md` ("Mapping") and ADR 0002's amendment now say so. Under
+that rule the Fourier parties stay out, and `tn-maths2-2014-e` goes, with its
+question 2. Cutting at question level would have left exercises whose pages
+still show the excluded questions.
+
+**Changes.**
+
+- `tn-maths2-2011-ii`/`-iii` become `-ii-a`/`-ii-b`. Both are sub-parties of
+  Partie II, and the paper has no Partie III.
+- `tn-maths2-2014-p`'s label now names its Partie I, the orthogonal of a sum.
+- `tn-maths1-2013-p3` gains `familles-sommables` for III.6's regrouping of a
+  double series. It also gains `suites-series-fonctions` and `integration`
+  for III.7, which integrates term by term over [0, π].
+- `tn-maths1-2016-p2` gains `suites-series-fonctions`, for III.3b's
+  term-by-term integration.
+- `tn-maths1-2016-p4` gains `determinants`: III.2a shows (zI − A)⁻¹ is
+  rational through the comatrix.
+- `tn-maths2-2015-i` gains `reduction-endomorphismes` for the characteristic
+  polynomial P_M of I.2b–c.
+
+**Considered and left as they are.**
+
+- `systemes-lineaires` on `tn-maths2-2012-i`. The normal equations
+  ᵗAAξ₀ = ᵗAb come from an orthogonal projection, not from the chapitre's
+  elimination methods.
+- `series-numeriques` on `tn-maths1-2011-ii`, `-2013-p1` and `-2016-p1`. They
+  compare with positive terms and use absolute convergence, which is
+  1ère-année material under ticket 19's boundary.
+- The `-p1…-p4` counters of the two-problème papers match the existing `-pN`
+  convention, and the labels name the problème.
+- `tn-maths1-2012-iv`'s IV.6b uses (Eₚ), which is defined in the excluded
+  Partie II. The bundled PDF still holds that page, and a result stated
+  earlier counts as given.
+
+The PRD is recomputed again: 279 exercises, Tunisie 94, and Année = 2014 gives
+9 rows. `npm run verify` and `npm test` pass.
