@@ -163,10 +163,35 @@ first-party concours sources**. Aggregators are listed as clearly-labelled secon
 - **Scans.** Before about 2019 the sujets are scans with no text layer, stamped by the IPEIS
   library. The 2024–2025 files carry a "BIB-IPEIS" watermark.
 - **Coverage vs the official site:** concours-ingenieurs.rnu.tn (§3a) starts at 2023 and has no
-  2025 MP Maths 2, so IPEIS is the only source found for 2000–2022 and for 2025 Maths 2.
-  The 2023–2025 files already bundled came from §3a and have no corrigé.
+  2025 MP Maths 2. IPEIS is the only source found for 2000–2001, 2013–2022 and 2025 Maths 2;
+  IPEIB (§3e) also covers 2002–2012. The 2023–2025 files already bundled came from §3a and
+  have no corrigé.
 - **Usage/copyright:** no terms shown. The same stance as §3a applies: official exam material
   republished by a public institute.
+
+### 3e. IPEIB (Institut Préparatoire aux Études d'Ingénieurs de Bizerte) — 2002–2012
+*Added 2026-09-30, ticket 24; found in ticket 23.*
+- **Page:** `http://www.ipeib.rnu.tn/CONCOURS0212/concours.htm`, HTTP only (HTTPS is refused).
+  Links are relative, e.g. `MP/2005/MP%20C%2005%20MATH%202.pdf`; the file names vary by year
+  (`MP/2003/mp_03_math1.pdf`).
+- **Contains:** MP sujets 2002–2012, with the corrigé as a **separate** file. No Maths files
+  for 2006.
+- **Quality:** usually better than IPEIS's scans: straight pages, no library stamps. 2003 is
+  a 300 dpi scan with an invisible OCR layer. Not always: its 2004 Maths 1 clips the right
+  edge of page 4, where IPEIS's scan is whole. Compare the two page by page.
+- **Used for:** `tn-maths2-2005` (ticket 23), and 2002–2003 Maths 1 and 2 and 2004 Maths 2
+  (ticket 24), bundled unchanged.
+
+### 3f. IPEIS's old archive, via the Wayback Machine — 2000–2001
+*Added 2026-09-30, ticket 24.*
+- IPEIS's earlier site, `http://www.ipeis.rnu.tn/concours_nationaux/concours.htm`, now 404s.
+  archive.org captured it in March 2016 with separate sujet files, e.g.
+  `…/Concours2000/Concours_MP_2000/Epreuves/Maths2/scan0001.pdf`. List them with the CDX API:
+  `http://web.archive.org/cdx/search/cdx?url=ipeis.rnu.tn/concours_nationaux/*`.
+- The 2000 and 2001 MP sujets there hold the same page images as today's IPEIS files, so
+  they are no help for a missing page. The corrigés are separate there too.
+- **Dead ends for 2000 Maths 2's missing pages:** the engineersworldtn blogspot's Google
+  Drive copies and the e-preparatoire blog's are the same IPEIS scans. IPEIB starts at 2002.
 
 ---
 
@@ -248,6 +273,8 @@ is official, the Moroccan one is the best available (no first-party CNC archive 
 | concours-ingenieurs.rnu.tn/epreuves | TN | Official | Authoritative | No explicit licence shown |
 | myprepa.tn | TN | Aggregator (login) | Reputable | Account-gated; do not re-bundle |
 | ipeiem.rnu.tn, ipeim.rnu.tn | TN | Institutional mirror | Good | No explicit terms |
+| ipeis.rnu.tn (2000–2025) | TN | Institutional mirror, sujet + corrigé | Good; poor early scans | No explicit terms |
+| ipeib.rnu.tn/CONCOURS0212 (2002–2012) | TN | Institutional mirror, sujet alone | Good; often the better scan | No explicit terms |
 | mathencpge.ma/annales/mp.html | MA | Aggregator/index | Good (best MA index) | No explicit terms |
 | iamateacher.org (Prof ELAMIRI) | MA | Teacher site | Good | No explicit terms |
 | groupe-reussite.fr (ressources) | MA/FR | Commercial aggregator | Medium | No explicit terms; commercial host |
