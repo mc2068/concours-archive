@@ -27,7 +27,7 @@ Already seen on the cover pages: 2009 Maths 1 is on séries trigonométriques
 
 - [ ] Each of the 12 papers is bundled and trimmed to its sujet, or
       recorded below as not added because nothing survived mapping.
-      (Two are short of their sujet; see "Still open".)
+      (`tn-maths1-2006` is short of its sujet; see "Still open".)
 - [x] Each excluded exercise is listed below with the pre-reform notion it
       needs, so the exclusions can be reviewed.
 - [x] For each paper, the comments record its IPEIS URL and the page where
@@ -172,13 +172,44 @@ eye, and every new exercise was checked against "Page range" in
   - `tn-maths2-2005-e`: orthogonal projectors (year 1), with the adjoint and
     O(E) (year 2).
 
+### The missing pages, searched for
+
+**2005 Maths 2: found.** IPEIB (Bizerte) keeps its own concours archive,
+separate from IPEIS's:
+`http://www.ipeib.rnu.tn/CONCOURS0212/concours.htm`, covering 2002–2012. It
+has the 2005 Maths 2 sujet alone, as
+`MP/2005/MP%20C%2005%20MATH%202.pdf` (5 pages, 0.2 MB). This is a clean
+copy with no library stamps. Pages 1–4 match the IPEIS scan line for line,
+and page 5 holds III.1c–5, the end of the sujet. The questions stop at
+III.5, not III.6 as noted above.
+
+- `tn-maths2-2005.pdf` is now the IPEIB file, unchanged. The page ranges
+  of `-e`, `-i` and `-ii` still hold.
+- `tn-maths2-2005-iii` (pp. 4–5) is added. Nothing in it is pre-reform:
+  - exp is Partie I's series, which stays.
+  - The rest is the Dunford decomposition, derivatives of t ↦ exp(g(t)),
+    and a Lagrange interpolation polynomial.
+  - It is tagged `reduction-endomorphismes` (primary), `matrices`,
+    `fonctions-vectorielles-arcs`, `polynomes-fractions` (Lagrange, Q in
+    4b) and `nombres-complexes-trigo` (Log|λ| + iθ in 3).
+- PRD: 320 exercises. Tunisie and Concours tunisien go to 135, 2005 to 7,
+  and Matrices to 107. The five chapitres above each gain one, and S2, S3,
+  S7, S9 and S10 follow. The out-of-page-order pairs stay at 37.
+
+**2006 Maths 1: not found.** IPEIB lists no Maths files for 2006. The
+e-preparatoire blog links a Google Drive `2006.MP.Maths I.eno.pdf`, but it
+has 4 pages and the same IPEIS library stamp on page 1, so it is the same
+scan.
+
+IPEIB also has the 2002–2004 sujets and corrigés as separate files, which
+ticket 24 can use instead of IPEIS's poorest scans.
+
 **Still open:**
 
-- `tn-maths2-2005.pdf` and `tn-maths1-2006.pdf` stop at page 4 of their
-  5-page sujets. Like `tn-maths2-2025` (ticket 21), this breaks
-  "Concours (paper)", which says the paper is the whole sujet. They need a
-  complete source, or a decision to keep them with a note. A complete copy
-  would also bring back the two parties left out above.
+- `tn-maths1-2006.pdf` stops at page 4 of its 5-page sujet. Like
+  `tn-maths2-2025` (ticket 21), this breaks "Concours (paper)", which says
+  the paper is the whole sujet. It needs a complete source, or a decision
+  to keep it with a note. A complete copy would also bring back Partie IV.
 - For `/domain-modeling`: `CONTEXT.md` ("Mapping") and ADR 0002 give one
   reason to leave an exercise out, a pre-reform notion. This ticket adds a
   second one, an incomplete source, which neither document covers yet.
