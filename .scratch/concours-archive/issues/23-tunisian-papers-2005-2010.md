@@ -141,7 +141,19 @@ found no errors in the data:
 
 This is the ticket 16 audit. All 54 sujet pages were rendered and read by
 eye, and every new exercise was checked against "Page range" in
-`CONTEXT.md` and its tags. All 40 page ranges hold, and nothing was changed.
+`CONTEXT.md` and its tags. All 40 page ranges hold.
+
+**Changes.**
+
+- `tn-maths1-2010-iv` loses `familles-sommables`. The only swap of two Σ,
+  in IV.2b, is admitted by the statement ("en admettant … qu'on peut
+  intervertir les deux symboles Σ"). IV.4 needs term-by-term integration on
+  ℝ₊, which its other tags already cover.
+- `tn-maths2-2010-iv` gains `systemes-lineaires`. The Partie solves the
+  linear systems (3) and (4) iteratively, and IV.3 asks that the matrix of
+  (3) be invertible.
+- PRD: Familles sommables goes to 5 and Systèmes linéaires to 1, so
+  3 chapitres are left with no exercises.
 
 **Considered and left as they are.**
 
@@ -170,11 +182,3 @@ eye, and every new exercise was checked against "Page range" in
 - For `/domain-modeling`: `CONTEXT.md` ("Mapping") and ADR 0002 give one
   reason to leave an exercise out, a pre-reform notion. This ticket adds a
   second one, an incomplete source, which neither document covers yet.
-- Two tag questions from the audit, for the curator:
-  - `tn-maths1-2010-iv` carries `familles-sommables`. The only swap of two
-    Σ, in IV.2b, is admitted by the statement ("en admettant … qu'on peut
-    intervertir les deux symboles Σ"). IV.4 needs term-by-term integration
-    on ℝ₊, which its other tags already cover.
-  - `tn-maths2-2010-iv` has no `systemes-lineaires`, although the Partie is
-    about solving the linear systems (3) and (4) iteratively. IV.3 also asks
-    that the matrix of (3) be invertible.

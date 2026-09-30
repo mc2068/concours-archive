@@ -316,10 +316,10 @@ Tests should **pass** on these. Some are tracked as future UX improvements.
   undo a filter, and a filtered view cannot be linked or bookmarked. A reload
   returns to "Tous les chapitres". Only the selects may come back, if the
   browser restores them (FR-12).
-- **4 chapitres have no exercises yet**: Techniques fondamentales de calcul en
-  analyse · Calculs algébriques · Vocabulaire ensembliste · Systèmes linéaires
-  et opérations élémentaires. Selecting one shows the empty state with "Voir tous
-  les exercices", with or without refinements active.
+- **3 chapitres have no exercises yet**: Techniques fondamentales de calcul en
+  analyse · Calculs algébriques · Vocabulaire ensembliste. Selecting one shows
+  the empty state with "Voir tous les exercices", with or without refinements
+  active.
 - **Label order is not page order** within a paper (FR-7). In the current data,
   37 neighbouring pairs of exercises from the same paper appear out of page
   order. This is the specified rule.
@@ -360,7 +360,7 @@ other than French · subjects other than maths.
 | 15 | Analyse | Séries numériques (compléments de 2ème année) | 18 |
 | 16 | Analyse | Topologie des espaces vectoriels normés | 51 |
 | 17 | Analyse | Intégrales à paramètre | 45 |
-| 18 | Analyse | Familles sommables de nombres complexes | 6 |
+| 18 | Analyse | Familles sommables de nombres complexes | 5 |
 | 19 | Algèbre | Nombres complexes et trigonométrie | 8 |
 | 20 | Algèbre | Calculs algébriques | 0 |
 | 21 | Algèbre | Arithmétique dans l'ensemble des entiers relatifs | 2 |
@@ -370,7 +370,7 @@ other than French · subjects other than maths.
 | 25 | Algèbre | Espaces vectoriels et applications linéaires | 10 |
 | 26 | Algèbre | Espaces vectoriels de dimension finie | 25 |
 | 27 | Algèbre | Matrices | 106 |
-| 28 | Algèbre | Systèmes linéaires et opérations élémentaires | 0 |
+| 28 | Algèbre | Systèmes linéaires et opérations élémentaires | 1 |
 | 29 | Algèbre | Groupe symétrique | 4 |
 | 30 | Algèbre | Déterminants | 19 |
 | 31 | Algèbre | Espaces préhilbertiens réels | 26 |
