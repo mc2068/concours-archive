@@ -92,3 +92,31 @@ cost is judgement per exercise, and a reader may wonder why a 2012 Fourier
 problem is half in the archive. Changing the rule later means re-reading about
 47 papers, which is why it is recorded. `CONTEXT.md` ("Mapping") says the same
 in glossary terms.
+
+## Amendment — 2026-09-30: incomplete sources
+
+Some sujets can only be found incomplete:
+- `tn-maths1-2006` lacks its fifth page in every copy found (IPEIS, IPEIB,
+  MyPrepa, the e-preparatoire blog).
+- `tn-maths2-2025`'s only copy, IPEIS's, is scanned short: Q.10 and Q.31 fall
+  between pages, and Q.20 is clipped.
+
+"Concours (paper)" said the paper is the whole sujet, so these had no place.
+
+Such a paper is **kept** with what its source has, and the gap is recorded.
+An exercise the source cuts off, whose text stops before its end, is left
+out, because its later questions can't be read (`tn-maths1-2006` Partie IV).
+An exercise with a question lost or clipped in the middle stays
+(`tn-maths2-2025-i` to `-iii`). A complete copy replaces the file when one
+turns up, and any exercise it left out comes back. That is how
+`tn-maths2-2005` was completed from IPEIB's archive. This is the second
+reason an exercise of an archived paper can be left out, after the pre-reform
+rule above.
+
+We chose this over dropping incomplete papers, which would lose all of 2025
+Maths 2, a paper on the current program, and three sound 2006 exercises. We
+also rejected leaving out any exercise with a lost question, which would
+empty 2025 Maths 2 just as surely. The cost is that a student can meet a gap
+in the middle of an exercise, with nothing on the page to say so. Reversing
+the rule means re-judging every paper kept this way, which is why it is
+recorded. `CONTEXT.md` ("Incomplete source") says the same in glossary terms.
