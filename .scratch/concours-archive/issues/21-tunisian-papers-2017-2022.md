@@ -197,3 +197,19 @@ The snapshot line no longer refers to "the commit above".
   paper titles Partie 4 "Formule de type Taylor et applications". It
   approximates f by E[f(Sₙ/n)] with Sₙ ~ P(nx), which is not Poisson
   approximating the binomial.
+
+**2026-09-30 — `tn-maths2-2025` settled.** Ticket 23 found no complete
+copy of the sujet:
+- The official concours-ingenieurs.rnu.tn lists only Maths 1 for MP 2025.
+- MyPrepa mirrors IPEIS's file.
+
+`CONTEXT.md` now defines an **incomplete source**, and ADR 0002 has a
+2026-09-30 amendment. Under it the paper is kept, and all three exercises
+stay, since none is cut off. IPEIS's corrigé booklet confirms that:
+- Q.41 is the last question: the booklet ends with it and "Fin de
+  l'épreuve".
+- The booklet restates each question above its answer box, so the ones the
+  sujet scan loses can be read there: Q.10 (p. 8), Q.20 (from the foot of
+  p. 10) and Q.31 (p. 13).
+
+The corrigé is not part of the paper, so the bundled PDF is unchanged.

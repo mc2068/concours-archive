@@ -24,6 +24,14 @@ These are the oldest and poorest scans (2002 Maths 1 is 19 MB). The 2001
 corrigés are handwritten, so finding where the sujet ends needs a look at
 the pages, not just the cover's page count.
 
+Ticket 23 found a second source. IPEIB's archive,
+`http://www.ipeib.rnu.tn/CONCOURS0212/concours.htm` (HTTP only), has the
+2002–2004 MP sujets and corrigés as separate files, e.g.
+`MP/2002/MP%20C%2002%20MATH%201.pdf`. Compare them with IPEIS's scans and
+bundle the better copy. A sujet no copy has in full is an **incomplete
+source** (`CONTEXT.md`): keep it, record the gap, and leave out only an
+exercise it cuts off.
+
 ## Acceptance
 
 - [ ] Each of the 10 papers is bundled and trimmed to its sujet, or

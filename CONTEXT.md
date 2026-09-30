@@ -23,8 +23,20 @@ a single exercise.
 
 A paper is the **sujet** only. When a source bundles a **corrigé** (the
 official or institute solution) after the sujet, the corrigé is not part of
-the paper. The paper's last page is the sujet's last page, and a paper with
-no exercise left after **mapping** is not in the archive at all.
+the paper. The paper's last page is the sujet's last page, or the last one an
+**incomplete source** has. A paper with no exercise left after **mapping** is
+not in the archive at all.
+
+### Incomplete source
+A sujet whose only copy that can be found is missing part of its text: a lost
+page, or questions a scan loses or clips. The paper is archived with what the
+source has, the gap is recorded, and a complete copy replaces it when one turns
+up. An exercise the source **cuts off**, whose text stops before its end, is
+left out, because its later questions can't be read. An exercise with a
+question lost or clipped in the middle stays: the rest of it can still be
+worked. Besides **mapping**, this is the only reason to leave out an exercise
+of a paper that is in the archive. NOT a poor scan whose text can all be read,
+and NOT a corrigé missing: the corrigé is not part of the paper.
 
 ### Corrigé
 The worked solution to a concours paper, as published alongside it by the
@@ -93,8 +105,9 @@ The same holds for a Tunisian paper set on the **pre-reform** program. An
 exercise is judged by what it asks the student to do, not by the topic its
 paper is framed in. It is **in** when a student of the reformed program can
 answer it, and it is tagged with the chapitre it really uses. Results stated
-earlier in the paper count as given. It is **out** only when answering needs a
-pre-reform notion: Fourier's theorems, hermitian products, the signature of a
+earlier in the paper count as given. Under mapping, it is **out** only when
+answering needs a pre-reform notion (an **incomplete source** is the one other
+reason to leave an exercise out): Fourier's theorems, hermitian products, the signature of a
 quadratic form, multiple integrals. So a problem can keep its later parties
 and lose its first. The unit judged is the exercise as the archive splits the
 paper, a partie or an Exercice, never a single question: one question that

@@ -25,9 +25,10 @@ Already seen on the cover pages: 2009 Maths 1 is on séries trigonométriques
 
 ## Acceptance
 
-- [ ] Each of the 12 papers is bundled and trimmed to its sujet, or
+- [x] Each of the 12 papers is bundled and trimmed to its sujet, or
       recorded below as not added because nothing survived mapping.
-      (`tn-maths1-2006` is short of its sujet; see "Still open".)
+      (`tn-maths1-2006` is an incomplete source; see "Incomplete sources,
+      decided".)
 - [x] Each excluded exercise is listed below with the pre-reform notion it
       needs, so the exclusions can be reviewed.
 - [x] For each paper, the comments record its IPEIS URL and the page where
@@ -204,12 +205,16 @@ scan.
 IPEIB also has the 2002–2004 sujets and corrigés as separate files, which
 ticket 24 can use instead of IPEIS's poorest scans.
 
-**Still open:**
+### Incomplete sources, decided
 
-- `tn-maths1-2006.pdf` stops at page 4 of its 5-page sujet. Like
-  `tn-maths2-2025` (ticket 21), this breaks "Concours (paper)", which says
-  the paper is the whole sujet. It needs a complete source, or a decision
-  to keep it with a note. A complete copy would also bring back Partie IV.
-- For `/domain-modeling`: `CONTEXT.md` ("Mapping") and ADR 0002 give one
-  reason to leave an exercise out, a pre-reform notion. This ticket adds a
-  second one, an incomplete source, which neither document covers yet.
+`CONTEXT.md` now defines an **incomplete source**, and ADR 0002 has a
+2026-09-30 amendment:
+- A paper whose only copy lacks part of its sujet is kept with what the
+  source has, and the gap is recorded.
+- An exercise the source cuts off is left out.
+- An exercise with a question lost in the middle stays.
+
+`tn-maths1-2006` is kept as it is under this rule. Its missing page 5 is the
+recorded gap, and Partie IV stays out because the source cuts it off. A
+complete copy would bring Partie IV back. The rule also settles
+`tn-maths2-2025` (see ticket 21).
